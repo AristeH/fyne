@@ -123,7 +123,8 @@ func (t *TableOtoko) makeTable() {
 				con.Add(check)
 			}
 			if s != -1 && t.Edit {
-				entry := widget.NewEntry()
+				entry := newEnterEntry()
+				
 
 				con.Add(entry)
 			}
@@ -137,7 +138,7 @@ func (t *TableOtoko) makeTable() {
 		func(i widget.TableCellID, o fyne.CanvasObject) {
 			var label *widget.Label
 			var ic *widget.Check
-			var entry *widget.Entry
+			var entry *enterEntry
 			box := o.(*fyne.Container)
 			rect := box.Objects[0].(*canvas.Rectangle)
 			if i.Row%2 == 0 {
@@ -154,7 +155,7 @@ func (t *TableOtoko) makeTable() {
 				ic = cont.Objects[b].(*widget.Check)
 			}
 			if s >= 0 {
-				entry = cont.Objects[s].(*widget.Entry)
+				entry = cont.Objects[s].(*enterEntry)
 			}
 			switch t.ColumnsType[i.Col] {
 			case "bool":
@@ -170,7 +171,7 @@ func (t *TableOtoko) makeTable() {
 				}
 			case "string":
 				entry.SetText(t.Data[i.Row][i.Col])
-				t.we[entry] = i
+				//t.we[entry] = i
 				if l >= 0 {
 					label.Hidden = true
 				}
@@ -195,6 +196,7 @@ func (t *TableOtoko) makeTable() {
 				}
 			}
 		})
+	
 	for ic, v := range t.ColumnsWidth {
 		t.Table.SetColumnWidth(ic, v)
 	}
@@ -250,4 +252,39 @@ t.Header = widget.NewTable(
 		fmt.Printf("i.Col: %v\n", id.Col)
 
 	}
+
+
+
 }
+//////////////////////////////////////////////
+type enterEntry struct {
+	widget.Entry
+}
+
+func (e *enterEntry) onEnter() {
+	fmt.Println(e.Entry.Text)
+	e.Entry.SetText("")
+}
+
+func newEnterEntry() *enterEntry {
+	entry := &enterEntry{}
+	entry.ExtendBaseWidget(entry)
+	return entry
+}
+
+func (e *enterEntry) KeyDown(key *fyne.KeyEvent) {
+	switch key.Name {
+	case fyne.KeyReturn:
+		e.onEnter()
+	default:
+		e.Entry.KeyDown(key)
+		fmt.Printf("Key %v pressed\n", key.Name)
+	}
+}
+
+func (e *enterEntry) KeyUp(key *fyne.KeyEvent) {
+	fmt.Printf("Key %v released\n", key.Name)
+}
+
+
+

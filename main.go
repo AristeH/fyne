@@ -3,10 +3,12 @@ package main
 import (
 	"image/color"
 	"strconv"
-	"fyne.io/fyne/v2/layout"
+
 	"fyne.io/fyne/v2"
 	"fyne.io/fyne/v2/app"
 	"fyne.io/fyne/v2/container"
+//	"fyne.io/fyne/v2/layout"
+	"fyne.io/fyne/v2/widget"
 )
 
 var myApp = app.New()
@@ -15,14 +17,29 @@ func main() {
 	myWindow := myApp.NewWindow("TabContainer Widget")
 
 	table := TableInit()
-//	h :=container.New(layout.NewVBoxLayout(), table.Header)
+//	h :=container.New(layout.NewMaxLayout(), table.Table)
 //
-	content := container.New(layout.NewVBoxLayout(),table.Tool, table.Header,table.Table)
+content := container.NewBorder(
+		container.NewVBox(
+			table.Tool,
+			widget.NewSeparator(),
+			table.Header,
+			widget.NewSeparator(),
+		),
+nil,
+		nil,
+		nil,
+		table.Table,
+	)
+
+
+
+//	content := container.New(layout.NewVBoxLayout(),table.Tool, table.Header,container.NewMax(h))
 //content := container.New(layout.NewBorderLayout(table.Header, nil, m, nil),
 //		table.Header, m)
 
 	myWindow.Resize(fyne.NewSize(1200,400))
-	myWindow.SetContent(content)
+	myWindow.SetContent(container.NewMax(content))
 	myWindow.ShowAndRun()
 	
 }

@@ -18,7 +18,7 @@ import (
 )
 
 type TableOtoko struct {
-	ColumnsName   [][]string
+	ColumnsName   []string
 	ColumnsFormat []string
 	ColumnsType   []string
 	ColumnsWidth  []float32
@@ -29,48 +29,23 @@ type TableOtoko struct {
 	Edit          bool
 	Tool         *widget.Toolbar
 	Table         *widget.Table
-	Header        *widget.Table
+	Header        *fyne.Container
 	we            map[*widget.Entry]widget.TableCellID
 	wc            map[*widget.Check]widget.TableCellID
 }
 
 func (t *TableOtoko) CreateHeader() {
-	t.Header = widget.NewTable(func() (int, int) {
-		rows := len(t.ColumnsName)
-		columns := len(t.ColumnsName[0])
-		return rows, columns
-	},
-		func() fyne.CanvasObject {
-			con := container.NewHBox()
-			con.Layout = layout.NewMaxLayout()
-			con.Add(widget.NewLabel(""))
-			return container.New(layout.NewMaxLayout(),
-				canvas.NewRectangle(color.Gray{250}),
-				con,
-			)
-		},
-
-		func(i widget.TableCellID, o fyne.CanvasObject) {
-
-			box := o.(*fyne.Container)
-
-			rect := box.Objects[0].(*canvas.Rectangle)
-			rect.FillColor = t.HeaderColor
-
-			cont := box.Objects[1].(*fyne.Container)
-			label := cont.Objects[0].(*widget.Label)
-
-			label.SetText(t.ColumnsName[i.Row][i.Col])
-
-		})
-
-	for ic, v := range t.ColumnsWidth {
-		t.Header.SetColumnWidth(ic, v)
+	t.Header =  container.New(&ToolButton{})
+	for i, value := range t.ColumnsName {
+		d:= widget.NewButtonWithIcon(value, nil, nil)
+		d.Resize(fyne.NewSize(d.Size().Height,t.ColumnsWidth[i]))
+		t.Header.Add(d)
 	}
+	t.Header.Refresh()
 
 }
 
-func (t *TableOtoko) LoarTable(mes []byte) {
+func (t *TableOtoko) LoadTable(mes []byte) {
 }
 
 func (t *TableOtoko) makeTable() {
@@ -218,40 +193,8 @@ t.Tool = widget.NewToolbar(
 			log.Println("Display help")
 		}),)
 
-	//t.CreateHeader()
-t.Header = widget.NewTable(
-		func() (int, int) {
-			rows := len(t.ColumnsName)
-			columns := len(t.ColumnsName[0])
-			return rows, columns
-		},
-		func() fyne.CanvasObject {
-			con := container.NewHBox()
-			con.Layout = layout.NewMaxLayout()
-			con.Add(widget.NewLabel(""))
-			return container.New(layout.NewMaxLayout(),
-				canvas.NewRectangle(color.Gray{250}),
-				con,
-			)
-		},
+	t.CreateHeader()
 
-		func(i widget.TableCellID, o fyne.CanvasObject) {
-			var label *widget.Label
-			box := o.(*fyne.Container)
-			rect := box.Objects[0].(*canvas.Rectangle)
-			rect.FillColor = t.HeaderColor
-
-			cont := box.Objects[1].(*fyne.Container)
-			label = cont.Objects[l].(*widget.Label)
-			label.SetText(t.Data[i.Row][i.Col])
-		})
-	for ic, v := range t.ColumnsWidth {
-		t.Header.SetColumnWidth(ic, v)
-	}
-	t.Header.OnSelected = func(id widget.TableCellID) {
-		fmt.Printf("i.Col: %v\n", id.Col)
-
-	}
 
 
 
@@ -285,6 +228,30 @@ func (e *enterEntry) KeyDown(key *fyne.KeyEvent) {
 func (e *enterEntry) KeyUp(key *fyne.KeyEvent) {
 	fmt.Printf("Key %v released\n", key.Name)
 }
+/////////////////////////////
+type ToolButton struct {
 
+}
 
+func (d *ToolButton) MinSize(objects []fyne.CanvasObject) fyne.Size {
+	w, h := float32(0), float32(0)
+	for i, o := range objects {
+		childSize := o.MinSize()
+		o.Resize(fyne.NewSize(TO.ColumnsWidth[i], childSize.Height ))
+		w += TO.ColumnsWidth[i]
+		h = childSize.Height
+	}
+	return fyne.NewSize(w, h)
+}
 
+func (d *ToolButton) Layout(objects []fyne.CanvasObject, containerSize fyne.Size) {
+	pos := fyne.NewPos(0, 0)
+	k := float32(0)
+	for i, o := range objects {
+		size := o.MinSize()
+		o.Resize(size)
+		o.Move(pos)
+		pos = pos.Add(fyne.NewPos(TO.ColumnsWidth[i], 0))
+		k+=50
+	}
+}

@@ -1,12 +1,14 @@
 package main
 
 import (
+	"fmt"
 	"image/color"
 	"strconv"
 
 	"fyne.io/fyne/v2"
 	"fyne.io/fyne/v2/app"
 	"fyne.io/fyne/v2/container"
+
 	//	"fyne.io/fyne/v2/layout"
 	"fyne.io/fyne/v2/widget"
 )
@@ -16,7 +18,10 @@ type TableData struct {
 }
 
 type FormData struct {
-	Table TableOtoko
+	Table        *TableOtoko
+	we            map[*enterEntry]widget.TableCellID
+	wc            map[*widget.Check]widget.TableCellID
+	wb            map[*widget.Button]int
 	W     fyne.Window
 }
 
@@ -28,8 +33,12 @@ func main() {
 	myWindow := myApp.NewWindow("TabContainer Widget")
 
 	table := TableInit()
-	app_values["main"] = FormData{Table: table, W: myWindow}
+	app_values["main"] = FormData{Table: table, W: myWindow,
+		we: make(map[*enterEntry]widget.TableCellID), wc: make(map[*widget.Check]widget.TableCellID),
+	wb: make(map[*widget.Button]int)}
 	table.makeTable()
+
+
 	content := container.NewBorder(
 		container.NewVBox(
 			table.Tool,
@@ -49,9 +58,9 @@ func main() {
 
 }
 
-func TableInit() TableOtoko {
-	col_columns := 15
-	col_rows := 100
+func TableInit() *TableOtoko {
+	col_columns := 12
+	col_rows := 20
 	columns := make([]string, col_columns)
 	columnstype := make([]string, col_columns)
 	data := make([][]string, col_rows)
@@ -69,6 +78,7 @@ func TableInit() TableOtoko {
 				}
 			}
 		}
+		data[i][0] = fmt.Sprintf("%d",i)
 	}
 
 
@@ -82,9 +92,13 @@ func TableInit() TableOtoko {
 			} else {
 				columnstype[i1] = "string"
 			}
-			if i1 < 5 {
-				columnswidth[i1] = 90
-				columnstype[i1] = "label"
+			// if i1 < 5 {
+			// 	columnswidth[i1] = 90
+			// 	columnstype[i1] = "label"
+			// }
+			if i1 ==0  {
+				columnswidth[i1] = 40
+				columns[i1] ="N" 	
 			}
 		}
 	
@@ -98,5 +112,5 @@ func TableInit() TableOtoko {
 	TO.Data = data
 	TO.Edit = true
 	
-	return TO
+	return &TO
 }

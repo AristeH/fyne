@@ -30,9 +30,7 @@ type TableOtoko struct {
 	Tool          *widget.Toolbar
 	Table         *widget.Table
 	Header        *fyne.Container
-	we            map[*enterEntry]widget.TableCellID
-	wc            map[*widget.Check]widget.TableCellID
-	wb            map[*widget.Button]int
+
 }
 
 func (t *TableOtoko) CreateHeader() {
@@ -40,23 +38,21 @@ func (t *TableOtoko) CreateHeader() {
 	for col, value := range t.ColumnsName {
 		d := widget.NewButtonWithIcon(value, nil,nil)
 		d.OnTapped = func() {
-			c := t.wb[d]
+			c := app_values["main"].wb[d]
 			sort.Slice(t.Data, func(i, j int) bool { return t.Data[i][c] < t.Data[j][c] })
+			t.Table.Refresh()
 		}
 
 		t.Header.Add(d)
-		t.wb[d] = col
+		app_values["main"].wb[d] = col
 	}
-	t.Header.Refresh()
+	
 }
 
 func (t *TableOtoko) LoadTable(mes []byte) {
 }
 
 func (t *TableOtoko) makeTable() {
-	t.we = make(map[*enterEntry]widget.TableCellID)
-	t.wc = make(map[*widget.Check]widget.TableCellID)
-	t.wb = make(map[*widget.Button]int)
 
 	t.Table = widget.NewTable(
 		func() (int, int) {
@@ -71,7 +67,7 @@ func (t *TableOtoko) makeTable() {
 
 			check := widget.NewCheck("", nil)
 			check.OnChanged = func(b bool) {
-				i := t.wc[check]
+				i := app_values["main"].wc[check]
 				if check.Checked {
 					t.Data[i.Row][i.Col] = "1"
 				} else {
@@ -81,7 +77,7 @@ func (t *TableOtoko) makeTable() {
 				newTableCellID := widget.TableCellID{Col: i.Col, Row: i.Row + 1}
 				t.Table.ScrollTo(newTableCellID)
 				println(i.Row)
-				for key, value := range t.wc {
+				for key, value := range app_values["main"].wc {
 					if value == newTableCellID {
 						app_values["main"].W.Canvas().Focus(key)
 						break
@@ -119,7 +115,7 @@ func (t *TableOtoko) makeTable() {
 			entry.Hidden = true
 			switch t.ColumnsType[i.Col] {
 			case "bool":
-				t.wc[ic] = i
+				app_values["main"].wc[ic] = i
 				if t.Data[i.Row][i.Col] == "1" {
 					ic.Checked = true
 				} else {
@@ -129,7 +125,7 @@ func (t *TableOtoko) makeTable() {
 				ic.Hidden = false
 			case "string":
 				entry.SetText(t.Data[i.Row][i.Col])
-				t.we[entry] = i
+				app_values["main"].we[entry] = i
 				entry.Hidden = false
 			default:
 				label.SetText(t.Data[i.Row][i.Col])
@@ -167,7 +163,8 @@ type enterEntry struct {
 
 func (e *enterEntry) onEnter() {
 	fmt.Println(e.Entry.Text)
-	e.Entry.SetText("")
+	i := app_values["main"].we[e] 
+	app_values["main"].Table.Data[i.Row][i.Col] = e.Entry.Text
 }
 
 func newEnterEntry() *enterEntry {
@@ -180,6 +177,28 @@ func (e *enterEntry) KeyDown(key *fyne.KeyEvent) {
 	switch key.Name {
 	case fyne.KeyReturn:
 		e.onEnter()
+	case "KP_Enter":
+		e.onEnter()
+	case "Down":
+		i := app_values["main"].we[e]
+		newTableCellID := widget.TableCellID{Col: i.Col, Row: i.Row + 1}
+				app_values["main"].Table.Table.ScrollTo(newTableCellID)
+				for key, value := range app_values["main"].we {
+					if value == newTableCellID {
+						app_values["main"].W.Canvas().Focus(key)
+						break
+					}
+				}	
+	case "Up":
+		i := app_values["main"].we[e]
+		newTableCellID := widget.TableCellID{Col: i.Col, Row: i.Row -1}
+				app_values["main"].Table.Table.ScrollTo(newTableCellID)
+				for key, value := range app_values["main"].we {
+					if value == newTableCellID {
+						app_values["main"].W.Canvas().Focus(key)
+						break
+					}
+				}	
 	default:
 		e.Entry.KeyDown(key)
 		fmt.Printf("Key %v pressed\n", key.Name)

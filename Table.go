@@ -4,20 +4,18 @@ import (
 	"fmt"
 	"image/color"
 	"log"
-
 	"sort"
-
 	"fyne.io/fyne/v2"
 	"fyne.io/fyne/v2/canvas"
 	"fyne.io/fyne/v2/container"
 	"fyne.io/fyne/v2/layout"
 	"fyne.io/fyne/v2/theme"
-
-	//"fyne.io/fyne/v2/theme"
 	"fyne.io/fyne/v2/widget"
 )
 
 type TableOtoko struct {
+	ID string
+	IDForm string
 	ColumnsName   []string
 	ColumnsFormat []string
 	ColumnsType   []string
@@ -30,21 +28,23 @@ type TableOtoko struct {
 	Tool          *widget.Toolbar
 	Table         *widget.Table
 	Header        *fyne.Container
-
+	we            map[*enterEntry]widget.TableCellID
+	wc            map[*widget.Check]widget.TableCellID
+	wb            map[*widget.Button]int
 }
 
 func (t *TableOtoko) CreateHeader() {
-	t.Header = container.New(&ToolButton{})
+	t.Header = container.New(&ToolButton{IDForm: t.IDForm, IDTable: t.ID})
 	for col, value := range t.ColumnsName {
 		d := widget.NewButtonWithIcon(value, nil,nil)
 		d.OnTapped = func() {
-			c := app_values["main"].wb[d]
+			c := app_values[t.IDForm].Table[t.ID].wb[d]
 			sort.Slice(t.Data, func(i, j int) bool { return t.Data[i][c] < t.Data[j][c] })
 			t.Table.Refresh()
 		}
 
 		t.Header.Add(d)
-		app_values["main"].wb[d] = col
+		app_values[t.IDForm].Table[t.ID].wb[d] = col
 	}
 	
 }
@@ -67,7 +67,7 @@ func (t *TableOtoko) makeTable() {
 
 			check := widget.NewCheck("", nil)
 			check.OnChanged = func(b bool) {
-				i := app_values["main"].wc[check]
+				i := app_values[t.IDForm].Table[t.ID].wc[check]
 				if check.Checked {
 					t.Data[i.Row][i.Col] = "1"
 				} else {
@@ -77,15 +77,17 @@ func (t *TableOtoko) makeTable() {
 				newTableCellID := widget.TableCellID{Col: i.Col, Row: i.Row + 1}
 				t.Table.ScrollTo(newTableCellID)
 				println(i.Row)
-				for key, value := range app_values["main"].wc {
+				for key, value := range app_values[t.IDForm].Table[t.ID].wc {
 					if value == newTableCellID {
-						app_values["main"].W.Canvas().Focus(key)
+						app_values[t.IDForm].W.Canvas().Focus(key)
 						break
 					}
 				}
 			}
 			con.Add(check)
 			entry := newEnterEntry()
+			entry.IDForm = t.IDForm
+			entry.IDTable = t.ID
 			con.Add(entry)
 			return container.New(layout.NewMaxLayout(),
 				canvas.NewRectangle(color.Gray{250}),
@@ -115,7 +117,7 @@ func (t *TableOtoko) makeTable() {
 			entry.Hidden = true
 			switch t.ColumnsType[i.Col] {
 			case "bool":
-				app_values["main"].wc[ic] = i
+				app_values[t.IDForm].Table[t.ID].wc[ic] = i
 				if t.Data[i.Row][i.Col] == "1" {
 					ic.Checked = true
 				} else {
@@ -125,7 +127,7 @@ func (t *TableOtoko) makeTable() {
 				ic.Hidden = false
 			case "string":
 				entry.SetText(t.Data[i.Row][i.Col])
-				app_values["main"].we[entry] = i
+				app_values[t.IDForm].Table[t.ID].we[entry] = i
 				entry.Hidden = false
 			default:
 				label.SetText(t.Data[i.Row][i.Col])
@@ -158,13 +160,15 @@ func (t *TableOtoko) makeTable() {
 
 //////////////////////////////////////////////
 type enterEntry struct {
+	IDForm string
+	IDTable string
 	widget.Entry
 }
 
 func (e *enterEntry) onEnter() {
 	fmt.Println(e.Entry.Text)
-	i := app_values["main"].we[e] 
-	app_values["main"].Table.Data[i.Row][i.Col] = e.Entry.Text
+	i := app_values[e.IDForm].Table[e.IDTable].we[e] 
+	app_values[e.IDForm].Table[e.IDTable].Data[i.Row][i.Col] = e.Entry.Text
 }
 
 func newEnterEntry() *enterEntry {
@@ -174,28 +178,29 @@ func newEnterEntry() *enterEntry {
 }
 
 func (e *enterEntry) KeyDown(key *fyne.KeyEvent) {
+	t :=  app_values[e.IDForm].Table[e.IDTable]
 	switch key.Name {
 	case fyne.KeyReturn:
 		e.onEnter()
 	case "KP_Enter":
 		e.onEnter()
 	case "Down":
-		i := app_values["main"].we[e]
+		i := t.we[e]
 		newTableCellID := widget.TableCellID{Col: i.Col, Row: i.Row + 1}
-				app_values["main"].Table.Table.ScrollTo(newTableCellID)
-				for key, value := range app_values["main"].we {
+				t.Table.ScrollTo(newTableCellID)
+				for key, value := range app_values[e.IDForm].Table[e.IDTable].we {
 					if value == newTableCellID {
-						app_values["main"].W.Canvas().Focus(key)
+						app_values[e.IDForm].W.Canvas().Focus(key)
 						break
 					}
 				}	
 	case "Up":
-		i := app_values["main"].we[e]
+		i := t.we[e]
 		newTableCellID := widget.TableCellID{Col: i.Col, Row: i.Row -1}
-				app_values["main"].Table.Table.ScrollTo(newTableCellID)
-				for key, value := range app_values["main"].we {
+				t.Table.ScrollTo(newTableCellID)
+				for key, value := range t.we {
 					if value == newTableCellID {
-						app_values["main"].W.Canvas().Focus(key)
+						app_values[e.IDForm].W.Canvas().Focus(key)
 						break
 					}
 				}	
@@ -211,11 +216,13 @@ func (e *enterEntry) KeyUp(key *fyne.KeyEvent) {
 
 /////////////////////////////
 type ToolButton struct {
+	IDForm string
+	IDTable string
 }
 
 func (d *ToolButton) MinSize(objects []fyne.CanvasObject) fyne.Size {
+	TO :=  app_values[d.IDForm].Table[d.IDTable]
 	w, h := float32(0), float32(0)
-	TO := app_values["main"].Table
 	for i, o := range objects {
 		childSize := o.MinSize()
 		o.Resize(fyne.NewSize(TO.ColumnsWidth[i], childSize.Height))
@@ -227,7 +234,7 @@ func (d *ToolButton) MinSize(objects []fyne.CanvasObject) fyne.Size {
 
 func (d *ToolButton) Layout(objects []fyne.CanvasObject, containerSize fyne.Size) {
 	pos := fyne.NewPos(0, 0)
-	TO := app_values["main"].Table
+	TO :=  app_values[d.IDForm].Table[d.IDTable]
 	for i, o := range objects {
 		size := o.MinSize()
 		o.Resize(size)
@@ -236,3 +243,5 @@ func (d *ToolButton) Layout(objects []fyne.CanvasObject, containerSize fyne.Size
 
 	}
 }
+
+

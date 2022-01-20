@@ -17,13 +17,12 @@ type TableData struct {
 	Widget *widget.Table
 }
 
+
 type FormData struct {
-	Table        *TableOtoko
-	we            map[*enterEntry]widget.TableCellID
-	wc            map[*widget.Check]widget.TableCellID
-	wb            map[*widget.Button]int
-	W     fyne.Window
+	Table  map[string]*TableOtoko //Entry - список таблиц формы
+	W      fyne.Window
 }
+
 
 var app_values = make(map[string]FormData)
 var myApp = app.New()
@@ -33,9 +32,9 @@ func main() {
 	myWindow := myApp.NewWindow("TabContainer Widget")
 
 	table := TableInit()
-	app_values["main"] = FormData{Table: table, W: myWindow,
-		we: make(map[*enterEntry]widget.TableCellID), wc: make(map[*widget.Check]widget.TableCellID),
-	wb: make(map[*widget.Button]int)}
+	t:= make(map[string]*TableOtoko)
+	t["tovar"] = table
+	app_values["main"] = FormData{Table: t, W: myWindow}
 	table.makeTable()
 
 
@@ -59,6 +58,8 @@ func main() {
 }
 
 func TableInit() *TableOtoko {
+
+
 	col_columns := 12
 	col_rows := 20
 	columns := make([]string, col_columns)
@@ -111,6 +112,10 @@ func TableInit() *TableOtoko {
 	TO.RowColor = color.Gray{200}
 	TO.Data = data
 	TO.Edit = true
-	
+	TO.ID = "tovar"
+	TO.IDForm = "main"
+	TO.wb = make(map[*widget.Button]int)
+	TO.wc = make(map[*widget.Check]widget.TableCellID)	
+	TO.we = make(map[*enterEntry]widget.TableCellID)
 	return &TO
 }

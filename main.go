@@ -8,23 +8,15 @@ import (
 	"fyne.io/fyne/v2"
 	"fyne.io/fyne/v2/app"
 	"fyne.io/fyne/v2/container"
-
-	//	"fyne.io/fyne/v2/layout"
 	"fyne.io/fyne/v2/widget"
 )
-type TableData struct {
-	Data   [][]string
-	Widget *widget.Table
-}
-
 
 type FormData struct {
-	Table  map[string]*TableOtoko //Entry - список таблиц формы
-	W      fyne.Window
+	Table map[string]*TableOtoko //Entry - список таблиц формы
+	W     fyne.Window
 }
 
-
-var app_values = make(map[string]FormData)
+var appValues = make(map[string]FormData)
 var myApp = app.New()
 
 func main() {
@@ -32,11 +24,10 @@ func main() {
 	myWindow := myApp.NewWindow("TabContainer Widget")
 
 	table := TableInit()
-	t:= make(map[string]*TableOtoko)
+	t := make(map[string]*TableOtoko)
 	t["tovar"] = table
-	app_values["main"] = FormData{Table: t, W: myWindow}
-	table.makeTable()
-
+	appValues["main"] = FormData{Table: t, W: myWindow}
+	table.MakeTable()
 
 	content := container.NewBorder(
 		container.NewVBox(
@@ -59,17 +50,16 @@ func main() {
 
 func TableInit() *TableOtoko {
 
+	colColumns := 12
+	colRows := 20
+	//columns := make([]string, colColumns)
+	//	columnsType := make([]string, colColumns)
+	data := make([][]string, colRows)
+	//	columnswidth := make([]float32, colColumns)
 
-	col_columns := 12
-	col_rows := 20
-	columns := make([]string, col_columns)
-	columnstype := make([]string, col_columns)
-	data := make([][]string, col_rows)
-	columnswidth := make([]float32, col_columns)
-
-	for i := 0; i < col_rows; i++ {
-		data[i] = make([]string, col_columns)
-		for i1 := 0; i1 < col_columns; i1++ {
+	for i := 0; i < colRows; i++ {
+		data[i] = make([]string, colColumns)
+		for i1 := 0; i1 < colColumns; i1++ {
 			data[i][i1] = "row " + strconv.Itoa(i) + "_" + strconv.Itoa(i1) + ","
 			if i1 > 5 && i1 < 10 {
 				if i1%3 == 0 {
@@ -79,43 +69,47 @@ func TableInit() *TableOtoko {
 				}
 			}
 		}
-		data[i][0] = fmt.Sprintf("%d",i)
+		data[i][0] = fmt.Sprintf("%d", i)
 	}
+	var TO = TableOtoko{}
+	for i1 := 0; i1 < colColumns; i1++ {
+		cs := ColumnStyle{}
+		cs.Name = "Col " + strconv.Itoa(i1)
+		cs.Width = 150
 
-
-		for i1 := 0; i1 < col_columns; i1++ {
-			columns[i1] = "Col " + strconv.Itoa(i1)  + ","
-			columnswidth[i1] = 150
-			if i1 > 5 && i1 < 10 {
-				columnstype[i1] = "bool"
-				columnswidth[i1] = 30
-				columns[i1] =strconv.Itoa(i1) 
-			} else {
-				columnstype[i1] = "string"
-			}
-			// if i1 < 5 {
-			// 	columnswidth[i1] = 90
-			// 	columnstype[i1] = "label"
-			// }
-			if i1 ==0  {
-				columnswidth[i1] = 40
-				columns[i1] ="N" 	
+		if i1 > 5 && i1 < 10 {
+			cs.Type = "bool"
+			cs.Width = 30
+			cs.Name = strconv.Itoa(i1)
+		} else {
+			cs.Type = "string"
+		}
+		if i1 < 5 {
+			cs.Width = 90
+			cs.Name = "label" + strconv.Itoa(i1)
+			cs.Type = "label"
+			if i1 == 3 {
+				cs.BGColor = Blanchedalmond
 			}
 		}
-	
-	var TO = TableOtoko{}
-	TO.ColumnsName = columns
-	TO.ColumnsType = columnstype
-	TO.ColumnsWidth = columnswidth
-	TO.AlterRowColor = color.Gray{250}
-	TO.HeaderColor = color.Gray{150}
-	TO.RowColor = color.Gray{200}
+		if i1 == 0 {
+			cs.Width = 40
+			cs.Name = "N"
+		}
+		TO.ColumnStyle = append(TO.ColumnStyle, cs)
+	}
+	ts := TabStyle{}
+
+	ts.RowAlterColor = color.Gray{Y: 250}
+	ts.HeaderColor = color.Gray{Y: 150}
+	ts.RowColor = color.Gray{Y: 200}
+	TO.TabStyle = ts
 	TO.Data = data
 	TO.Edit = true
 	TO.ID = "tovar"
 	TO.IDForm = "main"
 	TO.wb = make(map[*widget.Button]int)
-	TO.wc = make(map[*widget.Check]widget.TableCellID)	
+	TO.wc = make(map[*widget.Check]widget.TableCellID)
 	TO.we = make(map[*enterEntry]widget.TableCellID)
 	return &TO
 }

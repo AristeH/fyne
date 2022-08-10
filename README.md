@@ -5,3 +5,5 @@ Implemented:
 2. Checkbox column. When you press the space bar jumps to a new line
 3. Entry column.
 4. Label column.
+5. Sort column
+6. Color column

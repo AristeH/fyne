@@ -7,3 +7,6 @@ Implemented:
 4. Label column.
 5. Sort column
 6. Color column
+7. Validate
+8. format output
+9. Properties table

@@ -36,7 +36,7 @@ func mix(src, dest color.Color) color.RGBA {
 }
 
 // Map contains named colors defined in the SVG 1.1 spec.
-var Map = map[string]color.RGBA{
+var MapColor = map[string]color.RGBA{
 	"aliceblue":            {0xf0, 0xf8, 0xff, 0xff}, // rgb(240, 248, 255)
 	"antiquewhite":         {0xfa, 0xeb, 0xd7, 0xff}, // rgb(250, 235, 215)
 	"aqua":                 {0x00, 0xff, 0xff, 0xff}, // rgb(0, 255, 255)

@@ -2,7 +2,6 @@ package main
 
 import (
 	"fmt"
-	"image/color"
 	"strconv"
 
 	"fyne.io/fyne/v2"
@@ -28,7 +27,12 @@ func main() {
 	t["tovar"] = table
 	appValues["main"] = FormData{Table: t, W: myWindow}
 	table.MakeTable()
+	table.Properties = TableInitProperties(table)
 
+	t1 := make(map[string]*TableOtoko)
+	t1["prop"] = table.Properties
+	appValues["mainprop"] = FormData{Table: t1, W: myWindow}
+	table.Properties.MakeTable()
 	content := container.NewBorder(
 		container.NewVBox(
 			table.Tool,
@@ -49,14 +53,9 @@ func main() {
 }
 
 func TableInit() *TableOtoko {
-
 	colColumns := 12
 	colRows := 20
-	//columns := make([]string, colColumns)
-	//	columnsType := make([]string, colColumns)
 	data := make([][]string, colRows)
-	//	columnswidth := make([]float32, colColumns)
-
 	for i := 0; i < colRows; i++ {
 		data[i] = make([]string, colColumns)
 		for i1 := 0; i1 < colColumns; i1++ {
@@ -89,27 +88,28 @@ func TableInit() *TableOtoko {
 			cs.Name = "label" + strconv.Itoa(i1)
 			cs.Type = "label"
 			if i1 == 3 {
-				cs.BGColor = Blanchedalmond
+				cs.BGColor = "skyblue"
 			}
 		}
 		if i1 == 0 {
 			cs.Width = 40
 			cs.Name = "N"
+			cs.Format = "int"
 		}
 		TO.ColumnStyle = append(TO.ColumnStyle, cs)
 	}
 	ts := TabStyle{}
 
-	ts.RowAlterColor = color.Gray{Y: 250}
-	ts.HeaderColor = color.Gray{Y: 150}
-	ts.RowColor = color.Gray{Y: 200}
+	ts.RowAlterColor = "darkgray"
+	ts.HeaderColor = "darkslategray"
+	ts.RowColor = "lightgray"
 	TO.TabStyle = ts
 	TO.Data = data
-	TO.Edit = true
 	TO.ID = "tovar"
 	TO.IDForm = "main"
 	TO.wb = make(map[*widget.Button]int)
 	TO.wc = make(map[*widget.Check]widget.TableCellID)
 	TO.we = make(map[*enterEntry]widget.TableCellID)
+	TO.wl = make(map[*widget.Label]widget.TableCellID)
 	return &TO
 }

@@ -10,3 +10,4 @@ Implemented:
 7. Validate
 8. format output
 9. Properties table
+10. Keyboard navigation

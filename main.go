@@ -17,22 +17,42 @@ type FormData struct {
 
 var appValues = make(map[string]FormData)
 var myApp = app.New()
+var activeContainer *TableOtoko
 
 func main() {
 
-	myWindow := myApp.NewWindow("TabContainer Widget")
+	myWindow := myApp.NewWindow("Table test")
+	contentT := widget.NewButton("Table enter", nil)
+	contentT.OnTapped = func() {
+		tableEntry()
+	}
+	contentL := widget.NewButton("Table label", nil)
+	contentL.OnTapped = func() {
+		tableLabel()
+	}
+	content := container.NewVBox()
+	content.Add(contentT)
+	content.Add(contentL)
+	myWindow.Resize(fyne.NewSize(600, 200))
+	myWindow.SetContent(container.NewMax(content))
+	myWindow.ShowAndRun()
 
+}
+
+func tableEntry() {
+	wTable := myApp.NewWindow("Some ")
 	table := TableInit()
 	t := make(map[string]*TableOtoko)
 	t["tovar"] = table
-	appValues["main"] = FormData{Table: t, W: myWindow}
-	table.MakeTable()
+	appValues["main"] = FormData{Table: t, W: wTable}
+	table.MakeTableEntry()
+	activeContainer = table
 	table.Properties = TableInitProperties(table)
 
 	t1 := make(map[string]*TableOtoko)
 	t1["prop"] = table.Properties
-	appValues["mainprop"] = FormData{Table: t1, W: myWindow}
-	table.Properties.MakeTable()
+	appValues["mainprop"] = FormData{Table: t1, W: wTable}
+	table.Properties.MakeTableEntry()
 	content := container.NewBorder(
 		container.NewVBox(
 			table.Tool,
@@ -45,11 +65,35 @@ func main() {
 		nil,
 		table.Table,
 	)
+	wTable.Resize(fyne.NewSize(1200, 400))
+	wTable.SetContent(container.NewMax(content))
+	wTable.Show()
 
-	myWindow.Resize(fyne.NewSize(1200, 400))
-	myWindow.SetContent(container.NewMax(content))
-	myWindow.ShowAndRun()
+	wTable.Canvas().SetOnTypedKey(func(k *fyne.KeyEvent) {
+		i := activeContainer.Selected
+		switch k.Name {
+		case "Down":
+			if len(activeContainer.Data)-1 > i.Row {
+				activeContainer.Selected = widget.TableCellID{Col: i.Col, Row: i.Row + 1}
+			}
+		case "Up":
+			if i.Row > 1 {
+				activeContainer.Selected = widget.TableCellID{Col: i.Col, Row: i.Row - 1}
+			}
+		case "Left":
+			if i.Col >= 1 {
+				activeContainer.Selected = widget.TableCellID{Col: i.Col - 1, Row: i.Row}
 
+			}
+		case "Right":
+			if len(activeContainer.Data[0])-1 > i.Col {
+
+				activeContainer.Selected = widget.TableCellID{Col: i.Col + 1, Row: i.Row}
+			}
+		}
+		activeContainer.Table.ScrollTo(activeContainer.Selected)
+		activeContainer.Table.Refresh()
+	})
 }
 
 func TableInit() *TableOtoko {
@@ -109,7 +153,64 @@ func TableInit() *TableOtoko {
 	TO.IDForm = "main"
 	TO.wb = make(map[*widget.Button]int)
 	TO.wc = make(map[*widget.Check]widget.TableCellID)
-	TO.we = make(map[*enterEntry]widget.TableCellID)
+	TO.we = make(map[*oEntry]widget.TableCellID)
 	TO.wl = make(map[*widget.Label]widget.TableCellID)
+	TO.wol = make(map[*oLabel]widget.TableCellID)
 	return &TO
+}
+
+func tableLabel() {
+	w1 := myApp.NewWindow("Some ")
+	table := TableInit()
+	t := make(map[string]*TableOtoko)
+	t["tovar"] = table
+	appValues["main"] = FormData{Table: t, W: w1}
+	table.MakeTableLabel()
+
+	table.MakeTableEntry()
+	activeContainer = table
+	table.Properties = TableInitProperties(table)
+
+	t1 := make(map[string]*TableOtoko)
+	t1["prop"] = table.Properties
+	appValues["mainprop"] = FormData{Table: t1, W: w1}
+	table.Properties.MakeTableEntry()
+	activeContainer = table
+	//table.Properties.MakeTable()
+	content := container.NewBorder(
+		table.Tool,
+		nil,
+		nil,
+		nil,
+		table.Table,
+	)
+
+	w1.Resize(fyne.NewSize(1200, 400))
+	w1.SetContent(container.NewMax(content))
+	w1.Show()
+	w1.Canvas().SetOnTypedKey(func(k *fyne.KeyEvent) {
+		i := activeContainer.Selected
+		switch k.Name {
+		case "Down":
+			if len(activeContainer.Data)-1 > i.Row {
+				activeContainer.Selected = widget.TableCellID{Col: i.Col, Row: i.Row + 1}
+			}
+		case "Up":
+			if i.Row > 1 {
+				activeContainer.Selected = widget.TableCellID{Col: i.Col, Row: i.Row - 1}
+			}
+		case "Left":
+			if i.Col >= 1 {
+				activeContainer.Selected = widget.TableCellID{Col: i.Col - 1, Row: i.Row}
+
+			}
+		case "Right":
+			if len(activeContainer.Data[0])-1 > i.Col {
+
+				activeContainer.Selected = widget.TableCellID{Col: i.Col + 1, Row: i.Row}
+			}
+		}
+		activeContainer.Table.ScrollTo(activeContainer.Selected)
+		activeContainer.Table.Refresh()
+	})
 }

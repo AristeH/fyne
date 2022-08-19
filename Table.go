@@ -5,68 +5,13 @@ import (
 	"fyne.io/fyne/v2"
 	"fyne.io/fyne/v2/canvas"
 	"fyne.io/fyne/v2/container"
-	"fyne.io/fyne/v2/data/validation"
 	"fyne.io/fyne/v2/layout"
 	"fyne.io/fyne/v2/theme"
 	"fyne.io/fyne/v2/widget"
 	"image/color"
 	"log"
 	"sort"
-	"strconv"
 )
-
-var (
-	floatValidator = validation.NewRegexp("[+-]?([0-9]*[.])?[0-9]+", "Не правильное число")
-	emailValidator = validation.NewRegexp(`\w{1,}@\w{1,}\.\w{1,4}`, "Не правильный email")
-	intValidator   = validation.NewRegexp(`[+-]?[0-9]*$`, "Не целое число")
-	dateValidator  = validation.NewRegexp(`^\d{4}-\d{2}-\d{2}$`, "Не правильная дата")
-	//emptyValidator = validation.NewRegexp(`^.+$`, "Поле не может быть пустым")
-	//yearValidator  = validation.NewRegexp(`^[0-9]{4}$`, "Год содержит только 4 цифры.")
-)
-
-type enterEntry struct {
-	IDForm  string
-	IDTable string
-	widget.Entry
-	//	fyne.WidgetRenderer
-	//	canvas.Text
-}
-
-type ColumnStyle struct {
-	ID      string
-	Name    string  //Заголовок столбца
-	Format  string  //Форматированный вывод
-	Width   float32 //Ширина столбца
-	BGColor string  // Цвет фона
-	Type    string
-}
-
-type TabStyle struct {
-	ID            string
-	Name          string
-	BGColor       string // Цвет фона
-	RowAlterColor string // Цвет строки четной
-	HeaderColor   string // Цвет текста
-	RowColor      string // Цвет строки нечетной
-	Font          string // Шрифт
-
-}
-
-type TableOtoko struct {
-	ID          string
-	IDForm      string
-	ColumnStyle []ColumnStyle
-	TabStyle    TabStyle
-	Data        [][]string
-	Tool        *widget.Toolbar
-	Table       *widget.Table
-	Header      *fyne.Container
-	Properties  *TableOtoko
-	wl          map[*widget.Label]widget.TableCellID
-	we          map[*enterEntry]widget.TableCellID
-	wc          map[*widget.Check]widget.TableCellID
-	wb          map[*widget.Button]int
-}
 
 func (t *TableOtoko) CreateHeader() {
 	t.Header = container.New(&ToolButton{IDForm: t.IDForm, IDTable: t.ID})
@@ -84,53 +29,7 @@ func (t *TableOtoko) CreateHeader() {
 
 }
 
-// ////////////////////////////////////////////
-
-func (m *enterEntry) onEnter() {
-	fmt.Println(m.Entry.Text)
-	i := appValues[m.IDForm].Table[m.IDTable].we[m]
-	appValues[m.IDForm].Table[m.IDTable].Data[i.Row][i.Col] = m.Entry.Text
-
-}
-
-func newEnterEntry() *enterEntry {
-	entry := &enterEntry{}
-	entry.ExtendBaseWidget(entry)
-	return entry
-}
-
-func getValidator(t string) fyne.StringValidator {
-	switch t {
-	case "date":
-		return dateValidator
-	case "email":
-		return emailValidator
-	case "float":
-		return floatValidator
-	case "int":
-		return intValidator
-	default:
-		return nil
-	}
-}
-
-func getValue(s string, t string) string {
-	switch t {
-	case "float":
-		if s, err := strconv.ParseFloat(s, 32); err == nil {
-			return fmt.Sprintf("%15f", s)
-		}
-	case "int":
-		if s, err := strconv.Atoi(s); err == nil {
-			return fmt.Sprintf("%3d", s)
-		}
-	default:
-		return s
-	}
-	return ""
-}
-
-func (t *TableOtoko) MakeTable() {
+func (t *TableOtoko) MakeTableEntry() {
 
 	t.Table = widget.NewTable(
 		func() (int, int) {
@@ -142,7 +41,6 @@ func (t *TableOtoko) MakeTable() {
 			con := container.NewHBox()
 			con.Layout = layout.NewMaxLayout()
 			con.Add(widget.NewLabel(""))
-
 			check := widget.NewCheck("", nil)
 			check.OnChanged = func(b bool) {
 				i := appValues[t.IDForm].Table[t.ID].wc[check]
@@ -163,7 +61,7 @@ func (t *TableOtoko) MakeTable() {
 				}
 			}
 			con.Add(check)
-			entry := newEnterEntry()
+			entry := newoEntry()
 
 			entry.IDForm = t.IDForm
 			entry.IDTable = t.ID
@@ -177,7 +75,7 @@ func (t *TableOtoko) MakeTable() {
 		func(i widget.TableCellID, o fyne.CanvasObject) {
 			var label *widget.Label
 			var ic *widget.Check
-			var entry *enterEntry
+			var entry *oEntry
 
 			box := o.(*fyne.Container)
 			rect := box.Objects[0].(*canvas.Rectangle)
@@ -189,6 +87,9 @@ func (t *TableOtoko) MakeTable() {
 			if val, ok := MapColor[t.ColumnStyle[i.Col].BGColor]; ok {
 				rect.FillColor = mix(val, rect.FillColor)
 			}
+			if i == t.Selected {
+				rect.FillColor = MapColor["tomato"]
+			}
 
 			cont := box.Objects[1].(*fyne.Container)
 
@@ -196,7 +97,7 @@ func (t *TableOtoko) MakeTable() {
 
 			ic = cont.Objects[1].(*widget.Check)
 
-			entry = cont.Objects[2].(*enterEntry)
+			entry = cont.Objects[2].(*oEntry)
 			label.Hidden = true
 			ic.Hidden = true
 			entry.Hidden = true
@@ -236,6 +137,8 @@ func (t *TableOtoko) MakeTable() {
 		t.Table.SetColumnWidth(ic, v.Width)
 	}
 	t.Table.OnSelected = func(id widget.TableCellID) {
+		t.Selected = id
+		activeContainer = t
 		fmt.Printf("i.Col: %v\n", id.Col)
 	}
 
@@ -273,78 +176,6 @@ func (t *TableOtoko) MakeTable() {
 		}))
 
 	t.CreateHeader()
-
-}
-
-func (m *enterEntry) KeyDown(key *fyne.KeyEvent) {
-	t := appValues[m.IDForm].Table[m.IDTable]
-	switch key.Name {
-	case fyne.KeyReturn:
-		m.onEnter()
-	case "KP_Enter":
-		m.onEnter()
-		i := t.we[m]
-		t.ColumnStyle[i.Col].Width = 40
-	case "Down":
-		i := t.we[m]
-		newTableCellID := widget.TableCellID{Col: i.Col, Row: i.Row + 1}
-		t.Table.ScrollTo(newTableCellID)
-		for key, value := range appValues[m.IDForm].Table[m.IDTable].we {
-			if value == newTableCellID {
-				appValues[m.IDForm].W.Canvas().Focus(key)
-				break
-			}
-		}
-	case "Up":
-		i := t.we[m]
-		newTableCellID := widget.TableCellID{Col: i.Col, Row: i.Row - 1}
-		t.Table.ScrollTo(newTableCellID)
-		for key, value := range t.we {
-			if value == newTableCellID {
-				appValues[m.IDForm].W.Canvas().Focus(key)
-				break
-			}
-		}
-	default:
-		m.Entry.KeyDown(key)
-		fmt.Printf("Key %v pressed\n", key.Name)
-	}
-}
-
-func (m *enterEntry) KeyUp(key *fyne.KeyEvent) {
-	fmt.Printf("Key %v released\n", key.Name)
-}
-
-// somehow this catches right click. How?
-func (mc *enterEntry) TappedSecondary(pe *fyne.PointEvent) {
-	fmt.Printf("1")
-}
-
-func (mc *enterEntry) DoubleTapped(pe *fyne.PointEvent) {
-	ind := appValues["main"].Table["tovar"].we[mc]
-	if ind.Col == 5 {
-		choiceFromList(Names, appValues["main"].Table["tovar"], mc)
-	}
-	if ind.Col == 3 {
-		var Types = []string{
-			"label",
-			"string",
-			"bool",
-			"float",
-		}
-		choiceFromList(Types, appValues["main"].Table["tovar"], mc)
-	}
-	if ind.Col == 4 {
-		//if s, err := strconv.ParseFloat(mc.Text, 32); err == nil {
-		appValues["main"].Table["tovar"].ColumnStyle[ind.Row].Width = float32(20) // 3.1415927410125732
-		appValues["main"].Table["tovar"].Table.SetColumnWidth(ind.Row, 20)
-		//	}
-	}
-
-}
-func (mc *enterEntry) OnChanged() {
-
-	fmt.Printf("1")
 
 }
 
@@ -435,8 +266,9 @@ func TableInitProperties(t *TableOtoko) *TableOtoko {
 
 	TO.wb = make(map[*widget.Button]int)
 	TO.wc = make(map[*widget.Check]widget.TableCellID)
-	TO.we = make(map[*enterEntry]widget.TableCellID)
+	TO.we = make(map[*oEntry]widget.TableCellID)
 	TO.wl = make(map[*widget.Label]widget.TableCellID)
+	TO.wol = make(map[*oLabel]widget.TableCellID)
 
 	return &TO
 }

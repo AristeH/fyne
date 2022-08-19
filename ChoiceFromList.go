@@ -6,7 +6,7 @@ import (
 	"fyne.io/fyne/v2/widget"
 )
 
-func choiceFromList(l []string, w *TableOtoko, e *enterEntry) {
+func choiceFromList(l []string, w *TableOtoko, e *oEntry) {
 
 	myWindow := myApp.NewWindow("List Widget")
 

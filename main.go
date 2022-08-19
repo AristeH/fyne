@@ -167,7 +167,6 @@ func tableLabel() {
 	appValues["main"] = FormData{Table: t, W: w1}
 	table.MakeTableLabel()
 
-	table.MakeTableEntry()
 	activeContainer = table
 	table.Properties = TableInitProperties(table)
 

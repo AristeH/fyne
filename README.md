@@ -1,4 +1,4 @@
-# fyne
+# fyne table
 Example of working with a Table.
 Implemented:
 1. Header (buttons)

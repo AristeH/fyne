@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"fyne.io/fyne/v2/dialog"
 	"strconv"
 
 	"fyne.io/fyne/v2"
@@ -22,6 +23,9 @@ var activeContainer *TableOtoko
 func main() {
 
 	myWindow := myApp.NewWindow("Table test")
+	myApp.Lifecycle().SetOnEnteredForeground(func() {
+		println(4)
+	})
 	contentT := widget.NewButton("Table enter", nil)
 	contentT.OnTapped = func() {
 		tableEntry()
@@ -83,11 +87,9 @@ func tableEntry() {
 		case "Left":
 			if i.Col >= 1 {
 				activeContainer.Selected = widget.TableCellID{Col: i.Col - 1, Row: i.Row}
-
 			}
 		case "Right":
 			if len(activeContainer.Data[0])-1 > i.Col {
-
 				activeContainer.Selected = widget.TableCellID{Col: i.Col + 1, Row: i.Row}
 			}
 		}
@@ -125,12 +127,12 @@ func TableInit() *TableOtoko {
 			cs.Width = 30
 			cs.Name = strconv.Itoa(i1)
 		} else {
-			cs.Type = "string"
+			cs.Type = "String"
 		}
 		if i1 < 5 {
 			cs.Width = 90
 			cs.Name = "label" + strconv.Itoa(i1)
-			cs.Type = "label"
+			cs.Type = "String"
 			if i1 == 3 {
 				cs.BGColor = "skyblue"
 			}
@@ -138,7 +140,13 @@ func TableInit() *TableOtoko {
 		if i1 == 0 {
 			cs.Width = 40
 			cs.Name = "N"
-			cs.Format = "int"
+			cs.Format = "DOUBLE"
+		}
+
+		if i1 == 6 {
+			cs.Width = 40
+			cs.Name = "N"
+			cs.Format = "Ref"
 		}
 		TO.ColumnStyle = append(TO.ColumnStyle, cs)
 	}
@@ -161,6 +169,7 @@ func TableInit() *TableOtoko {
 
 func tableLabel() {
 	w1 := myApp.NewWindow("Some ")
+
 	table := TableInit()
 	t := make(map[string]*TableOtoko)
 	t["tovar"] = table
@@ -187,7 +196,9 @@ func tableLabel() {
 	w1.Resize(fyne.NewSize(1200, 400))
 	w1.SetContent(container.NewMax(content))
 	w1.Show()
+
 	w1.Canvas().SetOnTypedKey(func(k *fyne.KeyEvent) {
+
 		i := activeContainer.Selected
 		switch k.Name {
 		case "Down":
@@ -201,15 +212,28 @@ func tableLabel() {
 		case "Left":
 			if i.Col >= 1 {
 				activeContainer.Selected = widget.TableCellID{Col: i.Col - 1, Row: i.Row}
-
 			}
 		case "Right":
 			if len(activeContainer.Data[0])-1 > i.Col {
-
 				activeContainer.Selected = widget.TableCellID{Col: i.Col + 1, Row: i.Row}
 			}
+		case "KP_Enter", "Return":
+			Entry := widget.NewEntry()
+			Entry.Validator = getValidator(activeContainer.ColumnStyle[i.Row].Type)
+			items := []*widget.FormItem{
+				widget.NewFormItem("Username", Entry),
+			}
+			dialog.ShowForm("введите", "", "cancel", items, func(b bool) {
+				if !b {
+					return
+				}
+				fmt.Println("KP_Enter", Entry.Text)
+				activeContainer.Data[i.Row][i.Col] = Entry.Text
+			}, w1)
+
 		}
 		activeContainer.Table.ScrollTo(activeContainer.Selected)
 		activeContainer.Table.Refresh()
 	})
+
 }

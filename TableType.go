@@ -58,13 +58,17 @@ type TableOtoko struct {
 
 func getValidator(t string) fyne.StringValidator {
 	switch t {
-	case "date":
+	case "String":
 		return dateValidator
 	case "email":
 		return emailValidator
-	case "float":
+	case "Time":
 		return floatValidator
-	case "int":
+	case "DOUBLE":
+		return intValidator
+	case "Перечисление":
+		return intValidator
+	case "bool":
 		return intValidator
 	default:
 		return nil

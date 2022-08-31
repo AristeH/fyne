@@ -36,7 +36,7 @@ func (t *TableOtoko) MakeTableLabel() {
 			box := o.(*fyne.Container)
 			rect := box.Objects[0].(*canvas.Rectangle)
 			entry = box.Objects[1].(*oLabel)
-
+			entry.parent = t
 			entry.SetText(t.Data[i.Row][i.Col])
 			entry.Alignment = fyne.TextAlignTrailing
 			t.wol[entry] = i
@@ -75,7 +75,6 @@ func (t *TableOtoko) MakeTableLabel() {
 
 	t.Tool = widget.NewToolbar(
 		widget.NewToolbarAction(theme.DocumentCreateIcon(), func() {
-
 			log.Println("New document")
 		}),
 		widget.NewToolbarSeparator(),
@@ -83,5 +82,4 @@ func (t *TableOtoko) MakeTableLabel() {
 		widget.NewToolbarAction(theme.ContentRemoveIcon(), func() {}),
 		widget.NewToolbarSpacer(),
 		widget.NewToolbarAction(theme.SettingsIcon(), func() {}))
-
 }

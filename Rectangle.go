@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"fyne.io/fyne/v2"
+	"fyne.io/fyne/v2/dialog"
 	"fyne.io/fyne/v2/driver/desktop"
 	"fyne.io/fyne/v2/widget"
 	"log"
@@ -17,6 +18,7 @@ type oLabel struct {
 	ID      string
 	col     int
 	widget.Label
+	parent *TableOtoko
 }
 
 func sortS(x [][]string, k int) {
@@ -49,7 +51,7 @@ func sortDown(x [][]string, k int) {
 
 func (e *oLabel) Tapped(ev *fyne.PointEvent) {
 
-	t := appValues[e.IDForm].Table[e.IDTable]
+	t := e.parent
 	id := t.wol[e]
 	t.Selected = id
 
@@ -65,28 +67,51 @@ func (e *oLabel) Tapped(ev *fyne.PointEvent) {
 }
 
 func (e *oLabel) DoubleTapped(ev *fyne.PointEvent) {
-	t := appValues[e.IDForm].Table[e.IDTable]
-	n := len(t.Data)
-	row := 0
-	for i := 1; i < n; i++ {
-		if t.Data[i][0] == e.ID {
-			row = i
-			break
+	ind := activeContainer.wol[e]
+	if ind.Row == 0 {
+		sortDown(activeContainer.Data, e.col)
+		n := len(activeContainer.Data)
+		for i := 1; i < n; i++ {
+			activeContainer.Data[i][1] = strconv.Itoa(i)
 		}
+		activeContainer.Table.Refresh()
 	}
 
-	if row == 0 {
-		sortDown(t.Data, e.col)
-		n := len(t.Data)
-		for i := 1; i < n; i++ {
-			t.Data[i][1] = strconv.Itoa(i)
+	items := make([]*widget.FormItem, 0)
+	for col, style := range activeContainer.ColumnStyle {
+		if style.Width != 0 {
+			Entry := widget.NewEntry()
+			Entry.Validator = getValidator(style.Type)
+			Entry.Text = activeContainer.Data[ind.Row][col]
+			items = append(items, widget.NewFormItem(style.Name, Entry))
+
 		}
-		t.Table.Refresh()
 	}
+	dialog.ShowForm("введите", "", "cancel", items, func(b bool) {
+		if !b {
+			return
+		}
+
+	}, appValues["main"].W)
+
 }
 
 func (e *oLabel) TappedSecondary(ev *fyne.PointEvent) {
-	fmt.Println(e.Text)
+	ind := activeContainer.wol[e]
+	Entry := widget.NewEntry()
+	Entry.Validator = getValidator(activeContainer.ColumnStyle[ind.Row].Type)
+	Entry.Text = activeContainer.Data[ind.Row][ind.Col]
+	items := []*widget.FormItem{
+		widget.NewFormItem(activeContainer.ColumnStyle[ind.Row].Name, Entry),
+	}
+	dialog.ShowForm("введите", "", "cancel", items, func(b bool) {
+		if !b {
+			return
+		}
+		fmt.Println("KP_Enter", Entry.Text)
+		activeContainer.Data[ind.Row][ind.Col] = Entry.Text
+	}, appValues["main"].W)
+
 }
 
 func (e *oLabel) onEnter() {
@@ -98,16 +123,16 @@ func (e *oLabel) Focusable(key *fyne.KeyEvent) {
 	fmt.Printf("Key %v released\n", key.Name)
 }
 
-func newOLabel() *oLabel {
-	entry := &oLabel{}
-	entry.ExtendBaseWidget(entry)
-	return entry
-}
 func (e *oLabel) TypedShortcut(s fyne.Shortcut) {
 	if _, ok := s.(*desktop.CustomShortcut); !ok {
 		println(s)
 		return
 	}
-
 	log.Println("Shortcut typed:", s)
+}
+
+func newOLabel() *oLabel {
+	entry := &oLabel{}
+	entry.ExtendBaseWidget(entry)
+	return entry
 }

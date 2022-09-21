@@ -11,3 +11,4 @@ Implemented:
 8. format output
 9. Properties table
 10. Keyboard navigation
+11. Toolbar in cell

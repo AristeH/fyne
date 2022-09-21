@@ -10,6 +10,7 @@ import (
 	"fyne.io/fyne/v2/widget"
 	"image/color"
 	"log"
+	"strconv"
 )
 
 func (t *TableOtoko) MakeTableLabel() {
@@ -46,7 +47,7 @@ func (t *TableOtoko) MakeTableLabel() {
 			rect := box.Objects[0].(*canvas.Rectangle)
 			toolbar := widget.NewToolbar(
 				widget.NewToolbarAction(theme.DocumentCreateIcon(), func() {
-					log.Println("New document")
+					log.Println("New document" + strconv.Itoa(t.Selected.Col))
 				}),
 				widget.NewToolbarAction(theme.ZoomInIcon(), func() {}),
 			)

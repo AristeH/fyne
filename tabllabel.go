@@ -32,7 +32,7 @@ func (t *TableOtoko) MakeTableLabel() {
 				widget.NewToolbarAction(theme.ZoomInIcon(), func() {}),
 			)
 			middle := entry
-			content := container.New(layout.NewBorderLayout(nil, nil, nil, toolbar),
+			content := container.New(layout.NewBorderLayout(nil, nil, middle, toolbar),
 				middle, toolbar)
 			return container.New(layout.NewMaxLayout(),
 				canvas.NewRectangle(color.Gray{Y: 250}),
@@ -44,7 +44,6 @@ func (t *TableOtoko) MakeTableLabel() {
 
 			box := o.(*fyne.Container)
 			rect := box.Objects[0].(*canvas.Rectangle)
-			entry1 := box.Objects[1].(*fyne.Container)
 			toolbar := widget.NewToolbar(
 				widget.NewToolbarAction(theme.DocumentCreateIcon(), func() {
 					log.Println("New document")
@@ -52,7 +51,6 @@ func (t *TableOtoko) MakeTableLabel() {
 				widget.NewToolbarAction(theme.ZoomInIcon(), func() {}),
 			)
 			entry := newOLabel()
-			entry1.Objects[0] = entry
 			entry.SetText(t.Data[i.Row][i.Col])
 			entry.parent = t
 			entry.Alignment = fyne.TextAlignLeading
@@ -78,21 +76,14 @@ func (t *TableOtoko) MakeTableLabel() {
 			if val, ok := MapColor[t.ColumnStyle[i.Col].BGColor]; ok {
 				rect.FillColor = mix(val, rect.FillColor)
 			}
-			content := container.New(layout.NewBorderLayout(nil, nil, entry, toolbar),
-				entry, toolbar)
+			content := container.New(layout.NewBorderLayout(nil, nil, entry, nil), entry)
 			box.Objects[1] = content
-			if i.Col == 5 {
-				toolbar := widget.NewToolbar(
-					widget.NewToolbarAction(theme.ZoomInIcon(), func() {}),
-				)
-				content := container.New(layout.NewBorderLayout(nil, nil, nil, toolbar),
-					toolbar)
-				box.Objects[1] = content
-
-			}
 
 			if i == t.Selected {
 				rect.FillColor = MapColor["tomato"]
+				content := container.New(layout.NewBorderLayout(nil, nil, entry, toolbar),
+					entry, toolbar)
+				box.Objects[1] = content
 			}
 		})
 	for ic, v := range t.ColumnStyle {

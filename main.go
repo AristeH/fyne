@@ -100,7 +100,7 @@ func tableEntry() {
 
 func TableInit() *TableOtoko {
 	colColumns := 12
-	colRows := 20
+	colRows := 2000
 	data := make([][]string, colRows)
 	for i := 0; i < colRows; i++ {
 		data[i] = make([]string, colColumns)
@@ -124,13 +124,13 @@ func TableInit() *TableOtoko {
 
 		if i1 > 5 && i1 < 10 {
 			cs.Type = "bool"
-			cs.Width = 30
+			cs.Width = 150
 			cs.Name = strconv.Itoa(i1)
 		} else {
 			cs.Type = "String"
 		}
 		if i1 < 5 {
-			cs.Width = 90
+			cs.Width = 150
 			cs.Name = "label" + strconv.Itoa(i1)
 			cs.Type = "String"
 			if i1 == 3 {
@@ -138,13 +138,13 @@ func TableInit() *TableOtoko {
 			}
 		}
 		if i1 == 0 {
-			cs.Width = 40
+			cs.Width = 150
 			cs.Name = "N"
 			cs.Format = "DOUBLE"
 		}
 
-		if i1 == 6 {
-			cs.Width = 40
+		if i1 == 5 {
+			cs.Width = 30
 			cs.Name = "N"
 			cs.Format = "Ref"
 		}

@@ -23,22 +23,39 @@ func (t *TableOtoko) MakeTableLabel() {
 			entry := newOLabel()
 			entry.IDForm = t.IDForm
 			entry.IDTable = t.ID
-
+			entry.parent = t
+			//top := widget.NewButton("o", nil)
+			toolbar := widget.NewToolbar(
+				widget.NewToolbarAction(theme.DocumentCreateIcon(), func() {
+					log.Println("New document")
+				}),
+				widget.NewToolbarAction(theme.ZoomInIcon(), func() {}),
+			)
+			middle := entry
+			content := container.New(layout.NewBorderLayout(nil, nil, nil, toolbar),
+				middle, toolbar)
 			return container.New(layout.NewMaxLayout(),
 				canvas.NewRectangle(color.Gray{Y: 250}),
-				entry,
+				content,
 			)
 
 		},
 		func(i widget.TableCellID, o fyne.CanvasObject) {
-			var entry *oLabel
 
 			box := o.(*fyne.Container)
 			rect := box.Objects[0].(*canvas.Rectangle)
-			entry = box.Objects[1].(*oLabel)
-			entry.parent = t
+			entry1 := box.Objects[1].(*fyne.Container)
+			toolbar := widget.NewToolbar(
+				widget.NewToolbarAction(theme.DocumentCreateIcon(), func() {
+					log.Println("New document")
+				}),
+				widget.NewToolbarAction(theme.ZoomInIcon(), func() {}),
+			)
+			entry := newOLabel()
+			entry1.Objects[0] = entry
 			entry.SetText(t.Data[i.Row][i.Col])
-			entry.Alignment = fyne.TextAlignTrailing
+			entry.parent = t
+			entry.Alignment = fyne.TextAlignLeading
 			t.wol[entry] = i
 			entry.TextStyle = fyne.TextStyle{
 				Bold:      false,
@@ -46,6 +63,7 @@ func (t *TableOtoko) MakeTableLabel() {
 				Monospace: false,
 				TabWidth:  0,
 			}
+
 			if i.Row == 0 {
 				rect.FillColor = MapColor[t.TabStyle.HeaderColor]
 				entry.Alignment = fyne.TextAlignCenter
@@ -60,6 +78,19 @@ func (t *TableOtoko) MakeTableLabel() {
 			if val, ok := MapColor[t.ColumnStyle[i.Col].BGColor]; ok {
 				rect.FillColor = mix(val, rect.FillColor)
 			}
+			content := container.New(layout.NewBorderLayout(nil, nil, entry, toolbar),
+				entry, toolbar)
+			box.Objects[1] = content
+			if i.Col == 5 {
+				toolbar := widget.NewToolbar(
+					widget.NewToolbarAction(theme.ZoomInIcon(), func() {}),
+				)
+				content := container.New(layout.NewBorderLayout(nil, nil, nil, toolbar),
+					toolbar)
+				box.Objects[1] = content
+
+			}
+
 			if i == t.Selected {
 				rect.FillColor = MapColor["tomato"]
 			}

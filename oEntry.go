@@ -6,94 +6,148 @@ import (
 	"fyne.io/fyne/v2/widget"
 )
 
+// / поле ввода
 type oEntry struct {
+	Ind     *widget.TableCellID
+	parent  *TableOtoko
 	IDForm  string
 	IDTable string
+	ID      string
 	widget.Entry
 }
 
-func (m *oEntry) onEnter() {
-	fmt.Println(m.Entry.Text)
-	i := appValues[m.IDForm].Table[m.IDTable].we[m]
-	appValues[m.IDForm].Table[m.IDTable].Data[i.Row][i.Col] = m.Entry.Text
+func (e *oEntry) Tapped(ev *fyne.PointEvent) {
+	//t := appValues[e.IDForm].Table[e.IDTable]
+	//n := len(t.Data)
+	//row := 0
+	//for i := 1; i < n; i++ {
+	//	if t.Data[i][0] == e.ID {
+	//		row = i
+	//		break
+	//	}
+	//}
+	//
+	//if row == 0 {
+	//	sortS(t.Data, e.col)
+	//	for i := 1; i < n; i++ {
+	//		t.Data[i][1] = strconv.Itoa(i)
+	//	}
+	//	t.Table.Refresh()
+	//}
+}
+func (e *oEntry) DoubleTapped(ev *fyne.PointEvent) {
+	//t := appValues[e.IDForm].Table[e.IDTable]
+	//n := len(t.Data)
+	//row := 0
+	//for i := 1; i < n; i++ {
+	//	if t.Data[i][0] == e.ID {
+	//		row = i
+	//		break
+	//	}
+	//}
+	//
+	//if row == 0 {
+	//	sortDown(t.Data, e.col)
+	//	n := len(t.Data)
+	//	for i := 1; i < n; i++ {
+	//		t.Data[i][1] = strconv.Itoa(i)
+	//	}
+	//	t.Table.Refresh()
+	//}
+}
+
+func (e *oEntry) TappedSecondary(ev *fyne.PointEvent) {
+
+	menuItems := make([]*fyne.MenuItem, 0)
+	menuItem := fyne.NewMenuItem(
+		"Отбор",
+		func() {
+			fmt.Println(e.Entry.Text)
+		},
+	)
+	menuItems = append(menuItems, menuItem)
+	menuItem = fyne.NewMenuItem(
+		"Сортировка",
+		func() {
+			fmt.Println(e.Entry.Text)
+		},
+	)
+	menuItems = append(menuItems, menuItem)
+	widget.ShowPopUpMenuAtPosition(
+		fyne.NewMenu("", menuItems...),
+		fyne.CurrentApp().Driver().CanvasForObject(e),
+		ev.AbsolutePosition,
+	)
+	//	widget.ShowPopUpMenuAtPosition(fyne.NewMenu("", menuItems...), fyne.CurrentApp().Driver().CanvasForObject(&e.Entry), e.Position())
+	fmt.Println(e.Entry.Text)
+}
+
+func (e *oEntry) onEnter() {
+
+	id := activeContainer.Selected
+	if id.Row == e.Ind.Row {
+		activeContainer.Data[id.Row][id.Col] = e.Text
+	}
+	if len(activeContainer.Data)-1 > activeContainer.Selected.Row {
+		activeContainer.Selected = widget.TableCellID{Col: id.Col, Row: id.Row + 1}
+		activeContainer.Table.ScrollTo(activeContainer.Selected)
+		id := activeContainer.Selected
+		e.Entry.Text = activeContainer.Data[id.Row][id.Col]
+	}
+	fmt.Println(e.Entry.Text)
+
+}
+
+func (e *oEntry) OnChanged(t string) {
+	id := activeContainer.Selected
+	activeContainer.Data[id.Row][id.Col] = t
+	fmt.Println(e.Entry.Text)
 
 }
 
 func newoEntry() *oEntry {
 	entry := &oEntry{}
-	entry.ExtendBaseWidget(entry)
-	return entry
 
+	entry.ExtendBaseWidget(entry)
+	entry.Entry.OnChanged = func(sText string) {
+		fmt.Println(sText)
+	}
+	return entry
 }
 
-func (m *oEntry) KeyDown(key *fyne.KeyEvent) {
-	t := appValues[m.IDForm].Table[m.IDTable]
+func (e *oEntry) KeyDown(key *fyne.KeyEvent) {
+	//t := appValues[e.IDForm].Table[e.IDTable]
+
+	id := activeContainer.Selected
 	switch key.Name {
 	case fyne.KeyReturn:
-		m.onEnter()
+		e.onEnter()
 	case "KP_Enter":
-		m.onEnter()
-		i := t.we[m]
-		t.ColumnStyle[i.Col].Width = 40
+		e.onEnter()
 	case "Down":
-		i := t.we[m]
-		newTableCellID := widget.TableCellID{Col: i.Col, Row: i.Row + 1}
-		t.Table.ScrollTo(newTableCellID)
-		for key, value := range appValues[m.IDForm].Table[m.IDTable].we {
-			if value == newTableCellID {
-				appValues[m.IDForm].W.Canvas().Focus(key)
-				break
-			}
+		if len(activeContainer.Data)-1 > activeContainer.Selected.Row {
+			activeContainer.Selected = widget.TableCellID{Col: id.Col, Row: id.Row + 1}
+			activeContainer.Table.ScrollTo(activeContainer.Selected)
 		}
 	case "Up":
-		i := t.we[m]
-		newTableCellID := widget.TableCellID{Col: i.Col, Row: i.Row - 1}
-		t.Table.ScrollTo(newTableCellID)
-		for key, value := range t.we {
-			if value == newTableCellID {
-				appValues[m.IDForm].W.Canvas().Focus(key)
-				break
-			}
+		if id.Row > 1 {
+			activeContainer.Selected = widget.TableCellID{Col: id.Col, Row: id.Row - 1}
+			activeContainer.Table.ScrollTo(activeContainer.Selected)
 		}
+	case "Left":
+		fmt.Printf("Key %v pressed\n", key.Name)
+	case "Right":
+
+		fmt.Printf("Key %v pressed\n", key.Name)
+
 	default:
-		m.Entry.KeyDown(key)
+		//e.Entry.KeyDown(key)
 		fmt.Printf("Key %v pressed\n", key.Name)
 	}
+	//activeContainer.Table.ScrollTo(activeContainer.Selected)
 }
 
-func (m *oEntry) KeyUp(key *fyne.KeyEvent) {
+func (e *oEntry) KeyUp(key *fyne.KeyEvent) {
+
 	fmt.Printf("Key %v released\n", key.Name)
-}
-
-// somehow this catches right click. How?
-func (m *oEntry) TappedSecondary(pe *fyne.PointEvent) {
-	fmt.Printf("1")
-}
-
-func (m *oEntry) DoubleTapped(pe *fyne.PointEvent) {
-	ind := appValues["main"].Table["tovar"].we[m]
-	if ind.Col == 5 {
-		choiceFromList(Names, appValues["main"].Table["tovar"], m)
-	}
-	if ind.Col == 3 {
-		var Types = []string{
-			"label",
-			"string",
-			"bool",
-			"float",
-		}
-		choiceFromList(Types, appValues["main"].Table["tovar"], m)
-	}
-	if ind.Col == 4 {
-		//if s, err := strconv.ParseFloat(mc.Text, 32); err == nil {
-		appValues["main"].Table["tovar"].ColumnStyle[ind.Row].Width = float32(20) // 3.1415927410125732
-		appValues["main"].Table["tovar"].Table.SetColumnWidth(ind.Row, 20)
-		//	}
-	}
-
-}
-func (m *oEntry) OnChanged() {
-
-	fmt.Printf("1")
-
 }

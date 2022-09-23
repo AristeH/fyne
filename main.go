@@ -144,9 +144,10 @@ func TableInit() *TableOtoko {
 		}
 
 		if i1 == 5 {
-			cs.Width = 30
+			cs.Width = 100
 			cs.Name = "N"
 			cs.Format = "Ref"
+			cs.Type = "id"
 		}
 		TO.ColumnStyle = append(TO.ColumnStyle, cs)
 	}

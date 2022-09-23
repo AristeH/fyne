@@ -10,7 +10,6 @@ import (
 	"fyne.io/fyne/v2/widget"
 	"image/color"
 	"log"
-	"strconv"
 )
 
 func (t *TableOtoko) MakeTableLabel() {
@@ -25,16 +24,9 @@ func (t *TableOtoko) MakeTableLabel() {
 			entry.IDForm = t.IDForm
 			entry.IDTable = t.ID
 			entry.parent = t
-			//top := widget.NewButton("o", nil)
-			toolbar := widget.NewToolbar(
-				widget.NewToolbarAction(theme.DocumentCreateIcon(), func() {
-					log.Println("New document")
-				}),
-				widget.NewToolbarAction(theme.ZoomInIcon(), func() {}),
-			)
-			middle := entry
-			content := container.New(layout.NewBorderLayout(nil, nil, middle, toolbar),
-				middle, toolbar)
+			toolbar := widget.NewToolbar()
+			content := container.New(layout.NewBorderLayout(nil, nil, entry, toolbar),
+				entry, toolbar)
 			return container.New(layout.NewMaxLayout(),
 				canvas.NewRectangle(color.Gray{Y: 250}),
 				content,
@@ -43,26 +35,34 @@ func (t *TableOtoko) MakeTableLabel() {
 		},
 		func(i widget.TableCellID, o fyne.CanvasObject) {
 
+			toolbar := widget.NewToolbar()
+			open := widget.NewToolbarAction(theme.DocumentIcon(), func() {
+				fmt.Println("profile settings clicked in toolbar")
+			})
 			box := o.(*fyne.Container)
 			rect := box.Objects[0].(*canvas.Rectangle)
-			toolbar := widget.NewToolbar(
-				widget.NewToolbarAction(theme.DocumentCreateIcon(), func() {
-					log.Println("New document" + strconv.Itoa(t.Selected.Col))
-				}),
-				widget.NewToolbarAction(theme.ZoomInIcon(), func() {}),
-			)
 			entry := newOLabel()
-			entry.SetText(t.Data[i.Row][i.Col])
+			entry.Ind = &i
 			entry.parent = t
-			entry.Alignment = fyne.TextAlignLeading
-			t.wol[entry] = i
-			entry.TextStyle = fyne.TextStyle{
-				Bold:      false,
-				Italic:    false,
-				Monospace: false,
-				TabWidth:  0,
+			entry.SetText(t.Data[i.Row][i.Col])
+			if t.ColumnStyle[i.Col].Width == 0 {
+				entry.Hidden = true
+			} else {
+				entry.Hidden = false
 			}
+			switch t.ColumnStyle[i.Col].Type {
 
+			case "float":
+				entry.Label.Alignment = fyne.TextAlignTrailing
+			case "String":
+				entry.Label.Alignment = fyne.TextAlignLeading
+			default:
+				toolbar.Append(open)
+				entry.Label.Alignment = fyne.TextAlignLeading
+			}
+			entry.TextStyle = fyne.TextStyle{
+				Bold: false,
+			}
 			if i.Row == 0 {
 				rect.FillColor = MapColor[t.TabStyle.HeaderColor]
 				entry.Alignment = fyne.TextAlignCenter
@@ -71,6 +71,7 @@ func (t *TableOtoko) MakeTableLabel() {
 				}
 			} else if i.Row%2 == 0 {
 				rect.FillColor = MapColor[t.TabStyle.RowAlterColor]
+
 			} else {
 				rect.FillColor = MapColor[t.TabStyle.RowColor]
 			}
@@ -79,11 +80,13 @@ func (t *TableOtoko) MakeTableLabel() {
 			}
 			content := container.New(layout.NewBorderLayout(nil, nil, entry, nil), entry)
 			box.Objects[1] = content
-
 			if i == t.Selected {
-				rect.FillColor = MapColor["tomato"]
-				content := container.New(layout.NewBorderLayout(nil, nil, entry, toolbar),
-					entry, toolbar)
+				rect.FillColor = MapColor["Selected"]
+				input := newoEntry()
+				input.Ind = &i
+				input.SetText(t.Data[i.Row][i.Col])
+				content := container.New(layout.NewBorderLayout(nil, nil, nil, toolbar),
+					toolbar, input)
 				box.Objects[1] = content
 			}
 		})
@@ -94,6 +97,8 @@ func (t *TableOtoko) MakeTableLabel() {
 		t.Selected = id
 		activeContainer = t
 		fmt.Printf("i.Col: %v\n", id.Col)
+		t.Table.Refresh()
+
 	}
 
 	t.Tool = widget.NewToolbar(

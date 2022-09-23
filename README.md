@@ -12,3 +12,4 @@ Implemented:
 9. Properties table
 10. Keyboard navigation
 11. Toolbar in cell
+12. popupmenu

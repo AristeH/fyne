@@ -16,7 +16,7 @@ type oLabel struct {
 	IDForm  string
 	IDTable string
 	ID      string
-	col     int
+	Ind     *widget.TableCellID
 	widget.Label
 	parent *TableOtoko
 }
@@ -51,38 +51,38 @@ func sortDown(x [][]string, k int) {
 
 func (e *oLabel) Tapped(ev *fyne.PointEvent) {
 
-	t := e.parent
-	id := t.wol[e]
-	t.Selected = id
+	id := e.Ind
+	activeContainer = e.parent
 
 	if id.Row == 0 {
-		sortS(t.Data, e.col)
-		for i := 1; i < len(t.Data); i++ {
-			t.Data[i][1] = strconv.Itoa(i)
+		sortS(e.parent.Data, id.Col)
+		for i := 1; i < len(e.parent.Data); i++ {
+			e.parent.Data[i][1] = strconv.Itoa(i)
 		}
 
 	}
-	t.Table.Refresh()
-	activeContainer = t
+	activeContainer.Selected = *id
+	e.parent.Table.Refresh()
+
 }
 
 func (e *oLabel) DoubleTapped(ev *fyne.PointEvent) {
-	ind := activeContainer.wol[e]
+	ind := e.Ind
 	if ind.Row == 0 {
-		sortDown(activeContainer.Data, e.col)
-		n := len(activeContainer.Data)
+		sortDown(e.parent.Data, ind.Row)
+		n := len(e.parent.Data)
 		for i := 1; i < n; i++ {
-			activeContainer.Data[i][1] = strconv.Itoa(i)
+			e.parent.Data[i][1] = strconv.Itoa(i)
 		}
-		activeContainer.Table.Refresh()
+		e.parent.Table.Refresh()
 	}
 
 	items := make([]*widget.FormItem, 0)
-	for col, style := range activeContainer.ColumnStyle {
+	for col, style := range e.parent.ColumnStyle {
 		if style.Width != 0 {
 			Entry := widget.NewEntry()
 			Entry.Validator = getValidator(style.Type)
-			Entry.Text = activeContainer.Data[ind.Row][col]
+			Entry.Text = e.parent.Data[ind.Row][col]
 			items = append(items, widget.NewFormItem(style.Name, Entry))
 
 		}
@@ -97,19 +97,19 @@ func (e *oLabel) DoubleTapped(ev *fyne.PointEvent) {
 }
 
 func (e *oLabel) TappedSecondary(ev *fyne.PointEvent) {
-	ind := activeContainer.wol[e]
+	ind := e.Ind
 	Entry := widget.NewEntry()
-	Entry.Validator = getValidator(activeContainer.ColumnStyle[ind.Row].Type)
-	Entry.Text = activeContainer.Data[ind.Row][ind.Col]
+	Entry.Validator = getValidator(e.parent.ColumnStyle[ind.Col].Type)
+	Entry.Text = e.parent.Data[ind.Row][ind.Col]
 	items := []*widget.FormItem{
-		widget.NewFormItem(activeContainer.ColumnStyle[ind.Row].Name, Entry),
+		widget.NewFormItem(e.parent.ColumnStyle[ind.Col].Name, Entry),
 	}
 	dialog.ShowForm("введите", "", "cancel", items, func(b bool) {
 		if !b {
 			return
 		}
 		fmt.Println("KP_Enter", Entry.Text)
-		activeContainer.Data[ind.Row][ind.Col] = Entry.Text
+		e.parent.Data[ind.Row][ind.Col] = Entry.Text
 	}, appValues["main"].W)
 
 }

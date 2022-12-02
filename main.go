@@ -1,240 +1,139 @@
 package main
 
 import (
-	"fmt"
-	"fyne.io/fyne/v2/dialog"
-	"strconv"
+	"os"
+	"otable/data"
+	"otable/pkg/logger"
+	"otable/pkg/owidget"
 
 	"fyne.io/fyne/v2"
 	"fyne.io/fyne/v2/app"
 	"fyne.io/fyne/v2/container"
 	"fyne.io/fyne/v2/widget"
+	"github.com/sirupsen/logrus"
 )
 
-type FormData struct {
-	Table map[string]*TableOtoko //Entry - список таблиц формы
-	W     fyne.Window
-}
-
-var appValues = make(map[string]FormData)
-var myApp = app.New()
-var activeContainer *TableOtoko
+var myApp fyne.App
 
 func main() {
+	l := logger.GetLog()
+	l.WithFields(logrus.Fields{
+		"form":  "main",
+		"event": "start",
+		"Out":   os.Stderr,
+	}).Info("Начало")
+	os.Setenv("FYNE_FONT", "C:\\проект\\Table\\ttf\\FiraCode-Regular.ttf")
 
-	myWindow := myApp.NewWindow("Table test")
-	myApp.Lifecycle().SetOnEnteredForeground(func() {
-		println(4)
-	})
-	contentT := widget.NewButton("Table enter", nil)
-	contentT.OnTapped = func() {
-		tableEntry()
-	}
-	contentL := widget.NewButton("Table label", nil)
-	contentL.OnTapped = func() {
+	myApp = app.New()
+
+	myWindow := myApp.NewWindow("Test table")
+	fd := owidget.InitFormData("Main")
+
+	fd.W = myWindow
+
+	bTable := widget.NewButton("Open table", nil)
+	bTable.OnTapped = func() {
 		tableLabel()
 	}
+
 	content := container.NewVBox()
-	content.Add(contentT)
-	content.Add(contentL)
+	content.Add(bTable)
+
 	myWindow.Resize(fyne.NewSize(600, 200))
 	myWindow.SetContent(container.NewMax(content))
 	myWindow.ShowAndRun()
 
 }
 
-func tableEntry() {
-	wTable := myApp.NewWindow("Some ")
-	table := TableInit()
-	t := make(map[string]*TableOtoko)
-	t["tovar"] = table
-	appValues["main"] = FormData{Table: t, W: wTable}
-	table.MakeTableEntry()
-	activeContainer = table
-	table.Properties = TableInitProperties(table)
-
-	t1 := make(map[string]*TableOtoko)
-	t1["prop"] = table.Properties
-	appValues["mainprop"] = FormData{Table: t1, W: wTable}
-	table.Properties.MakeTableEntry()
-	content := container.NewBorder(
-		container.NewVBox(
-			table.Tool,
-			widget.NewSeparator(),
-			table.Header,
-			widget.NewSeparator(),
-		),
-		nil,
-		nil,
-		nil,
-		table.Table,
-	)
-	wTable.Resize(fyne.NewSize(1200, 400))
-	wTable.SetContent(container.NewMax(content))
-	wTable.Show()
-
-	wTable.Canvas().SetOnTypedKey(func(k *fyne.KeyEvent) {
-		i := activeContainer.Selected
-		switch k.Name {
-		case "Down":
-			if len(activeContainer.Data)-1 > i.Row {
-				activeContainer.Selected = widget.TableCellID{Col: i.Col, Row: i.Row + 1}
-			}
-		case "Up":
-			if i.Row > 1 {
-				activeContainer.Selected = widget.TableCellID{Col: i.Col, Row: i.Row - 1}
-			}
-		case "Left":
-			if i.Col >= 1 {
-				activeContainer.Selected = widget.TableCellID{Col: i.Col - 1, Row: i.Row}
-			}
-		case "Right":
-			if len(activeContainer.Data[0])-1 > i.Col {
-				activeContainer.Selected = widget.TableCellID{Col: i.Col + 1, Row: i.Row}
-			}
-		}
-		activeContainer.Table.ScrollTo(activeContainer.Selected)
-		activeContainer.Table.Refresh()
-	})
-}
-
-func TableInit() *TableOtoko {
-	colColumns := 12
-	colRows := 2000
-	data := make([][]string, colRows)
-	for i := 0; i < colRows; i++ {
-		data[i] = make([]string, colColumns)
-		for i1 := 0; i1 < colColumns; i1++ {
-			data[i][i1] = "row " + strconv.Itoa(i) + "_" + strconv.Itoa(i1) + ","
-			if i1 > 5 && i1 < 10 {
-				if i1%3 == 0 {
-					data[i][i1] = "0"
-				} else {
-					data[i][i1] = "1"
-				}
-			}
-		}
-		data[i][0] = fmt.Sprintf("%d", i)
-	}
-	var TO = TableOtoko{}
-	for i1 := 0; i1 < colColumns; i1++ {
-		cs := ColumnStyle{}
-		cs.Name = "Col " + strconv.Itoa(i1)
-		cs.Width = 150
-
-		if i1 > 5 && i1 < 10 {
-			cs.Type = "bool"
-			cs.Width = 150
-			cs.Name = strconv.Itoa(i1)
-		} else {
-			cs.Type = "String"
-		}
-		if i1 < 5 {
-			cs.Width = 150
-			cs.Name = "label" + strconv.Itoa(i1)
-			cs.Type = "String"
-			if i1 == 3 {
-				cs.BGColor = "skyblue"
-			}
-		}
-		if i1 == 0 {
-			cs.Width = 150
-			cs.Name = "N"
-			cs.Format = "DOUBLE"
-		}
-
-		if i1 == 5 {
-			cs.Width = 100
-			cs.Name = "N"
-			cs.Format = "Ref"
-			cs.Type = "id"
-		}
-		TO.ColumnStyle = append(TO.ColumnStyle, cs)
-	}
-	ts := TabStyle{}
-
-	ts.RowAlterColor = "darkgray"
-	ts.HeaderColor = "darkslategray"
-	ts.RowColor = "lightgray"
-	TO.TabStyle = ts
-	TO.Data = data
-	TO.ID = "tovar"
-	TO.IDForm = "main"
-	TO.wb = make(map[*widget.Button]int)
-	TO.wc = make(map[*widget.Check]widget.TableCellID)
-	TO.we = make(map[*oEntry]widget.TableCellID)
-	TO.wl = make(map[*widget.Label]widget.TableCellID)
-	TO.wol = make(map[*oLabel]widget.TableCellID)
-	return &TO
-}
-
 func tableLabel() {
-	w1 := myApp.NewWindow("Some ")
+	Log := logger.GetLog()
 
-	table := TableInit()
-	t := make(map[string]*TableOtoko)
-	t["tovar"] = table
-	appValues["main"] = FormData{Table: t, W: w1}
-	table.MakeTableLabel()
-
-	activeContainer = table
-	table.Properties = TableInitProperties(table)
-
-	t1 := make(map[string]*TableOtoko)
-	t1["prop"] = table.Properties
-	appValues["mainprop"] = FormData{Table: t1, W: w1}
-	table.Properties.MakeTableEntry()
-	activeContainer = table
-	//table.Properties.MakeTable()
-	content := container.NewBorder(
-		table.Tool,
-		nil,
-		nil,
-		nil,
-		table.Table,
-	)
+	w1 := myApp.NewWindow("Table test")
+	fd := owidget.InitFormData("Table")
+	fd.W = w1
+	table := owidget.OTable{}
+	table.Form = *fd
+	table.Edit = true
+	Log.WithFields(logrus.Fields{"1table.Form ": table.Form}).Info("tableLabel")
+	fd.Table["invoice"] = &table
+	table.MakeTable(*data.TestData())
+	fd.ActiveContainer = &table
+	Log.WithFields(logrus.Fields{"3table.Form ": table.Form}).Info("tableLabel")
+	// content := container.NewBorder(
+	// 	nil,
+	// 	nil,
+	// 	nil,
+	// 	nil,
+	// 	table.Table,
+	// )
 
 	w1.Resize(fyne.NewSize(1200, 400))
-	w1.SetContent(container.NewMax(content))
+
+	w1.SetContent(container.NewMax(&table))
 	w1.Show()
 
 	w1.Canvas().SetOnTypedKey(func(k *fyne.KeyEvent) {
 
-		i := activeContainer.Selected
+		fd1 := owidget.GetApp()
+
+		fd = fd1["Table"]
+
+		i := fd.ActiveContainer.Selected
+		otab := fd.ActiveContainer
+		Log.WithFields(logrus.Fields{"otab.selected": otab.Selected, "key": k.Name}).Info("Form")
 		switch k.Name {
+		case "Insert":
+			otab.Edit = true
+			otab.Selected = widget.TableCellID{Col: i.Col, Row: i.Row + 1}
+
+			otab.FocusActiveWidget()
+		case "Return":
+			if otab.Edit {
+				otab.Selected = widget.TableCellID{Col: i.Col, Row: i.Row + 1}
+				otab.FocusActiveWidget()
+
+			} else {
+
+				otab.Edit = true
+				otab.Selected = widget.TableCellID{Col: i.Col, Row: i.Row}
+				otab.FocusActiveWidget()
+
+			}
 		case "Down":
-			if len(activeContainer.Data)-1 > i.Row {
-				activeContainer.Selected = widget.TableCellID{Col: i.Col, Row: i.Row + 1}
+			if len(otab.Data)-1 > i.Row {
+				otab.Selected = widget.TableCellID{Col: i.Col, Row: i.Row + 1}
 			}
 		case "Up":
-			if i.Row > 1 {
-				activeContainer.Selected = widget.TableCellID{Col: i.Col, Row: i.Row - 1}
+			if i.Row > 0 {
+				tc := widget.TableCellID{Col: i.Col, Row: i.Row - 1}
+				otab.Selected = tc
 			}
 		case "Left":
-			if i.Col >= 1 {
-				activeContainer.Selected = widget.TableCellID{Col: i.Col - 1, Row: i.Row}
+			c := i.Col
+			for c >= 1 {
+				c--
+				col := otab.ColumnStyle[otab.DataV[0][c]]
+				if col.Width != 0 {
+					otab.Selected = widget.TableCellID{Col: c, Row: i.Row}
+					break
+				}
 			}
 		case "Right":
-			if len(activeContainer.Data[0])-1 > i.Col {
-				activeContainer.Selected = widget.TableCellID{Col: i.Col + 1, Row: i.Row}
-			}
-		case "KP_Enter", "Return":
-			Entry := widget.NewEntry()
-			Entry.Validator = getValidator(activeContainer.ColumnStyle[i.Row].Type)
-			items := []*widget.FormItem{
-				widget.NewFormItem("Username", Entry),
-			}
-			dialog.ShowForm("введите", "", "cancel", items, func(b bool) {
-				if !b {
-					return
-				}
-				fmt.Println("KP_Enter", Entry.Text)
-				activeContainer.Data[i.Row][i.Col] = Entry.Text
-			}, w1)
+			c := i.Col
+			col := otab.ColumnStyle[otab.DataV[0][c]]
 
+			for len(otab.DataV[0])-1 > c {
+				c++
+				if col.Width != 0 {
+					otab.Selected = widget.TableCellID{Col: c, Row: i.Row}
+					break
+				}
+			}
 		}
-		activeContainer.Table.ScrollTo(activeContainer.Selected)
-		activeContainer.Table.Refresh()
+
+		if i != fd.ActiveContainer.Selected {
+			fd.ActiveContainer.FocusActiveWidget()
+		}
 	})
 
 }

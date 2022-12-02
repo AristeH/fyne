@@ -1,5 +1,6 @@
 # fyne table
 Example of working with a Table.
+esc - view mode, return - edit mode
 Implemented:
 1. Header 
 2. Checkbox column.

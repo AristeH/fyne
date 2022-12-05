@@ -9,22 +9,21 @@ import (
 
 // columnstyle - стиль колонки
 type ColumnStyle struct {
-	id      string  // имя колонки
-	name    string  // заголовок столбца
-	formula string  // формула
+	id      string  // id column
+	name    string  // header
+	formula string  // calculated expressions
 	Width   float32 // ширина столбца
 	bgcolor string  // цвет фона
 	color   string  // цвет текста
-	tip     string  // тип колонки
+	tip     string  // тип колонки(id, float, string, enum, date)
 	visible bool    // видимость
 	edit    bool    // редактирование колонки
-	number  int16   // порядок вывода отображаемой колонки
+	order   int16   // column output order
 }
 
+// fillcolumns - filling in columns from incoming data
 func (t *OTable) fillcolumns(d data.GetData) {
-	i := 0                              // номер отображаемого столбца
 	columns := len(d.DataDesciption[0]) // количесто колонок таблицы
-
 	Log.WithFields(logrus.Fields{
 		"form":    t.ID,
 		"columns": columns,
@@ -34,7 +33,7 @@ func (t *OTable) fillcolumns(d data.GetData) {
 	t.ColumnStyle = make(map[string]*ColumnStyle)
 	//ширина символа
 
-	for i = 0; i < columns; i++ {
+	for i := 0; i < columns; i++ {
 		// Log.WithFields(logrus.Fields{"columns": d.Data[0][i]}).Info("columns")
 		cs := ColumnStyle{}
 		cs.name = d.Data[0][i]
@@ -45,7 +44,7 @@ func (t *OTable) fillcolumns(d data.GetData) {
 		p, _ := strconv.Atoi(d.DataDesciption[2][i]) //ширина столбца в символах
 		cs.Width = float32(p)                        // ширина колонки
 		cs.visible = true                            // видимость столбца
-		cs.edit = true                               // редактируемость столбцасть столбца
+		cs.edit = true                               // редактируемость столбца
 		t.ColumnStyle[cs.name] = &cs
 	}
 	defer Log.WithFields(logrus.Fields{

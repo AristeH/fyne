@@ -15,11 +15,11 @@ type ActiveWidget struct {
 
 // FormData - данные формы
 type FormData struct {
-	ID              string             // ID - ГУИД формы
-	Table           map[string]*OTable // Table  - список таблиц формы
-	W               fyne.Window
-	ActiveContainer *OTable
-	ActiveWidget    *ActiveWidget
+	ID    string             // ID - ГУИД формы
+	Table map[string]*OTable // Table  - список таблиц формы
+	W     fyne.Window
+	//ActiveContainer *OTable
+	ActiveWidget *ActiveWidget
 }
 
 var AppValues = make(map[string]*FormData)
@@ -34,10 +34,10 @@ func GetW(name string) fyne.Window {
 
 func InitFormData(name string) *FormData {
 	f := FormData{
-		ID:              name,
-		Table:           make(map[string]*OTable),
-		ActiveContainer: &OTable{},
-		ActiveWidget:    &ActiveWidget{},
+		ID:    name,
+		Table: make(map[string]*OTable),
+		//	ActiveContainer: &OTable{},
+		ActiveWidget: &ActiveWidget{},
 	}
 	AppValues[name] = &f
 	Log.WithFields(logrus.Fields{

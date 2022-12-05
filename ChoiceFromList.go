@@ -2,11 +2,13 @@ package main
 
 import (
 	"fmt"
+	"otable/pkg/owidget"
+
 	"fyne.io/fyne/v2"
 	"fyne.io/fyne/v2/widget"
 )
 
-func choiceFromList(l []string, w *TableOtoko, e *oEntry) {
+func choiceFromList(l []string, w *owidget.OTable, e *owidget.CompletionEntry) {
 
 	myWindow := myApp.NewWindow("List Widget")
 
@@ -21,9 +23,9 @@ func choiceFromList(l []string, w *TableOtoko, e *oEntry) {
 			o.(*widget.Label).SetText(Names[i])
 		})
 	list.OnSelected = func(id widget.ListItemID) {
-		g := w.we[e]
-		w.Properties.Data[g.Row][g.Col] = l[id]
-		w.ColumnStyle[g.Row].BGColor = l[id]
+		g := w.Selected
+		w.Properties.DataV[g.Row][g.Col] = l[id]
+		//w.Properties.TabStyle[g.Row].BGColor = l[id]
 		e.SetText(l[id])
 		fmt.Println(l[id])
 		myWindow.Close()

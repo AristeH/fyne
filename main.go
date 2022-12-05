@@ -22,7 +22,7 @@ func main() {
 		"event": "start",
 		"Out":   os.Stderr,
 	}).Info("Начало")
-	os.Setenv("FYNE_FONT", "C:\\проект\\Table\\ttf\\FiraCode-Regular.ttf")
+	os.Setenv("FYNE_FONT", "C:/goproject/otable/ttf/Go Mono Nerd Font Complete Mono.ttf")
 
 	myApp = app.New()
 
@@ -57,83 +57,12 @@ func tableLabel() {
 	Log.WithFields(logrus.Fields{"1table.Form ": table.Form}).Info("tableLabel")
 	fd.Table["invoice"] = &table
 	table.MakeTable(*data.TestData())
-	fd.ActiveContainer = &table
+
 	Log.WithFields(logrus.Fields{"3table.Form ": table.Form}).Info("tableLabel")
-	// content := container.NewBorder(
-	// 	nil,
-	// 	nil,
-	// 	nil,
-	// 	nil,
-	// 	table.Table,
-	// )
 
 	w1.Resize(fyne.NewSize(1200, 400))
 
 	w1.SetContent(container.NewMax(&table))
 	w1.Show()
-
-	w1.Canvas().SetOnTypedKey(func(k *fyne.KeyEvent) {
-
-		fd1 := owidget.GetApp()
-
-		fd = fd1["Table"]
-
-		i := fd.ActiveContainer.Selected
-		otab := fd.ActiveContainer
-		Log.WithFields(logrus.Fields{"otab.selected": otab.Selected, "key": k.Name}).Info("Form")
-		switch k.Name {
-		case "Insert":
-			otab.Edit = true
-			otab.Selected = widget.TableCellID{Col: i.Col, Row: i.Row + 1}
-
-			otab.FocusActiveWidget()
-		case "Return":
-			if otab.Edit {
-				otab.Selected = widget.TableCellID{Col: i.Col, Row: i.Row + 1}
-				otab.FocusActiveWidget()
-
-			} else {
-
-				otab.Edit = true
-				otab.Selected = widget.TableCellID{Col: i.Col, Row: i.Row}
-				otab.FocusActiveWidget()
-
-			}
-		case "Down":
-			if len(otab.Data)-1 > i.Row {
-				otab.Selected = widget.TableCellID{Col: i.Col, Row: i.Row + 1}
-			}
-		case "Up":
-			if i.Row > 0 {
-				tc := widget.TableCellID{Col: i.Col, Row: i.Row - 1}
-				otab.Selected = tc
-			}
-		case "Left":
-			c := i.Col
-			for c >= 1 {
-				c--
-				col := otab.ColumnStyle[otab.DataV[0][c]]
-				if col.Width != 0 {
-					otab.Selected = widget.TableCellID{Col: c, Row: i.Row}
-					break
-				}
-			}
-		case "Right":
-			c := i.Col
-			col := otab.ColumnStyle[otab.DataV[0][c]]
-
-			for len(otab.DataV[0])-1 > c {
-				c++
-				if col.Width != 0 {
-					otab.Selected = widget.TableCellID{Col: c, Row: i.Row}
-					break
-				}
-			}
-		}
-
-		if i != fd.ActiveContainer.Selected {
-			fd.ActiveContainer.FocusActiveWidget()
-		}
-	})
 
 }

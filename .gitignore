@@ -1,4 +1,4 @@
 /.vscode
 /fyne.exe
-/all.log
- /.idea
+/go.mod
+/go.sum

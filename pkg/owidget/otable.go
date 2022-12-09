@@ -31,6 +31,7 @@ type OTable struct {
 	Table       *widget.Table
 	Header      *widget.Table
 	Properties  *OTable
+	Tool        *widget.Toolbar
 	Selected    widget.TableCellID
 	Edit        bool //
 	wb          map[*widget.Button]int
@@ -93,4 +94,71 @@ func (h *OTable) Scrolled(event *fyne.ScrollEvent) {
 	fmt.Println(event.Position, event.AbsolutePosition)
 	Log.WithFields(logrus.Fields{"rows": event}).Info("ScrollEvent")
 
+}
+
+func (t *OTable) TableInitProperties() *OTable {
+	colColumns := 6
+	colRows := len(t.ColumnStyle)
+	data := make([][]string, colRows)
+	cs := t.ColumnStyle
+	i := 0
+	for _, v := range cs {
+
+		data[i] = make([]string, colColumns)
+		data[i][0] = v.id
+		data[i][1] = v.name
+		data[i][2] = v.tip
+		data[i][3] = v.formula
+		data[i][4] = v.color
+		data[i][5] = fmt.Sprintf("%v", v.Width)
+		i++
+	}
+	var TO = OTable{}
+	TO.ColumnStyle = make(map[string]*ColumnStyle)
+	csn := ColumnStyle{}
+	csn.name = "Col ID"
+	csn.tip = "label"
+	csn.Width = 50
+	TO.ColumnStyle[csn.name] = &csn
+
+	csn = ColumnStyle{}
+	csn.name = "Name"
+	csn.tip = "string"
+	csn.Width = 100
+	TO.ColumnStyle[csn.name] = &csn
+
+	csn = ColumnStyle{}
+	csn.name = "Type"
+	csn.tip = "string"
+	csn.Width = 80
+	TO.ColumnStyle[csn.name] = &csn
+
+	csn.name = "Format"
+	csn.tip = "string"
+	csn.Width = 100
+	TO.ColumnStyle[csn.name] = &csn
+
+	csn = ColumnStyle{}
+	csn.name = "Width"
+	csn.tip = "float"
+	csn.Width = 80
+	TO.ColumnStyle[csn.name] = &csn
+
+	csn = ColumnStyle{}
+	csn.name = "Color"
+	csn.Width = 150
+	csn.tip = "string"
+	TO.ColumnStyle[csn.name] = &csn
+
+	ts := TableStyle{}
+
+	ts.RowAlterColor = "lightgray"
+	ts.HeaderColor = "lightslategray"
+	ts.RowColor = "slategray"
+	TO.TabStyle = ts
+	TO.DataV = data
+	TO.ID = "prop"
+	Log.WithFields(logrus.Fields{"TO.TabStyle": TO.DataV}).Info("prop")
+
+	return &TO
 }

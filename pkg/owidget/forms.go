@@ -32,13 +32,14 @@ func GetW(name string) fyne.Window {
 	return AppValues[name].W
 }
 
-func InitFormData(name string) *FormData {
+func PutListForm(name, header string) *FormData {
 	f := FormData{
 		ID:    name,
 		Table: make(map[string]*OTable),
 		//	ActiveContainer: &OTable{},
 		ActiveWidget: &ActiveWidget{},
 	}
+	f.W = fyne.CurrentApp().NewWindow(header)
 	AppValues[name] = &f
 	Log.WithFields(logrus.Fields{
 		"form":  name,

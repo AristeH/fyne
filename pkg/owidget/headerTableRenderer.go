@@ -6,6 +6,7 @@ import (
 
 	"fyne.io/fyne/v2"
 	"fyne.io/fyne/v2/container"
+	"github.com/sirupsen/logrus"
 )
 
 type headerTableRenderer struct {
@@ -14,10 +15,14 @@ type headerTableRenderer struct {
 }
 
 func (h *OTable) CreateRenderer() fyne.WidgetRenderer {
+	Log.WithFields(logrus.Fields{"h.Tool": h}).Info("CreateRenderer")
+	c := container.NewBorder(nil, nil, nil, nil, h.Table)
+	Log.WithFields(logrus.Fields{"h.Tool": c}).Info("CreateRenderer")
 	return headerTableRenderer{
 		headerTable: h,
+
 		// container:   container.NewBorder(h.Header, nil, nil, nil, h.Table),
-		container: container.NewBorder(nil, nil, nil, nil, h.Table),
+		container: container.NewBorder(h.Tool, nil, nil, nil, h.Table),
 	}
 }
 

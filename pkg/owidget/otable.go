@@ -2,6 +2,7 @@ package owidget
 
 import (
 	"fmt"
+	"image/color"
 	"otable/data"
 	"strings"
 
@@ -18,10 +19,14 @@ type TableStyle struct {
 	RowColor      string // Цвет строки нечетной
 }
 
+type CellColor struct {
+	Color   color.RGBA
+	BGcolor color.RGBA
+}
+
 // oTable - таблица
 type OTable struct {
 	widget.BaseWidget
-
 	ID          string   // имя таблицы уникальное в пределах формы
 	Form        FormData //  формa владелец таблицы
 	ColumnStyle map[string]*ColumnStyle
@@ -33,7 +38,8 @@ type OTable struct {
 	Properties  *OTable
 	Tool        *widget.Toolbar
 	Selected    widget.TableCellID
-	Edit        bool //
+	Edit        bool                  //
+	CellColor   map[string]*CellColor // individual color cell
 	wb          map[*widget.Button]int
 }
 

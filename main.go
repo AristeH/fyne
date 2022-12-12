@@ -42,6 +42,9 @@ func main() {
 func tableLabel() {
 	fd := owidget.PutListForm("Table", "Table test")
 	table := fd.NewOTable("invoice", *data.TestData(), GetToolBar())
+	table.CellColor["3;3"] = &owidget.CellColor{
+		Color: owidget.MapColor["aliceblue"],
+		BGcolor: owidget.MapColor["darkgreen"]}
 	w := fd.W
 	w.Resize(fyne.NewSize(1200, 400))
 	w.SetContent(container.NewMax(table))

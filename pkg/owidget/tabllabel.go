@@ -1,8 +1,8 @@
 package owidget
 
 import (
-	"image/color"
 	"otable/pkg/logger"
+	"strconv"
 	"strings"
 
 	"fyne.io/fyne/v2"
@@ -19,6 +19,38 @@ var Log *logrus.Logger
 func init() {
 	Log = logger.GetLog()
 }
+
+func (t *OTable) getColorCell(i widget.TableCellID) *CellColor {
+	c := CellColor{}
+	c.Color = MapColor["black"]
+	//цвет фона ячейки
+	if i.Row == 0 {
+		c.BGcolor = MapColor[t.TabStyle.HeaderColor]
+	} else if i.Row%2 == 0 {
+		c.BGcolor = MapColor[t.TabStyle.RowAlterColor]
+
+	} else {
+		c.BGcolor = MapColor[t.TabStyle.RowColor]
+	}
+	// выделенный столбец
+	col := t.ColumnStyle[t.DataV[0][i.Col]]
+	if val, ok := MapColor[col.bgcolor]; ok {
+		c.BGcolor = mix(val, c.BGcolor)
+	}
+	// individual
+	id, ok := t.CellColor[strconv.Itoa(i.Row)+";"+strconv.Itoa(i.Col)]
+	if ok {
+		c = *id
+	}
+
+	// выделенная ячейка
+	if i == t.Selected {
+		c.BGcolor = MapColor["Selected"]
+	}
+
+	return &c
+}
+
 func (t *OTable) MakeTableLabel() {
 
 	rows := len(t.DataV)
@@ -41,27 +73,15 @@ func (t *OTable) MakeTableLabel() {
 
 	t.Table = widget.NewTable(
 		func() (int, int) { return rows, columns },
-		func() fyne.CanvasObject { return t.MakeTappable("", "", color.Black, color.Opaque) },
+		func() fyne.CanvasObject {
+			fc := CellColor{}
+			return t.MakeTappable("", "", &fc)
+		},
 		func(i widget.TableCellID, o fyne.CanvasObject) {
-			var FillColor color.Color
 			box := o.(*fyne.Container)
-			//цвет фона ячейки
-			if i.Row == 0 {
-				FillColor = MapColor[t.TabStyle.HeaderColor]
-			} else if i.Row%2 == 0 {
-				FillColor = MapColor[t.TabStyle.RowAlterColor]
-			} else {
-				FillColor = MapColor[t.TabStyle.RowColor]
-			}
-			// выделенный столбец
+			FillColor := t.getColorCell(i)
 			col := t.ColumnStyle[t.DataV[0][i.Col]]
-			if val, ok := MapColor[col.bgcolor]; ok {
-				FillColor = mix(val, FillColor)
-			}
-			// выделенная ячейка
-			if i == t.Selected {
-				FillColor = MapColor["Selected"]
-			}
+
 			tip := col.tip
 			if i.Row == 0 {
 				tip = "string"
@@ -74,20 +94,17 @@ func (t *OTable) MakeTableLabel() {
 			}
 			en := string(mystr[0:k])
 			if tip == "bool" {
-				rec := canvas.NewRectangle(FillColor)
+				rec := canvas.NewRectangle(FillColor.BGcolor)
 				image := canvas.NewImageFromResource(theme.CheckButtonCheckedIcon())
 				if t.DataV[i.Row][i.Col] == "1" {
 					image = canvas.NewImageFromResource(theme.CheckButtonIcon())
 				}
-
 				box.Objects[0] = container.New(layout.NewMaxLayout(), rec, image)
-
 			} else {
-				box.Objects[0] = t.MakeTappable(en, tip, color.Black, FillColor)
+				box.Objects[0] = t.MakeTappable(en, tip, FillColor)
 			}
 			// активная ячейка
 			if i == t.Selected {
-				FillColor = MapColor["Selected"]
 				t.Form.ActiveWidget.tip = ""
 				if i.Row > 0 && t.Edit {
 					c := NewCompletionEntry([]string{})
@@ -95,7 +112,7 @@ func (t *OTable) MakeTableLabel() {
 					t.Form.ActiveWidget.ce = c
 					if strings.HasPrefix(tip, "id_") { //id  другой таблицы
 						en := string(mystr[0 : k-3])
-						entry := t.MakeTappable(en, tip, color.Black, FillColor)
+						entry := t.MakeTappable(en, tip, FillColor)
 						c := container.NewHSplit(entry, newTappableIcon(theme.SearchIcon()))
 						box.Objects[0] = c
 					} else {
@@ -140,30 +157,6 @@ func (t *OTable) MakeTableLabel() {
 		t.Table.SetColumnWidth(n, si.Width*col.Width)
 		t.Header.SetColumnWidth(n, si.Width*col.Width)
 	}
-	// t.Tool = tb
-	/* t.Tool = widget.NewToolbar(
-	widget.NewToolbarAction(theme.DocumentCreateIcon(), func() {
-		Log.WithFields(logrus.Fields{"DocumentCreateIcon": "DocumentCreateIcon"}).Info("OnSelectedMakeTableLabel")
-	}),
-	widget.NewToolbarSeparator(),
-	widget.NewToolbarAction(theme.ContentAddIcon(), func() {}),
-	widget.NewToolbarAction(theme.ContentRemoveIcon(), func() {}),
-	widget.NewToolbarSpacer(),
-	widget.NewToolbarAction(theme.SettingsIcon(), func() {
-		fd := PutListForm("Property", "Table test")
-		w1 := fd.W
-		table := t.TableInitProperties()
-		table.MakeTable(*data.TestData())
-		table.Form = *fd
-		table.Edit = true
-		Log.WithFields(logrus.Fields{"1table.Form ": table.Form}).Info("tableLabel")
-		fd.Table["Property"] = table
-
-		w1.Resize(fyne.NewSize(1200, 400))
-		w1.SetContent(container.NewMax(table))
-
-		w1.Show()
-	})) */
 	t.ExtendBaseWidget(t)
 	t.Table.OnSelected = func(id widget.TableCellID) {
 		Log.WithFields(logrus.Fields{"t.Form": t.Form, "w": id}).Info("OnSelectedMakeTableLabel")
@@ -173,8 +166,8 @@ func (t *OTable) MakeTableLabel() {
 	}
 }
 
-func (t *OTable) MakeTappable(txt string, tip string, c color.Color, b color.Color) *fyne.Container {
-	entry := canvas.NewText(strings.TrimRight(txt, "\x00"), c)
+func (t *OTable) MakeTappable(txt string, tip string, c *CellColor) *fyne.Container {
+	entry := canvas.NewText(strings.TrimRight(txt, "\x00"), c.Color)
 
 	if strings.HasPrefix(tip, "float") {
 
@@ -194,7 +187,7 @@ func (t *OTable) MakeTappable(txt string, tip string, c color.Color, b color.Col
 
 	//entry.parent = t
 	si := fyne.MeasureText("шii", 24, fyne.TextStyle{})
-	rec := canvas.NewRectangle(b)
+	rec := canvas.NewRectangle(c.BGcolor)
 	rec.SetMinSize(si)
 
 	entry.Resize(si)

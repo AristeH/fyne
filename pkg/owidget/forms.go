@@ -53,6 +53,7 @@ func PutListForm(name, header string) *FormData {
 
 func (f *FormData) NewOTable(name string, d data.GetData, tb *widget.Toolbar) *OTable {
 	table := OTable{}
+	table.CellColor = make(map[string]*CellColor)
 	table.Form = *f
 	table.Edit = true
 	Log.WithFields(logrus.Fields{"1table.Form ": f.ID}).Info("NewOTable")

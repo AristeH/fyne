@@ -1,7 +1,10 @@
 package owidget
 
 import (
+	"otable/data"
+
 	"fyne.io/fyne/v2"
+	"fyne.io/fyne/v2/widget"
 
 	"github.com/sirupsen/logrus"
 )
@@ -46,4 +49,15 @@ func PutListForm(name, header string) *FormData {
 		"event": "InitFormData()",
 	}).Info("\u2713Init")
 	return &f
+}
+
+func (f *FormData) NewOTable(name string, d data.GetData, tb *widget.Toolbar) *OTable {
+	table := OTable{}
+	table.Form = *f
+	table.Edit = true
+	Log.WithFields(logrus.Fields{"1table.Form ": f.ID}).Info("NewOTable")
+	f.Table[name] = &table
+	table.MakeTable(*data.TestData())
+	table.Tool = tb
+	return &table
 }

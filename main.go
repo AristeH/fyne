@@ -9,6 +9,7 @@ import (
 	"fyne.io/fyne/v2"
 	"fyne.io/fyne/v2/app"
 	"fyne.io/fyne/v2/container"
+	"fyne.io/fyne/v2/theme"
 	"fyne.io/fyne/v2/widget"
 	"github.com/sirupsen/logrus"
 )
@@ -39,18 +40,40 @@ func main() {
 }
 
 func tableLabel() {
-	Log := logger.GetLog()
 	fd := owidget.PutListForm("Table", "Table test")
-
+	table := fd.NewOTable("invoice", *data.TestData(), GetToolBar())
 	w := fd.W
-	table := owidget.OTable{}
-	table.Form = *fd
-	table.Edit = true
-	Log.WithFields(logrus.Fields{"1table.Form ": table.Form}).Info("tableLabel")
-	fd.Table["invoice"] = &table
-	table.MakeTable(*data.TestData())
 	w.Resize(fyne.NewSize(1200, 400))
-	w.SetContent(container.NewMax(&table))
+	w.SetContent(container.NewMax(table))
 	w.Show()
+
+}
+
+func GetToolBar() *widget.Toolbar {
+	l := logger.GetLog()
+
+	return widget.NewToolbar(
+		widget.NewToolbarAction(theme.DocumentCreateIcon(), func() {
+			l.WithFields(logrus.Fields{"DocumentCreateIcon": "DocumentCreateIcon"}).Info("OnSelectedMakeTableLabel")
+		}),
+		widget.NewToolbarSeparator(),
+		widget.NewToolbarAction(theme.ContentAddIcon(), func() {}),
+		widget.NewToolbarAction(theme.ContentRemoveIcon(), func() {}),
+		widget.NewToolbarSpacer(),
+		widget.NewToolbarAction(theme.SettingsIcon(), func() {
+			// fd := PutListForm("Property", "Table test")
+			// w1 := fd.W
+			/* table := t.TableInitProperties()
+			table.MakeTable(*data.TestData())
+			table.Form = *fd
+			table.Edit = true
+			l.WithFields(logrus.Fields{"1table.Form ": table.Form}).Info("tableLabel")
+			// fd.Table["Property"] = table
+
+			w1.Resize(fyne.NewSize(1200, 400))
+			w1.SetContent(container.NewMax(table))
+
+			w1.Show() */
+		}))
 
 }

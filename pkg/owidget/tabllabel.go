@@ -2,7 +2,6 @@ package owidget
 
 import (
 	"image/color"
-	"otable/data"
 	"otable/pkg/logger"
 	"strings"
 
@@ -141,29 +140,30 @@ func (t *OTable) MakeTableLabel() {
 		t.Table.SetColumnWidth(n, si.Width*col.Width)
 		t.Header.SetColumnWidth(n, si.Width*col.Width)
 	}
-	t.Tool = widget.NewToolbar(
-		widget.NewToolbarAction(theme.DocumentCreateIcon(), func() {
-			Log.WithFields(logrus.Fields{"DocumentCreateIcon": "DocumentCreateIcon"}).Info("OnSelectedMakeTableLabel")
-		}),
-		widget.NewToolbarSeparator(),
-		widget.NewToolbarAction(theme.ContentAddIcon(), func() {}),
-		widget.NewToolbarAction(theme.ContentRemoveIcon(), func() {}),
-		widget.NewToolbarSpacer(),
-		widget.NewToolbarAction(theme.SettingsIcon(), func() {
-			fd := PutListForm("Property", "Table test")
-			w1 := fd.W
-			table := t.TableInitProperties()
-			table.MakeTable(*data.TestData())
-			table.Form = *fd
-			table.Edit = true
-			Log.WithFields(logrus.Fields{"1table.Form ": table.Form}).Info("tableLabel")
-			fd.Table["Property"] = table
+	// t.Tool = tb
+	/* t.Tool = widget.NewToolbar(
+	widget.NewToolbarAction(theme.DocumentCreateIcon(), func() {
+		Log.WithFields(logrus.Fields{"DocumentCreateIcon": "DocumentCreateIcon"}).Info("OnSelectedMakeTableLabel")
+	}),
+	widget.NewToolbarSeparator(),
+	widget.NewToolbarAction(theme.ContentAddIcon(), func() {}),
+	widget.NewToolbarAction(theme.ContentRemoveIcon(), func() {}),
+	widget.NewToolbarSpacer(),
+	widget.NewToolbarAction(theme.SettingsIcon(), func() {
+		fd := PutListForm("Property", "Table test")
+		w1 := fd.W
+		table := t.TableInitProperties()
+		table.MakeTable(*data.TestData())
+		table.Form = *fd
+		table.Edit = true
+		Log.WithFields(logrus.Fields{"1table.Form ": table.Form}).Info("tableLabel")
+		fd.Table["Property"] = table
 
-			w1.Resize(fyne.NewSize(1200, 400))
-			w1.SetContent(container.NewMax(table))
+		w1.Resize(fyne.NewSize(1200, 400))
+		w1.SetContent(container.NewMax(table))
 
-			w1.Show()
-		}))
+		w1.Show()
+	})) */
 	t.ExtendBaseWidget(t)
 	t.Table.OnSelected = func(id widget.TableCellID) {
 		Log.WithFields(logrus.Fields{"t.Form": t.Form, "w": id}).Info("OnSelectedMakeTableLabel")

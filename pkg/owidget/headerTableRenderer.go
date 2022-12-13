@@ -15,15 +15,17 @@ type headerTableRenderer struct {
 }
 
 func (h *OTable) CreateRenderer() fyne.WidgetRenderer {
-	Log.WithFields(logrus.Fields{"h.Tool": h}).Info("CreateRenderer")
-	c := container.NewBorder(nil, nil, nil, nil, h.Table)
-	Log.WithFields(logrus.Fields{"h.Tool": c}).Info("CreateRenderer")
-	return headerTableRenderer{
-		headerTable: h,
-
+	Log.WithFields(logrus.Fields{"h.Tool": h.Tool}).Info("CreateRenderer")
+	ht := headerTableRenderer{}
+	ht.headerTable = h
+	if h.Tool == nil {
 		// container:   container.NewBorder(h.Header, nil, nil, nil, h.Table),
-		container: container.NewBorder(h.Tool, nil, nil, nil, h.Table),
+		ht.container = container.NewBorder(nil, nil, nil, nil, h.Table)
+	} else {
+		ht.container = container.NewBorder(h.Tool, nil, nil, nil, h.Table)
+
 	}
+	return ht
 }
 
 func (r headerTableRenderer) MinSize() fyne.Size {

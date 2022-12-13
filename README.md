@@ -8,7 +8,9 @@ FormData - list of application forms
 NewOTable(name, data, ToolBar)
 
 data - a data structure containing two fields
+  
   Data [][]string - the first one contains the table header
+
 	DataDesciption [][]string - describes the columns of the table
   
 Type columns - id, string, float, enum, date

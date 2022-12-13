@@ -13,7 +13,7 @@ type ColumnStyle struct {
 	name    string  // header
 	formula string  // calculated expressions
 	Width   float32 // ширина столбца
-	bgcolor string  // цвет фона
+	BGcolor string  // цвет фона
 	color   string  // цвет текста
 	tip     string  // тип колонки(id, float, string, enum, date)
 	visible bool    // видимость
@@ -38,7 +38,7 @@ func (t *OTable) fillcolumns(d data.GetData) {
 		cs := ColumnStyle{}
 		cs.name = d.Data[0][i]
 		cs.id = d.DataDesciption[0][i]
-		cs.bgcolor = "rowcolor" // индивидуальный цвет столбца фон
+		cs.BGcolor = "rowcolor" // индивидуальный цвет столбца фон
 		cs.color = ""           // индивидуальный цвет текста столбца
 		cs.tip = d.DataDesciption[1][i]
 		p, _ := strconv.Atoi(d.DataDesciption[2][i]) //ширина столбца в символах

@@ -34,7 +34,7 @@ func (t *OTable) getColorCell(i widget.TableCellID) *CellColor {
 	}
 	// выделенный столбец
 	col := t.ColumnStyle[t.DataV[0][i.Col]]
-	if val, ok := MapColor[col.bgcolor]; ok {
+	if val, ok := MapColor[col.BGcolor]; ok {
 		c.BGcolor = mix(val, c.BGcolor)
 	}
 	// individual
@@ -52,11 +52,8 @@ func (t *OTable) getColorCell(i widget.TableCellID) *CellColor {
 }
 
 func (t *OTable) MakeTableLabel() {
-
 	rows := len(t.DataV)
 	columns := len(t.DataV[0])
-
-	Log.WithFields(logrus.Fields{"rows": rows, "columns": columns}).Info("MakeTableLabel")
 	t.Header = widget.NewTable(
 		// Dimensions (rows, cols)
 		func() (int, int) { return 1, columns },
@@ -81,13 +78,11 @@ func (t *OTable) MakeTableLabel() {
 			box := o.(*fyne.Container)
 			FillColor := t.getColorCell(i)
 			col := t.ColumnStyle[t.DataV[0][i.Col]]
-
 			tip := col.tip
 			if i.Row == 0 {
 				tip = "string"
 			}
 			mystr := []rune(t.DataV[i.Row][i.Col])
-
 			k := int(col.Width)
 			if col.Width > 0 {
 				k = int(col.Width) - 1
@@ -108,6 +103,7 @@ func (t *OTable) MakeTableLabel() {
 				t.Form.ActiveWidget.tip = ""
 				if i.Row > 0 && t.Edit {
 					c := NewCompletionEntry([]string{})
+
 					t.Form.ActiveWidget.tip = "string"
 					t.Form.ActiveWidget.ce = c
 					if strings.HasPrefix(tip, "id_") { //id  другой таблицы
@@ -168,30 +164,20 @@ func (t *OTable) MakeTableLabel() {
 
 func (t *OTable) MakeTappable(txt string, tip string, c *CellColor) *fyne.Container {
 	entry := canvas.NewText(strings.TrimRight(txt, "\x00"), c.Color)
-
 	if strings.HasPrefix(tip, "float") {
-
 		tip = "float"
 	}
-
 	switch tip {
 	case "float", "int":
-
 		entry.Alignment = fyne.TextAlignTrailing
 		entry.TextStyle.Monospace = true
 	default:
 		entry.Alignment = fyne.TextAlignLeading
 	}
-
-	//	entry.Objects[0].(*oLabel).CellID = &i
-
-	//entry.parent = t
 	si := fyne.MeasureText("шii", 24, fyne.TextStyle{})
 	rec := canvas.NewRectangle(c.BGcolor)
 	rec.SetMinSize(si)
-
 	entry.Resize(si)
-
 	return container.New(layout.NewMaxLayout(), rec, entry)
 }
 

@@ -4,7 +4,6 @@ import (
 	"otable/data"
 
 	"fyne.io/fyne/v2"
-	"fyne.io/fyne/v2/widget"
 
 	"github.com/sirupsen/logrus"
 )
@@ -44,21 +43,17 @@ func PutListForm(name, header string) *FormData {
 	}
 	f.W = fyne.CurrentApp().NewWindow(header)
 	AppValues[name] = &f
-	Log.WithFields(logrus.Fields{
-		"form":  name,
-		"event": "InitFormData()",
-	}).Info("\u2713Init")
+	Log.WithFields(logrus.Fields{"form": name, "event": "InitFormData()"}).Info("\u2713Init")
 	return &f
 }
 
-func (f *FormData) NewOTable(name string, d data.GetData, tb *widget.Toolbar) *OTable {
+func (f *FormData) NewOTable(name string, d data.GetData) *OTable {
 	table := OTable{}
 	table.CellColor = make(map[string]*CellColor)
 	table.Form = *f
 	table.Edit = true
-	Log.WithFields(logrus.Fields{"1table.Form ": f.ID}).Info("NewOTable")
+	Log.WithFields(logrus.Fields{"1table.Form ": len(d.Data)}).Info("NewOTable")
 	f.Table[name] = &table
-	table.MakeTable(*data.TestData())
-	table.Tool = tb
+	table.MakeTableData(d)
 	return &table
 }

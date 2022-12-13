@@ -9,7 +9,6 @@ import (
 	"fyne.io/fyne/v2"
 	"fyne.io/fyne/v2/app"
 	"fyne.io/fyne/v2/container"
-	"fyne.io/fyne/v2/theme"
 	"fyne.io/fyne/v2/widget"
 	"github.com/sirupsen/logrus"
 )
@@ -41,42 +40,21 @@ func main() {
 
 func tableLabel() {
 	fd := owidget.PutListForm("Table", "Table test")
-	table := fd.NewOTable("invoice", *data.TestData(), GetToolBar())
+	table := fd.NewOTable("invoice", *data.TestData())
 	table.CellColor["3;3"] = &owidget.CellColor{
-		Color: owidget.MapColor["aliceblue"],
+		Color:   owidget.MapColor["aliceblue"],
 		BGcolor: owidget.MapColor["darkgreen"]}
+	table.ColumnStyle["Amount"].BGcolor = "darkgreen"
+	l := logger.GetLog()
+	l.WithFields(logrus.Fields{
+		"form":  "main",
+		"event": "start",
+		"Out":   os.Stderr,
+	}).Info("GetToolBar")
+	table.GetToolBar()
 	w := fd.W
 	w.Resize(fyne.NewSize(1200, 400))
 	w.SetContent(container.NewMax(table))
 	w.Show()
-
-}
-
-func GetToolBar() *widget.Toolbar {
-	l := logger.GetLog()
-
-	return widget.NewToolbar(
-		widget.NewToolbarAction(theme.DocumentCreateIcon(), func() {
-			l.WithFields(logrus.Fields{"DocumentCreateIcon": "DocumentCreateIcon"}).Info("OnSelectedMakeTableLabel")
-		}),
-		widget.NewToolbarSeparator(),
-		widget.NewToolbarAction(theme.ContentAddIcon(), func() {}),
-		widget.NewToolbarAction(theme.ContentRemoveIcon(), func() {}),
-		widget.NewToolbarSpacer(),
-		widget.NewToolbarAction(theme.SettingsIcon(), func() {
-			// fd := PutListForm("Property", "Table test")
-			// w1 := fd.W
-			/* table := t.TableInitProperties()
-			table.MakeTable(*data.TestData())
-			table.Form = *fd
-			table.Edit = true
-			l.WithFields(logrus.Fields{"1table.Form ": table.Form}).Info("tableLabel")
-			// fd.Table["Property"] = table
-
-			w1.Resize(fyne.NewSize(1200, 400))
-			w1.SetContent(container.NewMax(table))
-
-			w1.Show() */
-		}))
 
 }

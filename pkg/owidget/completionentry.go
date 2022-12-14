@@ -193,9 +193,9 @@ func (n *navigableList) SetOptions(items []string) {
 	n.Refresh()
 	n.selected = -1
 }
-func (e *CompletionEntry) KeyDown(key *fyne.KeyEvent) {
+func (c *CompletionEntry) KeyDown(key *fyne.KeyEvent) {
 	//t := appValues[e.IDForm].Table[e.IDTable]
-	t := e.t
+	t := c.t
 	id := t.Selected
 	switch key.Name {
 	case fyne.KeyReturn:
@@ -203,9 +203,9 @@ func (e *CompletionEntry) KeyDown(key *fyne.KeyEvent) {
 		Log.WithFields(logrus.Fields{"KeyDown": key}).Info("CompletionEntry")
 
 		id := t.Selected
-		Log.WithFields(logrus.Fields{"entry.text": e.Text}).Info("onEnter ")
+		Log.WithFields(logrus.Fields{"entry.text": c.Text}).Info("onEnter ")
 		if t.Edit {
-			t.DataV[id.Row][id.Col] = e.Text
+			t.DataV[id.Row][id.Col] = c.Text
 			if len(t.DataV)-1 > t.Selected.Row {
 				t.Selected = widget.TableCellID{Col: id.Col, Row: id.Row + 1}
 				t.Table.ScrollTo(widget.TableCellID{Col: id.Col, Row: id.Row + 1})
@@ -221,7 +221,7 @@ func (e *CompletionEntry) KeyDown(key *fyne.KeyEvent) {
 			t.FocusActiveWidget()
 		}
 	case "Down":
-		if len(e.t.Data)-1 > e.t.Selected.Row {
+		if len(c.t.Data)-1 > c.t.Selected.Row {
 			t.Selected = widget.TableCellID{Col: id.Col, Row: id.Row + 1}
 			t.FocusActiveWidget()
 		}

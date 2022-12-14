@@ -95,7 +95,7 @@ func (t *tappableIcon) FocusGained() {
 	Log.WithFields(logrus.Fields{"tappableIcon": "fg"}).Info("TypedKey")
 }
 
-func (n *tappableIcon) TypedRune(r rune) {
+func (t *tappableIcon) TypedRune(r rune) {
 	Log.WithFields(logrus.Fields{"entry.text": r}).Info("onEnter ")
 }
 

@@ -535,3 +535,1227 @@ time="13/12/22 16:24:25" level=info msg=OnSelectedMakeTableLabel t.Form="{TableP
 time="13/12/22 16:24:25" level=info msg=FocusActiveWidget edit=true selected="{6 4}" tip=
 time="13/12/22 16:24:25" level=info msg=t.Selected T.Form.ActiveWidget="&{string 0xc0012f0b40 <nil> <nil>}"
 time="13/12/22 16:24:25" level=info msg=t.Selected T.Form.ActiveWidget="&{string 0xc0012f0fc0 <nil> <nil>}"
+time="14/12/22 10:30:40" level=info msg="Начало" Out="&{0xc0000d6500}" event=start form=main
+time="14/12/22 10:30:40" level=info msg="✓Init" event="InitFormData()" form=Main
+time="14/12/22 10:30:41" level=info msg="✓Init" event="InitFormData()" form=Table
+time="14/12/22 10:30:41" level=info msg=Data columns=10 event="Fill Data" rows=500
+time="14/12/22 10:30:41" level=info msg=Data columns ddes=10 event="Init data" form="Test data" rows data=500
+time="14/12/22 10:30:41" level=info msg=NewOTable 1table.Form =500
+time="14/12/22 10:30:41" level=info msg=Columns columns=10 event="fillcolumns()" form=
+time="14/12/22 10:30:41" level=info msg=Columns columns="map[Amount:0xc0000f0d20 Check:0xc0000f0d90 Comment:0xc0000f0e70 DateCheck:0xc0000f0e00 Price:0xc0000f0cb0 Product:0xc0000f0b60 Quantity:0xc0000f0c40 Type:0xc0000f0bd0 id:0xc0000f0a80 id_product:0xc0000f0af0]" event=Finish
+time="14/12/22 10:30:41" level=info msg=MakeTableData event=fillcolumns form=Table
+time="14/12/22 10:30:41" level=info msg=MakeTable event="Fill data" form=Table
+time="14/12/22 10:30:41" level=info msg=GetToolBar Out="&{0xc0000d6500}" event=start form=main
+time="14/12/22 10:30:41" level=info msg=GetToolBar DocumentCreateIcon=GetToolBar
+time="14/12/22 10:30:41" level=info msg=CreateRenderer h.Tool="&{{{0 0} {0 0} false 0xc000378480 {{0 0} 0 0 0 0}} [0xc00037a018 0x7ff7f1ae59e0 0xc00037a030 0xc00037a048 0x7ff7f1ae59e0 0xc00037a078]}"
+time="14/12/22 10:30:46" level=info msg="✓Init" event="InitFormData()" form=TableProp
+time="14/12/22 10:30:46" level=info msg=TableInitProperties datag=10 form1=
+time="14/12/22 10:30:46" level=info msg=GetToolBar Properties=10
+time="14/12/22 10:30:46" level=info msg=NewOTable 1table.Form =10
+time="14/12/22 10:30:46" level=info msg=Columns columns=6 event="fillcolumns()" form=
+time="14/12/22 10:30:46" level=info msg=Columns columns="map[Color:0xc0000f0fc0 Header:0xc0000f0a10 Type:0xc0000f0ee0 Width:0xc0000f10a0 formula:0xc0000f0f50 id:0xc0000f09a0]" event=Finish
+time="14/12/22 10:30:46" level=info msg=MakeTableData event=fillcolumns form=TableProp
+time="14/12/22 10:30:46" level=info msg=MakeTable event="Fill data" form=TableProp
+time="14/12/22 10:30:46" level=info msg=GetToolBar Properties len  dv=10
+time="14/12/22 10:30:46" level=info msg=CreateRenderer h.Tool="<nil>"
+time="14/12/22 10:30:51" level=info msg=OnSelectedMakeTableLabel t.Form="{TableProp map[invoice:0xc0000a8500] 0xc0004d4f00 0xc00164e120}" w="{7 1}"
+time="14/12/22 10:30:51" level=info msg=FocusActiveWidget edit=true selected="{7 1}" tip=
+time="14/12/22 10:30:51" level=info msg=t.Selected T.Form.ActiveWidget="&{string 0xc001384480 <nil> <nil>}"
+time="14/12/22 10:30:51" level=info msg=t.Selected T.Form.ActiveWidget="&{string 0xc001384900 <nil> <nil>}"
+time="14/12/22 10:30:52" level=info msg=t.Selected T.Form.ActiveWidget="&{string 0xc001384240 <nil> <nil>}"
+time="14/12/22 10:30:52" level=info msg=OnSelectedMakeTableLabel t.Form="{TableProp map[invoice:0xc0000a8500] 0xc0004d4f00 0xc00164e120}" w="{9 1}"
+time="14/12/22 10:30:52" level=info msg=FocusActiveWidget edit=true selected="{9 1}" tip=string
+time="14/12/22 10:30:52" level=info msg=t.Selected T.Form.ActiveWidget="&{string 0xc001384b40 <nil> <nil>}"
+time="14/12/22 10:30:52" level=info msg=t.Selected T.Form.ActiveWidget="&{string 0xc001384fc0 <nil> <nil>}"
+time="14/12/22 10:30:52" level=info msg=t.Selected T.Form.ActiveWidget="&{string 0xc001385440 <nil> <nil>}"
+time="14/12/22 10:30:52" level=info msg=OnSelectedMakeTableLabel t.Form="{TableProp map[invoice:0xc0000a8500] 0xc0004d4f00 0xc00164e120}" w="{7 0}"
+time="14/12/22 10:30:52" level=info msg=FocusActiveWidget edit=true selected="{7 0}" tip=string
+time="14/12/22 10:30:52" level=info msg=t.Selected T.Form.ActiveWidget="&{string 0xc0013858c0 <nil> <nil>}"
+time="14/12/22 10:30:52" level=info msg=t.Selected T.Form.ActiveWidget="&{string 0xc0000fab40 <nil> <nil>}"
+time="14/12/22 10:30:53" level=info msg=t.Selected T.Form.ActiveWidget="&{string 0xc0000fafc0 <nil> <nil>}"
+time="14/12/22 10:30:53" level=info msg=OnSelectedMakeTableLabel t.Form="{TableProp map[invoice:0xc0000a8500] 0xc0004d4f00 0xc00164e120}" w="{8 0}"
+time="14/12/22 10:30:53" level=info msg=FocusActiveWidget edit=true selected="{8 0}" tip=string
+time="14/12/22 10:30:53" level=info msg=t.Selected T.Form.ActiveWidget="&{string 0xc0000fb440 <nil> <nil>}"
+time="14/12/22 10:30:53" level=info msg=t.Selected T.Form.ActiveWidget="&{string 0xc0000fb8c0 <nil> <nil>}"
+time="14/12/22 10:30:54" level=info msg=t.Selected T.Form.ActiveWidget="&{string 0xc0013846c0 <nil> <nil>}"
+time="14/12/22 10:30:54" level=info msg=OnSelectedMakeTableLabel t.Form="{TableProp map[invoice:0xc0000a8500] 0xc0004d4f00 0xc00164e120}" w="{8 1}"
+time="14/12/22 10:30:54" level=info msg=FocusActiveWidget edit=true selected="{8 1}" tip=string
+time="14/12/22 10:30:54" level=info msg=t.Selected T.Form.ActiveWidget="&{string 0xc001385200 <nil> <nil>}"
+time="14/12/22 10:30:54" level=info msg=t.Selected T.Form.ActiveWidget="&{string 0xc001385b00 <nil> <nil>}"
+time="14/12/22 10:30:54" level=info msg=t.Selected T.Form.ActiveWidget="&{string 0xc0000fad80 <nil> <nil>}"
+time="14/12/22 10:30:54" level=info msg=OnSelectedMakeTableLabel t.Form="{TableProp map[invoice:0xc0000a8500] 0xc0004d4f00 0xc00164e120}" w="{8 2}"
+time="14/12/22 10:30:54" level=info msg=FocusActiveWidget edit=true selected="{8 2}" tip=string
+time="14/12/22 10:30:54" level=info msg=t.Selected T.Form.ActiveWidget="&{string 0xc0000fb680 <nil> <nil>}"
+time="14/12/22 10:30:54" level=info msg=t.Selected T.Form.ActiveWidget="&{string 0xc0000fbd40 <nil> <nil>}"
+time="14/12/22 10:30:55" level=info msg=t.Selected T.Form.ActiveWidget="&{string 0xc001384d80 <nil> <nil>}"
+time="14/12/22 10:30:55" level=info msg=OnSelectedMakeTableLabel t.Form="{TableProp map[invoice:0xc0000a8500] 0xc0004d4f00 0xc00164e120}" w="{8 3}"
+time="14/12/22 10:30:55" level=info msg=FocusActiveWidget edit=true selected="{8 3}" tip=string
+time="14/12/22 10:30:55" level=info msg=t.Selected T.Form.ActiveWidget="&{string 0xc001385d40 <nil> <nil>}"
+time="14/12/22 10:30:55" level=info msg=t.Selected T.Form.ActiveWidget="&{string 0xc001102240 <nil> <nil>}"
+time="14/12/22 10:31:06" level=info msg=t.Selected T.Form.ActiveWidget="&{string 0xc0000fb200 <nil> <nil>}"
+time="14/12/22 10:31:06" level=info msg=OnSelectedMakeTableLabel t.Form="{TableProp map[invoice:0xc0000a8500] 0xc0004d4f00 0xc00164e120}" w="{1 1}"
+time="14/12/22 10:31:06" level=info msg=FocusActiveWidget edit=true selected="{1 1}" tip=string
+time="14/12/22 10:31:06" level=info msg=t.Selected T.Form.ActiveWidget="&{string 0xc0000fbb00 <nil> <nil>}"
+time="14/12/22 10:31:06" level=info msg=t.Selected T.Form.ActiveWidget="&{string 0xc001102480 <nil> <nil>}"
+time="14/12/22 10:31:10" level=info msg=t.Selected T.Form.ActiveWidget="&{string 0xc001102000 <nil> <nil>}"
+time="14/12/22 10:31:10" level=info msg=OnSelectedMakeTableLabel t.Form="{TableProp map[invoice:0xc0000a8500] 0xc0004d4f00 0xc00164e120}" w="{1 3}"
+time="14/12/22 10:31:10" level=info msg=FocusActiveWidget edit=true selected="{1 3}" tip=string
+time="14/12/22 10:31:10" level=info msg=t.Selected T.Form.ActiveWidget="&{string 0xc001102b40 <nil> <nil>}"
+time="14/12/22 10:31:10" level=info msg=t.Selected T.Form.ActiveWidget="&{string 0xc001102fc0 <nil> <nil>}"
+time="14/12/22 10:53:50" level=info msg=t.Selected T.Form.ActiveWidget="&{string 0xc001102480 <nil> <nil>}"
+time="14/12/22 10:53:50" level=info msg=OnSelectedMakeTableLabel t.Form="{TableProp map[invoice:0xc0000a8500] 0xc0004d4f00 0xc00164e120}" w="{6 4}"
+time="14/12/22 10:53:50" level=info msg=FocusActiveWidget edit=true selected="{6 4}" tip=string
+time="14/12/22 10:53:50" level=info msg=t.Selected T.Form.ActiveWidget="&{string 0xc001102900 <nil> <nil>}"
+time="14/12/22 10:53:50" level=info msg=t.Selected T.Form.ActiveWidget="&{string 0xc001103200 <nil> <nil>}"
+time="14/12/22 10:53:51" level=info msg=t.Selected T.Form.ActiveWidget="&{string 0xc0011026c0 <nil> <nil>}"
+time="14/12/22 10:53:51" level=info msg=OnSelectedMakeTableLabel t.Form="{TableProp map[invoice:0xc0000a8500] 0xc0004d4f00 0xc00164e120}" w="{6 5}"
+time="14/12/22 10:53:51" level=info msg=FocusActiveWidget edit=true selected="{6 5}" tip=string
+time="14/12/22 10:53:51" level=info msg=t.Selected T.Form.ActiveWidget="&{string 0xc001103440 <nil> <nil>}"
+time="14/12/22 10:53:51" level=info msg=t.Selected T.Form.ActiveWidget="&{string 0xc0011038c0 <nil> <nil>}"
+time="14/12/22 10:53:52" level=info msg=t.Selected T.Form.ActiveWidget="&{string 0xc0000fab40 <nil> <nil>}"
+time="14/12/22 10:53:52" level=info msg=OnSelectedMakeTableLabel t.Form="{TableProp map[invoice:0xc0000a8500] 0xc0004d4f00 0xc00164e120}" w="{7 5}"
+time="14/12/22 10:53:52" level=info msg=FocusActiveWidget edit=true selected="{7 5}" tip=string
+time="14/12/22 10:53:52" level=info msg=t.Selected T.Form.ActiveWidget="&{string 0xc0000fbd40 <nil> <nil>}"
+time="14/12/22 10:53:52" level=info msg=t.Selected T.Form.ActiveWidget="&{string 0xc001384900 <nil> <nil>}"
+time="14/12/22 10:53:53" level=info msg=t.Selected T.Form.ActiveWidget="&{string 0xc001628240 <nil> <nil>}"
+time="14/12/22 10:53:53" level=info msg=OnSelectedMakeTableLabel t.Form="{TableProp map[invoice:0xc0000a8500] 0xc0004d4f00 0xc00164e120}" w="{8 5}"
+time="14/12/22 10:53:53" level=info msg=FocusActiveWidget edit=true selected="{8 5}" tip=string
+time="14/12/22 10:53:53" level=info msg=t.Selected T.Form.ActiveWidget="&{string 0xc0016286c0 <nil> <nil>}"
+time="14/12/22 10:53:53" level=info msg=t.Selected T.Form.ActiveWidget="&{string 0xc001628b40 <nil> <nil>}"
+time="14/12/22 10:53:54" level=info msg=t.Selected T.Form.ActiveWidget="&{string 0xc001102d80 <nil> <nil>}"
+time="14/12/22 10:53:54" level=info msg=OnSelectedMakeTableLabel t.Form="{TableProp map[invoice:0xc0000a8500] 0xc0004d4f00 0xc00164e120}" w="{9 5}"
+time="14/12/22 10:53:54" level=info msg=FocusActiveWidget edit=true selected="{9 5}" tip=string
+time="14/12/22 10:53:54" level=info msg=t.Selected T.Form.ActiveWidget="&{string 0xc001103b00 <nil> <nil>}"
+time="14/12/22 10:53:54" level=info msg=t.Selected T.Form.ActiveWidget="&{string 0xc001384000 <nil> <nil>}"
+time="14/12/22 10:53:56" level=info msg=t.Selected T.Form.ActiveWidget="&{string 0xc001385680 <nil> <nil>}"
+time="14/12/22 10:53:56" level=info msg=OnSelectedMakeTableLabel t.Form="{TableProp map[invoice:0xc0000a8500] 0xc0004d4f00 0xc00164e120}" w="{5 3}"
+time="14/12/22 10:53:56" level=info msg=FocusActiveWidget edit=true selected="{5 3}" tip=string
+time="14/12/22 10:53:56" level=info msg=t.Selected T.Form.ActiveWidget="&{string 0xc001102240 <nil> <nil>}"
+time="14/12/22 10:53:56" level=info msg=t.Selected T.Form.ActiveWidget="&{string 0xc001103d40 <nil> <nil>}"
+time="14/12/22 10:53:58" level=info msg=t.Selected T.Form.ActiveWidget="&{string 0xc001384fc0 <nil> <nil>}"
+time="14/12/22 10:53:58" level=info msg=OnSelectedMakeTableLabel t.Form="{TableProp map[invoice:0xc0000a8500] 0xc0004d4f00 0xc00164e120}" w="{5 2}"
+time="14/12/22 10:53:58" level=info msg=FocusActiveWidget edit=true selected="{5 2}" tip=string
+time="14/12/22 10:53:58" level=info msg=t.Selected T.Form.ActiveWidget="&{string 0xc001628000 <nil> <nil>}"
+time="14/12/22 10:53:58" level=info msg=t.Selected T.Form.ActiveWidget="&{string 0xc001628900 <nil> <nil>}"
+time="14/12/22 10:53:59" level=info msg=t.Selected T.Form.ActiveWidget="&{string 0xc001628fc0 <nil> <nil>}"
+time="14/12/22 10:53:59" level=info msg=OnSelectedMakeTableLabel t.Form="{TableProp map[invoice:0xc0000a8500] 0xc0004d4f00 0xc00164e120}" w="{6 1}"
+time="14/12/22 10:53:59" level=info msg=FocusActiveWidget edit=true selected="{6 1}" tip=string
+time="14/12/22 10:53:59" level=info msg=t.Selected T.Form.ActiveWidget="&{string 0xc001629440 <nil> <nil>}"
+time="14/12/22 10:53:59" level=info msg=t.Selected T.Form.ActiveWidget="&{string 0xc0016298c0 <nil> <nil>}"
+time="14/12/22 10:54:01" level=info msg=FocusActiveWidget edit=false selected="{6 1}" tip=table
+time="14/12/22 10:54:02" level=info msg=FocusActiveWidget edit=false selected="{5 1}" tip=
+time="14/12/22 10:54:02" level=info msg=FocusActiveWidget edit=false selected="{4 1}" tip=
+time="14/12/22 10:54:02" level=info msg=FocusActiveWidget edit=false selected="{3 1}" tip=
+time="14/12/22 10:54:02" level=info msg=FocusActiveWidget edit=false selected="{2 1}" tip=
+time="14/12/22 10:54:03" level=info msg=FocusActiveWidget edit=false selected="{2 2}" tip=
+time="14/12/22 10:54:03" level=info msg=FocusActiveWidget edit=false selected="{2 3}" tip=
+time="14/12/22 10:54:03" level=info msg=FocusActiveWidget edit=false selected="{3 3}" tip=
+time="14/12/22 10:54:03" level=info msg=FocusActiveWidget edit=false selected="{4 3}" tip=
+time="14/12/22 10:54:04" level=info msg=FocusActiveWidget edit=false selected="{4 2}" tip=
+time="14/12/22 10:54:04" level=info msg=FocusActiveWidget edit=false selected="{4 1}" tip=
+time="14/12/22 10:54:04" level=info msg=FocusActiveWidget edit=false selected="{4 0}" tip=
+time="14/12/22 10:54:05" level=info msg=FocusActiveWidget edit=false selected="{5 0}" tip=
+time="14/12/22 10:54:05" level=info msg=FocusActiveWidget edit=false selected="{6 0}" tip=
+time="14/12/22 10:54:07" level=info msg=OnSelectedMakeTableLabel t.Form="{Table map[invoice:0xc0000a8140] 0xc0004d45a0 0xc0004a0720}" w="{2 4}"
+time="14/12/22 10:54:07" level=info msg=FocusActiveWidget edit=true selected="{2 4}" tip=
+time="14/12/22 10:54:07" level=info msg=t.Selected T.Form.ActiveWidget="&{string 0xc001628480 <nil> <nil>}"
+time="14/12/22 10:54:07" level=info msg=t.Selected T.Form.ActiveWidget="&{string 0xc001629200 <nil> <nil>}"
+time="14/12/22 10:54:07" level=info msg=FocusActiveWidget edit=false selected="{2 4}" tip=table
+time="14/12/22 10:54:08" level=info msg=FocusActiveWidget edit=false selected="{3 4}" tip=
+time="14/12/22 10:54:09" level=info msg=FocusActiveWidget edit=false selected="{4 4}" tip=
+time="14/12/22 10:54:09" level=info msg=FocusActiveWidget edit=false selected="{5 4}" tip=
+time="14/12/22 10:54:09" level=info msg=FocusActiveWidget edit=false selected="{6 4}" tip=
+time="14/12/22 10:54:09" level=info msg=FocusActiveWidget edit=false selected="{6 3}" tip=
+time="14/12/22 10:54:09" level=info msg=FocusActiveWidget edit=false selected="{6 4}" tip=
+time="14/12/22 10:54:10" level=info msg=FocusActiveWidget edit=false selected="{6 3}" tip=
+time="14/12/22 10:54:12" level=info msg=OnSelectedMakeTableLabel t.Form="{TableProp map[invoice:0xc0000a8500] 0xc0004d4f00 0xc00164e120}" w="{7 1}"
+time="14/12/22 10:54:12" level=info msg=FocusActiveWidget edit=false selected="{7 1}" tip=
+time="14/12/22 10:54:17" level=info msg=OnSelectedMakeTableLabel t.Form="{TableProp map[invoice:0xc0000a8500] 0xc0004d4f00 0xc00164e120}" w="{6 1}"
+time="14/12/22 10:54:17" level=info msg=FocusActiveWidget edit=false selected="{6 1}" tip=
+time="14/12/22 10:54:21" level=info msg=OnSelectedMakeTableLabel t.Form="{TableProp map[invoice:0xc0000a8500] 0xc0004d4f00 0xc00164e120}" w="{6 2}"
+time="14/12/22 10:54:21" level=info msg=FocusActiveWidget edit=false selected="{6 2}" tip=
+time="14/12/22 10:54:25" level=info msg=OnSelectedMakeTableLabel t.Form="{TableProp map[invoice:0xc0000a8500] 0xc0004d4f00 0xc00164e120}" w="{6 4}"
+time="14/12/22 10:54:25" level=info msg=FocusActiveWidget edit=false selected="{6 4}" tip=
+time="14/12/22 10:54:27" level=info msg=OnSelectedMakeTableLabel t.Form="{Table map[invoice:0xc0000a8140] 0xc0004d45a0 0xc0004a0720}" w="{9 3}"
+time="14/12/22 10:54:27" level=info msg=FocusActiveWidget edit=false selected="{9 3}" tip=
+time="14/12/22 10:54:33" level=info msg=OnSelectedMakeTableLabel t.Form="{Table map[invoice:0xc0000a8140] 0xc0004d45a0 0xc0004a0720}" w="{8 4}"
+time="14/12/22 10:54:33" level=info msg=FocusActiveWidget edit=false selected="{8 4}" tip=
+time="14/12/22 10:54:40" level=info msg=OnSelectedMakeTableLabel t.Form="{Table map[invoice:0xc0000a8140] 0xc0004d45a0 0xc0004a0720}" w="{7 8}"
+time="14/12/22 10:54:40" level=info msg=FocusActiveWidget edit=false selected="{7 8}" tip=
+time="14/12/22 10:54:41" level=info msg=OnSelectedMakeTableLabel t.Form="{Table map[invoice:0xc0000a8140] 0xc0004d45a0 0xc0004a0720}" w="{4 8}"
+time="14/12/22 10:54:41" level=info msg=FocusActiveWidget edit=false selected="{4 8}" tip=
+time="14/12/22 10:54:42" level=info msg=OnSelectedMakeTableLabel t.Form="{TableProp map[invoice:0xc0000a8500] 0xc0004d4f00 0xc00164e120}" w="{8 3}"
+time="14/12/22 10:54:42" level=info msg=FocusActiveWidget edit=false selected="{8 3}" tip=
+time="14/12/22 10:54:44" level=info msg=OnSelectedMakeTableLabel t.Form="{TableProp map[invoice:0xc0000a8500] 0xc0004d4f00 0xc00164e120}" w="{6 3}"
+time="14/12/22 10:54:44" level=info msg=FocusActiveWidget edit=false selected="{6 3}" tip=
+time="14/12/22 10:54:44" level=info msg=OnSelectedMakeTableLabel t.Form="{TableProp map[invoice:0xc0000a8500] 0xc0004d4f00 0xc00164e120}" w="{5 2}"
+time="14/12/22 10:54:44" level=info msg=FocusActiveWidget edit=false selected="{5 2}" tip=
+time="14/12/22 10:54:45" level=info msg=OnSelectedMakeTableLabel t.Form="{TableProp map[invoice:0xc0000a8500] 0xc0004d4f00 0xc00164e120}" w="{3 0}"
+time="14/12/22 10:54:45" level=info msg=FocusActiveWidget edit=false selected="{3 0}" tip=
+time="14/12/22 10:54:46" level=info msg=OnSelectedMakeTableLabel t.Form="{TableProp map[invoice:0xc0000a8500] 0xc0004d4f00 0xc00164e120}" w="{1 0}"
+time="14/12/22 10:54:46" level=info msg=FocusActiveWidget edit=false selected="{1 0}" tip=
+time="14/12/22 10:54:47" level=info msg=OnSelectedMakeTableLabel t.Form="{TableProp map[invoice:0xc0000a8500] 0xc0004d4f00 0xc00164e120}" w="{4 0}"
+time="14/12/22 10:54:47" level=info msg=FocusActiveWidget edit=false selected="{4 0}" tip=
+time="14/12/22 10:54:47" level=info msg=OnSelectedMakeTableLabel t.Form="{TableProp map[invoice:0xc0000a8500] 0xc0004d4f00 0xc00164e120}" w="{6 0}"
+time="14/12/22 10:54:47" level=info msg=FocusActiveWidget edit=false selected="{6 0}" tip=
+time="14/12/22 10:55:04" level=info msg=OnSelectedMakeTableLabel t.Form="{Table map[invoice:0xc0000a8140] 0xc0004d45a0 0xc0004a0720}" w="{6 2}"
+time="14/12/22 10:55:04" level=info msg=FocusActiveWidget edit=false selected="{6 2}" tip=
+time="14/12/22 10:55:10" level=info msg=OnSelectedMakeTableLabel t.Form="{Table map[invoice:0xc0000a8140] 0xc0004d45a0 0xc0004a0720}" w="{2 8}"
+time="14/12/22 10:55:10" level=info msg=FocusActiveWidget edit=false selected="{2 8}" tip=
+time="14/12/22 11:06:12" level=info msg="Начало" Out="&{0xc000148500}" event=start form=main
+time="14/12/22 11:06:12" level=info msg="✓Init" event="InitFormData()" form=Main
+time="14/12/22 11:06:14" level=info msg="✓Init" event="InitFormData()" form=Table
+time="14/12/22 11:06:14" level=info msg=Data columns=10 event="Fill Data" rows=500
+time="14/12/22 11:06:14" level=info msg=Data columns ddes=10 event="Init data" form="Test data" rows data=500
+time="14/12/22 11:06:14" level=info msg=NewOTable 1table.Form =500
+time="14/12/22 11:06:14" level=info msg=Columns columns=10 event="fillcolumns()" form=
+time="14/12/22 11:06:14" level=info msg=Columns columns="map[Amount:0xc0003ace00 Check:0xc0003ace70 Comment:0xc0003acf50 DateCheck:0xc0003acee0 Price:0xc0003acd90 Product:0xc0003acc40 Quantity:0xc0003acd20 Type:0xc0003accb0 id:0xc0003acb60 id_product:0xc0003acbd0]" event=Finish
+time="14/12/22 11:06:14" level=info msg=MakeTableData event=fillcolumns form=Table
+time="14/12/22 11:06:14" level=info msg=MakeTable event="Fill data" form=Table
+time="14/12/22 11:06:14" level=info msg=GetToolBar Out="&{0xc000148500}" event=start form=main
+time="14/12/22 11:06:14" level=info msg=GetToolBar DocumentCreateIcon=GetToolBar
+time="14/12/22 11:06:14" level=info msg=CreateRenderer h.Tool="&{{{0 0} {0 0} false 0xc00043c8a0 {{0 0} 0 0 0 0}} [0xc000008af8 0x7ff7028269e0 0xc000008b10 0xc000008b28 0x7ff7028269e0 0xc000008b58]}"
+time="14/12/22 11:06:21" level=info msg=OnSelectedMakeTableLabel t.Form="{Table map[invoice:0xc00011a140] 0xc00046c000 0xc0000a2180}" w="{5 3}"
+time="14/12/22 11:06:21" level=info msg=FocusActiveWidget edit=true selected="{5 3}" tip=
+time="14/12/22 11:06:21" level=info msg=t.Selected T.Form.ActiveWidget="&{string 0xc00016ed80 <nil> <nil>}"
+time="14/12/22 11:06:21" level=info msg=t.Selected T.Form.ActiveWidget="&{string 0xc00016f200 <nil> <nil>}"
+time="14/12/22 11:06:25" level=info msg=FocusActiveWidget edit=false selected="{5 3}" tip=table
+time="14/12/22 11:06:25" level=info msg=FocusActiveWidget edit=false selected="{5 3}" tip=table
+time="14/12/22 11:06:28" level=info msg=FocusActiveWidget edit=false selected="{4 3}" tip=
+time="14/12/22 11:06:30" level=info msg=FocusActiveWidget edit=false selected="{4 2}" tip=
+time="14/12/22 11:06:35" level=info msg=FocusActiveWidget edit=false selected="{5 2}" tip=
+time="14/12/22 11:06:36" level=info msg=FocusActiveWidget edit=false selected="{6 2}" tip=
+time="14/12/22 11:06:37" level=info msg=FocusActiveWidget edit=false selected="{7 2}" tip=
+time="14/12/22 11:06:37" level=info msg=FocusActiveWidget edit=false selected="{7 3}" tip=
+time="14/12/22 11:06:38" level=info msg=FocusActiveWidget edit=false selected="{7 4}" tip=
+time="14/12/22 11:06:41" level=info msg=FocusActiveWidget edit=false selected="{7 5}" tip=
+time="14/12/22 11:06:43" level=info msg="✓Init" event="InitFormData()" form=TableProp
+time="14/12/22 11:06:43" level=info msg=TableInitProperties datag=10 form1=
+time="14/12/22 11:06:43" level=info msg=GetToolBar Properties=10
+time="14/12/22 11:06:43" level=info msg=NewOTable 1table.Form =10
+time="14/12/22 11:06:43" level=info msg=Columns columns=6 event="fillcolumns()" form=
+time="14/12/22 11:06:43" level=info msg=Columns columns="map[Color:0xc0003ad180 Header:0xc0003ad030 Type:0xc0003ad0a0 Width:0xc0003ad1f0 formula:0xc0003ad110 id:0xc0003acfc0]" event=Finish
+time="14/12/22 11:06:43" level=info msg=MakeTableData event=fillcolumns form=TableProp
+time="14/12/22 11:06:43" level=info msg=MakeTable event="Fill data" form=TableProp
+time="14/12/22 11:06:43" level=info msg=GetToolBar Properties len  dv=10
+time="14/12/22 11:06:43" level=info msg=CreateRenderer h.Tool="<nil>"
+time="14/12/22 11:06:45" level=info msg=OnSelectedMakeTableLabel t.Form="{TableProp map[invoice:0xc00011a500] 0xc00046c5a0 0xc0015847b0}" w="{4 3}"
+time="14/12/22 11:06:45" level=info msg=FocusActiveWidget edit=true selected="{4 3}" tip=
+time="14/12/22 11:06:45" level=info msg=t.Selected T.Form.ActiveWidget="&{string 0xc00016efc0 <nil> <nil>}"
+time="14/12/22 11:06:45" level=info msg=t.Selected T.Form.ActiveWidget="&{string 0xc00016f680 <nil> <nil>}"
+time="14/12/22 11:06:49" level=info msg=FocusActiveWidget edit=false selected="{4 3}" tip=table
+time="14/12/22 11:06:50" level=info msg=FocusActiveWidget edit=false selected="{3 3}" tip=
+time="14/12/22 11:06:50" level=info msg=FocusActiveWidget edit=false selected="{2 3}" tip=
+time="14/12/22 11:06:51" level=info msg=FocusActiveWidget edit=false selected="{1 3}" tip=
+time="14/12/22 11:06:51" level=info msg=FocusActiveWidget edit=false selected="{1 2}" tip=
+time="14/12/22 11:06:51" level=info msg=FocusActiveWidget edit=false selected="{1 1}" tip=
+time="14/12/22 11:06:52" level=info msg=FocusActiveWidget edit=false selected="{2 1}" tip=
+time="14/12/22 11:06:52" level=info msg=FocusActiveWidget edit=false selected="{3 1}" tip=
+time="14/12/22 11:06:52" level=info msg=FocusActiveWidget edit=false selected="{4 1}" tip=
+time="14/12/22 11:06:58" level=info msg=OnSelectedMakeTableLabel t.Form="{Table map[invoice:0xc00011a140] 0xc00046c000 0xc0000a2180}" w="{5 1}"
+time="14/12/22 11:06:58" level=info msg=FocusActiveWidget edit=false selected="{5 1}" tip=
+time="14/12/22 11:06:59" level=info msg=OnSelectedMakeTableLabel t.Form="{Table map[invoice:0xc00011a140] 0xc00046c000 0xc0000a2180}" w="{5 3}"
+time="14/12/22 11:06:59" level=info msg=FocusActiveWidget edit=false selected="{5 3}" tip=
+time="14/12/22 11:07:07" level=info msg=OnSelectedMakeTableLabel t.Form="{TableProp map[invoice:0xc00011a500] 0xc00046c5a0 0xc0015847b0}" w="{8 4}"
+time="14/12/22 11:07:07" level=info msg=FocusActiveWidget edit=false selected="{8 4}" tip=
+time="14/12/22 11:07:16" level=info msg=OnSelectedMakeTableLabel t.Form="{TableProp map[invoice:0xc00011a500] 0xc00046c5a0 0xc0015847b0}" w="{2 3}"
+time="14/12/22 11:07:16" level=info msg=FocusActiveWidget edit=false selected="{2 3}" tip=
+time="14/12/22 11:07:29" level=info msg=OnSelectedMakeTableLabel t.Form="{Table map[invoice:0xc00011a140] 0xc00046c000 0xc0000a2180}" w="{8 4}"
+time="14/12/22 11:07:29" level=info msg=FocusActiveWidget edit=false selected="{8 4}" tip=
+time="14/12/22 11:07:45" level=info msg="✓Init" event="InitFormData()" form=Table
+time="14/12/22 11:07:45" level=info msg=Data columns=10 event="Fill Data" rows=500
+time="14/12/22 11:07:45" level=info msg=Data columns ddes=10 event="Init data" form="Test data" rows data=500
+time="14/12/22 11:07:45" level=info msg=NewOTable 1table.Form =500
+time="14/12/22 11:07:45" level=info msg=Columns columns=10 event="fillcolumns()" form=
+time="14/12/22 11:07:45" level=info msg=Columns columns="map[Amount:0xc0003ad8f0 Check:0xc0003ad960 Comment:0xc0003adb20 DateCheck:0xc0003ad9d0 Price:0xc0003ad880 Product:0xc0003ad420 Quantity:0xc0003ad570 Type:0xc0003ad490 id:0xc0003ad340 id_product:0xc0003ad3b0]" event=Finish
+time="14/12/22 11:07:45" level=info msg=MakeTableData event=fillcolumns form=Table
+time="14/12/22 11:07:45" level=info msg=MakeTable event="Fill data" form=Table
+time="14/12/22 11:07:45" level=info msg=GetToolBar Out="&{0xc000148500}" event=start form=main
+time="14/12/22 11:07:45" level=info msg=GetToolBar DocumentCreateIcon=GetToolBar
+time="14/12/22 11:07:45" level=info msg=CreateRenderer h.Tool="&{{{0 0} {0 0} false 0xc0018387e0 {{0 0} 0 0 0 0}} [0xc0018277d0 0x7ff7028269e0 0xc0018277e8 0xc001827800 0x7ff7028269e0 0xc001827830]}"
+time="14/12/22 11:07:46" level=info msg=OnSelectedMakeTableLabel t.Form="{Table map[invoice:0xc00011a640] 0xc00046c780 0xc001680e70}" w="{6 4}"
+time="14/12/22 11:07:46" level=info msg=FocusActiveWidget edit=true selected="{6 4}" tip=
+time="14/12/22 11:07:46" level=info msg=t.Selected T.Form.ActiveWidget="&{string 0xc00016f440 <nil> <nil>}"
+time="14/12/22 11:07:46" level=info msg=t.Selected T.Form.ActiveWidget="&{string 0xc00016fb00 <nil> <nil>}"
+time="14/12/22 11:07:52" level=info msg=FocusActiveWidget edit=false selected="{6 4}" tip=table
+time="14/12/22 11:07:54" level=info msg=FocusActiveWidget edit=false selected="{5 4}" tip=
+time="14/12/22 11:07:56" level=info msg=FocusActiveWidget edit=false selected="{5 3}" tip=
+time="14/12/22 11:07:57" level=info msg=FocusActiveWidget edit=false selected="{6 3}" tip=
+time="14/12/22 11:07:57" level=info msg=FocusActiveWidget edit=false selected="{7 3}" tip=
+time="14/12/22 11:07:58" level=info msg=FocusActiveWidget edit=false selected="{8 3}" tip=
+time="14/12/22 11:07:59" level=info msg=FocusActiveWidget edit=false selected="{8 4}" tip=
+time="14/12/22 11:08:01" level=info msg=FocusActiveWidget edit=false selected="{8 3}" tip=
+time="14/12/22 11:08:02" level=info msg=FocusActiveWidget edit=false selected="{7 3}" tip=
+time="14/12/22 11:08:03" level=info msg=FocusActiveWidget edit=false selected="{6 3}" tip=
+time="14/12/22 11:08:05" level=info msg=FocusActiveWidget edit=false selected="{5 3}" tip=
+time="14/12/22 11:17:21" level=info msg="Начало" Out="&{0xc0000d6500}" event=start form=main
+time="14/12/22 11:17:21" level=info msg="✓Init" event="InitFormData()" form=Main
+time="14/12/22 11:17:24" level=info msg="✓Init" event="InitFormData()" form=Table
+time="14/12/22 11:17:24" level=info msg=Data columns=10 event="Fill Data" rows=500
+time="14/12/22 11:17:24" level=info msg=Data columns ddes=10 event="Init data" form="Test data" rows data=500
+time="14/12/22 11:17:24" level=info msg=NewOTable 1table.Form =500
+time="14/12/22 11:17:24" level=info msg=Columns columns=10 event="fillcolumns()" form=
+time="14/12/22 11:17:24" level=info msg=Columns columns="map[Amount:0xc000358a80 Check:0xc000358af0 Comment:0xc000358bd0 DateCheck:0xc000358b60 Price:0xc000358a10 Product:0xc0003588c0 Quantity:0xc0003589a0 Type:0xc000358930 id:0xc0003587e0 id_product:0xc000358850]" event=Finish
+time="14/12/22 11:17:24" level=info msg=MakeTableData event=fillcolumns form=Table
+time="14/12/22 11:17:24" level=info msg=MakeTable event="Fill data" form=Table
+time="14/12/22 11:17:44" level=info msg=GetToolBar Out="&{0xc0000d6500}" event=start form=main
+time="14/12/22 11:17:44" level=info msg=GetToolBar DocumentCreateIcon=GetToolBar
+time="14/12/22 11:17:44" level=info msg=CreateRenderer h.Tool="&{{{0 0} {0 0} false 0xc0000b0d20 {{0 0} 0 0 0 0}} [0xc000086660 0x7ff7e04d0980 0xc000086678 0xc000086690 0x7ff7e04d0980 0xc0000866c0]}"
+time="14/12/22 11:17:47" level=info msg=OnSelectedMakeTableLabel t.Form="{Table map[invoice:0xc0000a0140] 0xc0003e6000 0xc000030720}" w="{4 4}"
+time="14/12/22 11:17:51" level=info msg=FocusActiveWidget edit=true selected="{4 4}" tip=
+time="14/12/22 11:17:51" level=info msg=t.Selected T.Form.ActiveWidget="&{string 0xc0000fad80 <nil> <nil>}"
+time="14/12/22 11:17:51" level=info msg=t.Selected T.Form.ActiveWidget="&{string 0xc0000fb200 <nil> <nil>}"
+time="14/12/22 11:17:53" level=info msg=t.Selected T.Form.ActiveWidget="&{string 0xc0000fab40 <nil> <nil>}"
+time="14/12/22 11:17:54" level=info msg=t.Selected T.Form.ActiveWidget="&{string 0xc001142240 <nil> <nil>}"
+time="14/12/22 11:17:55" level=info msg=t.Selected T.Form.ActiveWidget="&{string 0xc0010e6240 <nil> <nil>}"
+time="14/12/22 11:17:56" level=info msg=t.Selected T.Form.ActiveWidget="&{string 0xc0000fafc0 <nil> <nil>}"
+time="14/12/22 11:18:01" level=info msg=t.Selected T.Form.ActiveWidget="&{string 0xc0000fb440 <nil> <nil>}"
+time="14/12/22 11:18:01" level=info msg=OnSelectedMakeTableLabel t.Form="{Table map[invoice:0xc0000a0140] 0xc0003e6000 0xc000030720}" w="{5 3}"
+time="14/12/22 11:18:11" level=info msg=FocusActiveWidget edit=true selected="{5 3}" tip=string
+time="14/12/22 11:18:12" level=info msg=t.Selected T.Form.ActiveWidget="&{string 0xc0000fb8c0 <nil> <nil>}"
+time="14/12/22 11:18:12" level=info msg=t.Selected T.Form.ActiveWidget="&{string 0xc0000fbd40 <nil> <nil>}"
+time="14/12/22 11:18:21" level=info msg=t.Selected T.Form.ActiveWidget="&{string 0xc0010e6480 <nil> <nil>}"
+time="14/12/22 11:18:21" level=info msg=OnSelectedMakeTableLabel t.Form="{Table map[invoice:0xc0000a0140] 0xc0003e6000 0xc000030720}" w="{3 3}"
+time="14/12/22 11:18:21" level=info msg=FocusActiveWidget edit=true selected="{3 3}" tip=string
+time="14/12/22 11:18:21" level=info msg=t.Selected T.Form.ActiveWidget="&{string 0xc0010e6900 <nil> <nil>}"
+time="14/12/22 11:18:21" level=info msg=t.Selected T.Form.ActiveWidget="&{string 0xc001142480 <nil> <nil>}"
+time="14/12/22 11:18:21" level=info msg=t.Selected T.Form.ActiveWidget="&{string 0xc001142900 <nil> <nil>}"
+time="14/12/22 11:18:21" level=info msg=OnSelectedMakeTableLabel t.Form="{Table map[invoice:0xc0000a0140] 0xc0003e6000 0xc000030720}" w="{4 3}"
+time="14/12/22 11:18:21" level=info msg=FocusActiveWidget edit=true selected="{4 3}" tip=string
+time="14/12/22 11:18:21" level=info msg=t.Selected T.Form.ActiveWidget="&{string 0xc001142d80 <nil> <nil>}"
+time="14/12/22 11:18:21" level=info msg=t.Selected T.Form.ActiveWidget="&{string 0xc001143200 <nil> <nil>}"
+time="14/12/22 11:18:30" level=info msg=FocusActiveWidget edit=false selected="{4 3}" tip=table
+time="14/12/22 11:18:41" level=info msg=OnSelectedMakeTableLabel t.Form="{Table map[invoice:0xc0000a0140] 0xc0003e6000 0xc000030720}" w="{4 7}"
+time="14/12/22 11:18:41" level=info msg=FocusActiveWidget edit=false selected="{4 7}" tip=
+time="14/12/22 11:18:49" level=info msg=OnSelectedMakeTableLabel t.Form="{Table map[invoice:0xc0000a0140] 0xc0003e6000 0xc000030720}" w="{3 7}"
+time="14/12/22 11:18:49" level=info msg=FocusActiveWidget edit=false selected="{3 7}" tip=
+time="14/12/22 11:18:57" level=info msg=OnSelectedMakeTableLabel t.Form="{Table map[invoice:0xc0000a0140] 0xc0003e6000 0xc000030720}" w="{5 7}"
+time="14/12/22 11:18:57" level=info msg=FocusActiveWidget edit=false selected="{5 7}" tip=
+time="14/12/22 11:19:01" level=info msg=OnSelectedMakeTableLabel t.Form="{Table map[invoice:0xc0000a0140] 0xc0003e6000 0xc000030720}" w="{2 4}"
+time="14/12/22 11:19:01" level=info msg=FocusActiveWidget edit=false selected="{2 4}" tip=
+time="14/12/22 11:19:02" level=info msg=OnSelectedMakeTableLabel t.Form="{Table map[invoice:0xc0000a0140] 0xc0003e6000 0xc000030720}" w="{6 2}"
+time="14/12/22 11:19:02" level=info msg=FocusActiveWidget edit=false selected="{6 2}" tip=
+time="14/12/22 11:19:03" level=info msg=OnSelectedMakeTableLabel t.Form="{Table map[invoice:0xc0000a0140] 0xc0003e6000 0xc000030720}" w="{3 1}"
+time="14/12/22 11:19:03" level=info msg=FocusActiveWidget edit=false selected="{3 1}" tip=
+time="14/12/22 11:19:03" level=info msg=OnSelectedMakeTableLabel t.Form="{Table map[invoice:0xc0000a0140] 0xc0003e6000 0xc000030720}" w="{2 1}"
+time="14/12/22 11:19:03" level=info msg=FocusActiveWidget edit=false selected="{2 1}" tip=
+time="14/12/22 11:19:08" level=info msg="✓Init" event="InitFormData()" form=Table
+time="14/12/22 11:19:08" level=info msg=Data columns=10 event="Fill Data" rows=500
+time="14/12/22 11:19:08" level=info msg=Data columns ddes=10 event="Init data" form="Test data" rows data=500
+time="14/12/22 11:19:08" level=info msg=NewOTable 1table.Form =500
+time="14/12/22 11:19:08" level=info msg=Columns columns=10 event="fillcolumns()" form=
+time="14/12/22 11:19:08" level=info msg=Columns columns="map[Amount:0xc0003597a0 Check:0xc000359810 Comment:0xc0003598f0 DateCheck:0xc000359880 Price:0xc000359730 Product:0xc0003595e0 Quantity:0xc0003596c0 Type:0xc000359650 id:0xc000359500 id_product:0xc000359570]" event=Finish
+time="14/12/22 11:19:08" level=info msg=MakeTableData event=fillcolumns form=Table
+time="14/12/22 11:19:08" level=info msg=MakeTable event="Fill data" form=Table
+time="14/12/22 11:19:08" level=info msg=GetToolBar Out="&{0xc0000d6500}" event=start form=main
+time="14/12/22 11:19:08" level=info msg=GetToolBar DocumentCreateIcon=GetToolBar
+time="14/12/22 11:19:08" level=info msg=CreateRenderer h.Tool="&{{{0 0} {0 0} false 0xc001878e40 {{0 0} 0 0 0 0}} [0xc000db5f68 0x7ff7e04d0980 0xc000db5f80 0xc000db5f98 0x7ff7e04d0980 0xc000db5fc8]}"
+time="14/12/22 11:19:09" level=info msg=OnSelectedMakeTableLabel t.Form="{Table map[invoice:0xc0000a0500] 0xc0003e65a0 0xc000f72e10}" w="{5 4}"
+time="14/12/22 11:19:09" level=info msg=FocusActiveWidget edit=true selected="{5 4}" tip=
+time="14/12/22 11:19:09" level=info msg=t.Selected T.Form.ActiveWidget="&{string 0xc001142b40 <nil> <nil>}"
+time="14/12/22 11:19:09" level=info msg=t.Selected T.Form.ActiveWidget="&{string 0xc001143440 <nil> <nil>}"
+time="14/12/22 11:19:18" level=info msg=FocusActiveWidget edit=true selected="{4 4}" tip=string
+time="14/12/22 11:19:18" level=info msg=t.Selected T.Form.ActiveWidget="&{string 0xc0000fab40 <nil> <nil>}"
+time="14/12/22 11:19:18" level=info msg=t.Selected T.Form.ActiveWidget="&{string 0xc0000fb200 <nil> <nil>}"
+time="14/12/22 11:19:26" level=info msg=FocusActiveWidget edit=false selected="{4 4}" tip=table
+time="14/12/22 11:19:28" level=info msg=OnSelectedMakeTableLabel t.Form="{Table map[invoice:0xc0000a0500] 0xc0003e65a0 0xc000f72e10}" w="{4 4}"
+time="14/12/22 11:19:28" level=info msg=FocusActiveWidget edit=false selected="{4 4}" tip=
+time="14/12/22 11:19:32" level=info msg=OnSelectedMakeTableLabel t.Form="{Table map[invoice:0xc0000a0500] 0xc0003e65a0 0xc000f72e10}" w="{0 3}"
+time="14/12/22 11:19:32" level=info msg=FocusActiveWidget edit=false selected="{0 3}" tip=
+time="14/12/22 11:19:33" level=info msg=OnSelectedMakeTableLabel t.Form="{Table map[invoice:0xc0000a0500] 0xc0003e65a0 0xc000f72e10}" w="{2 3}"
+time="14/12/22 11:19:33" level=info msg=FocusActiveWidget edit=false selected="{2 3}" tip=
+time="14/12/22 11:19:37" level=info msg=OnSelectedMakeTableLabel t.Form="{Table map[invoice:0xc0000a0500] 0xc0003e65a0 0xc000f72e10}" w="{1 3}"
+time="14/12/22 11:19:37" level=info msg=FocusActiveWidget edit=false selected="{1 3}" tip=
+time="14/12/22 11:19:38" level=info msg=OnSelectedMakeTableLabel t.Form="{Table map[invoice:0xc0000a0500] 0xc0003e65a0 0xc000f72e10}" w="{1 1}"
+time="14/12/22 11:19:38" level=info msg=FocusActiveWidget edit=false selected="{1 1}" tip=
+time="14/12/22 11:19:38" level=info msg=OnSelectedMakeTableLabel t.Form="{Table map[invoice:0xc0000a0500] 0xc0003e65a0 0xc000f72e10}" w="{4 2}"
+time="14/12/22 11:19:38" level=info msg=FocusActiveWidget edit=false selected="{4 2}" tip=
+time="14/12/22 11:19:41" level=info msg=OnSelectedMakeTableLabel t.Form="{Table map[invoice:0xc0000a0500] 0xc0003e65a0 0xc000f72e10}" w="{3 8}"
+time="14/12/22 11:19:41" level=info msg=FocusActiveWidget edit=false selected="{3 8}" tip=
+time="14/12/22 11:19:42" level=info msg=OnSelectedMakeTableLabel t.Form="{Table map[invoice:0xc0000a0500] 0xc0003e65a0 0xc000f72e10}" w="{4 8}"
+time="14/12/22 11:19:42" level=info msg=FocusActiveWidget edit=false selected="{4 8}" tip=
+time="14/12/22 11:22:26" level=info msg="Начало" Out="&{0xc000146500}" event=start form=main
+time="14/12/22 11:22:27" level=info msg="✓Init" event="InitFormData()" form=Main
+time="14/12/22 11:22:28" level=info msg="✓Init" event="InitFormData()" form=Table
+time="14/12/22 11:22:28" level=info msg=Data columns=10 event="Fill Data" rows=500
+time="14/12/22 11:22:28" level=info msg=Data columns ddes=10 event="Init data" form="Test data" rows data=500
+time="14/12/22 11:22:28" level=info msg=NewOTable 1table.Form =500
+time="14/12/22 11:22:28" level=info msg=Columns columns=10 event="fillcolumns()" form=
+time="14/12/22 11:22:28" level=info msg=Columns columns="map[Amount:0xc0003acb60 Check:0xc0003acbd0 Comment:0xc0003accb0 DateCheck:0xc0003acc40 Price:0xc0003acaf0 Product:0xc0003ac9a0 Quantity:0xc0003aca80 Type:0xc0003aca10 id:0xc0003ac8c0 id_product:0xc0003ac930]" event=Finish
+time="14/12/22 11:22:28" level=info msg=MakeTableData event=fillcolumns form=Table
+time="14/12/22 11:22:28" level=info msg=MakeTable event="Fill data" form=Table
+time="14/12/22 11:22:28" level=info msg=GetToolBar Out="&{0xc000146500}" event=start form=main
+time="14/12/22 11:22:28" level=info msg=GetToolBar DocumentCreateIcon=GetToolBar
+time="14/12/22 11:22:28" level=info msg=CreateRenderer h.Tool="&{{{0 0} {0 0} false 0xc00050c960 {{0 0} 0 0 0 0}} [0xc000002060 0x7ff6e9ff69e0 0xc000002078 0xc000002090 0x7ff6e9ff69e0 0xc0000020c0]}"
+time="14/12/22 11:22:31" level=info msg=OnSelectedMakeTableLabel t.Form="{Table map[invoice:0xc000118140] 0xc000074000 0xc0003c0c90}" w="{4 4}"
+time="14/12/22 11:22:31" level=info msg=FocusActiveWidget edit=true selected="{4 4}" tip=
+time="14/12/22 11:22:31" level=info msg=t.Selected T.Form.ActiveWidget="&{string 0xc00016ed80 <nil> <nil>}"
+time="14/12/22 11:22:31" level=info msg=t.Selected T.Form.ActiveWidget="&{string 0xc00016f200 <nil> <nil>}"
+time="14/12/22 11:22:35" level=info msg=FocusActiveWidget edit=false selected="{4 4}" tip=table
+time="14/12/22 11:22:36" level=info msg=FocusActiveWidget edit=false selected="{3 4}" tip=
+time="14/12/22 11:22:38" level=info msg=FocusActiveWidget edit=false selected="{4 4}" tip=
+time="14/12/22 11:22:39" level=info msg=FocusActiveWidget edit=false selected="{5 4}" tip=
+time="14/12/22 11:22:40" level=info msg=FocusActiveWidget edit=false selected="{6 4}" tip=
+time="14/12/22 11:22:41" level=info msg=FocusActiveWidget edit=false selected="{6 3}" tip=
+time="14/12/22 11:22:41" level=info msg=FocusActiveWidget edit=false selected="{6 2}" tip=
+time="14/12/22 11:22:43" level=info msg=OnSelectedMakeTableLabel t.Form="{Table map[invoice:0xc000118140] 0xc000074000 0xc0003c0c90}" w="{6 4}"
+time="14/12/22 11:22:43" level=info msg=FocusActiveWidget edit=false selected="{6 4}" tip=
+time="14/12/22 11:22:45" level=info msg=OnSelectedMakeTableLabel t.Form="{Table map[invoice:0xc000118140] 0xc000074000 0xc0003c0c90}" w="{5 4}"
+time="14/12/22 11:22:45" level=info msg=FocusActiveWidget edit=false selected="{5 4}" tip=
+time="14/12/22 11:22:48" level=info msg=OnSelectedMakeTableLabel t.Form="{Table map[invoice:0xc000118140] 0xc000074000 0xc0003c0c90}" w="{6 4}"
+time="14/12/22 11:22:48" level=info msg=FocusActiveWidget edit=false selected="{6 4}" tip=
+time="14/12/22 11:22:56" level=info msg=OnSelectedMakeTableLabel t.Form="{Table map[invoice:0xc000118140] 0xc000074000 0xc0003c0c90}" w="{7 4}"
+time="14/12/22 11:22:56" level=info msg=FocusActiveWidget edit=false selected="{7 4}" tip=
+time="14/12/22 11:28:55" level=info msg="Начало" Out="&{0xc000146500}" event=start form=main
+time="14/12/22 11:28:55" level=info msg="✓Init" event="InitFormData()" form=Main
+time="14/12/22 11:29:02" level=info msg="✓Init" event="InitFormData()" form=Table
+time="14/12/22 11:29:02" level=info msg=Data columns=10 event="Fill Data" rows=500
+time="14/12/22 11:29:02" level=info msg=Data columns ddes=10 event="Init data" form="Test data" rows data=500
+time="14/12/22 11:29:02" level=info msg=NewOTable 1table.Form =500
+time="14/12/22 11:29:02" level=info msg=Columns columns=10 event="fillcolumns()" form=
+time="14/12/22 11:29:02" level=info msg=Columns columns="map[Amount:0xc00024a9a0 Check:0xc00024aa10 Comment:0xc00024aaf0 DateCheck:0xc00024aa80 Price:0xc00024a930 Product:0xc00024a7e0 Quantity:0xc00024a8c0 Type:0xc00024a850 id:0xc00024a700 id_product:0xc00024a770]" event=Finish
+time="14/12/22 11:29:02" level=info msg=MakeTableData event=fillcolumns form=Table
+time="14/12/22 11:29:02" level=info msg=MakeTable event="Fill data" form=Table
+time="14/12/22 11:29:02" level=info msg=GetToolBar Out="&{0xc000146500}" event=start form=main
+time="14/12/22 11:29:02" level=info msg=GetToolBar DocumentCreateIcon=GetToolBar
+time="14/12/22 11:29:02" level=info msg=CreateRenderer h.Tool="&{{{0 0} {0 0} false 0xc000cf2ba0 {{0 0} 0 0 0 0}} [0xc000cf11b8 0x7ff7b4ae69e0 0xc000cf11d0 0xc000cf11e8 0x7ff7b4ae69e0 0xc000cf1218]}"
+time="14/12/22 11:29:06" level=info msg=OnSelectedMakeTableLabel t.Form="{Table map[invoice:0xc000118140] 0xc00052c5a0 0xc0003bef60}" w="{3 4}"
+time="14/12/22 11:29:06" level=info msg=FocusActiveWidget edit=true selected="{3 4}" tip=
+time="14/12/22 11:29:06" level=info msg=t.Selected T.Form.ActiveWidget="&{string 0xc00016ed80 <nil> <nil>}"
+time="14/12/22 11:29:06" level=info msg=t.Selected T.Form.ActiveWidget="&{string 0xc00016f200 <nil> <nil>}"
+time="14/12/22 11:29:23" level=info msg=FocusActiveWidget edit=false selected="{3 4}" tip=table
+time="14/12/22 11:29:25" level=info msg=FocusActiveWidget edit=false selected="{3 4}" tip=table
+time="14/12/22 11:29:27" level=info msg=FocusActiveWidget edit=false selected="{3 4}" tip=table
+time="14/12/22 11:29:28" level=info msg=OnSelectedMakeTableLabel t.Form="{Table map[invoice:0xc000118140] 0xc00052c5a0 0xc0003bef60}" w="{4 4}"
+time="14/12/22 11:29:28" level=info msg=FocusActiveWidget edit=false selected="{4 4}" tip=
+time="14/12/22 11:29:34" level=info msg=OnSelectedMakeTableLabel t.Form="{Table map[invoice:0xc000118140] 0xc00052c5a0 0xc0003bef60}" w="{5 4}"
+time="14/12/22 11:29:34" level=info msg=FocusActiveWidget edit=false selected="{5 4}" tip=
+time="14/12/22 11:29:40" level=info msg=OnSelectedMakeTableLabel t.Form="{Table map[invoice:0xc000118140] 0xc00052c5a0 0xc0003bef60}" w="{5 3}"
+time="14/12/22 11:29:40" level=info msg=FocusActiveWidget edit=false selected="{5 3}" tip=
+time="14/12/22 11:31:24" level=info msg="Начало" Out="&{0xc000146500}" event=start form=main
+time="14/12/22 11:31:24" level=info msg="✓Init" event="InitFormData()" form=Main
+time="14/12/22 11:31:25" level=info msg="✓Init" event="InitFormData()" form=Table
+time="14/12/22 11:31:25" level=info msg=Data columns=10 event="Fill Data" rows=500
+time="14/12/22 11:31:25" level=info msg=Data columns ddes=10 event="Init data" form="Test data" rows data=500
+time="14/12/22 11:31:25" level=info msg=NewOTable 1table.Form =500
+time="14/12/22 11:31:25" level=info msg=Columns columns=10 event="fillcolumns()" form=
+time="14/12/22 11:31:25" level=info msg=Columns columns="map[Amount:0xc00024a9a0 Check:0xc00024aa10 Comment:0xc00024aaf0 DateCheck:0xc00024aa80 Price:0xc00024a930 Product:0xc00024a7e0 Quantity:0xc00024a8c0 Type:0xc00024a850 id:0xc00024a700 id_product:0xc00024a770]" event=Finish
+time="14/12/22 11:31:25" level=info msg=MakeTableData event=fillcolumns form=Table
+time="14/12/22 11:31:25" level=info msg=MakeTable event="Fill data" form=Table
+time="14/12/22 11:31:25" level=info msg=GetToolBar Out="&{0xc000146500}" event=start form=main
+time="14/12/22 11:31:25" level=info msg=GetToolBar DocumentCreateIcon=GetToolBar
+time="14/12/22 11:31:25" level=info msg=CreateRenderer h.Tool="&{{{0 0} {0 0} false 0xc000161080 {{0 0} 0 0 0 0}} [0xc00011db00 0x7ff66c9f69e0 0xc00011db18 0xc00011db30 0x7ff66c9f69e0 0xc00011db60]}"
+time="14/12/22 11:31:26" level=info msg=OnSelectedMakeTableLabel t.Form="{Table map[invoice:0xc000118140] 0xc00053a000 0xc000030750}" w="{5 5}"
+time="14/12/22 11:31:26" level=info msg=FocusActiveWidget edit=true selected="{5 5}" tip=table
+time="14/12/22 11:31:26" level=info msg=t.Selected T.Form.ActiveWidget="&{string 0xc000e82480 <nil> <nil>}"
+time="14/12/22 11:31:26" level=info msg=t.Selected T.Form.ActiveWidget="&{string 0xc000e82900 <nil> <nil>}"
+time="14/12/22 11:31:34" level=info msg=FocusActiveWidget edit=false selected="{5 5}" tip=table
+time="14/12/22 11:31:34" level=info msg=FocusActiveWidget edit=false selected="{4 5}" tip=table
+time="14/12/22 11:31:35" level=info msg=FocusActiveWidget edit=false selected="{4 4}" tip=table
+time="14/12/22 11:31:38" level=info msg=OnSelectedMakeTableLabel t.Form="{Table map[invoice:0xc000118140] 0xc00053a000 0xc000030750}" w="{6 4}"
+time="14/12/22 11:31:38" level=info msg=FocusActiveWidget edit=false selected="{6 4}" tip=table
+time="14/12/22 11:31:43" level=info msg=OnSelectedMakeTableLabel t.Form="{Table map[invoice:0xc000118140] 0xc00053a000 0xc000030750}" w="{5 4}"
+time="14/12/22 11:31:43" level=info msg=FocusActiveWidget edit=false selected="{5 4}" tip=table
+time="14/12/22 11:31:51" level=info msg=OnSelectedMakeTableLabel t.Form="{Table map[invoice:0xc000118140] 0xc00053a000 0xc000030750}" w="{5 3}"
+time="14/12/22 11:31:51" level=info msg=FocusActiveWidget edit=false selected="{5 3}" tip=table
+time="14/12/22 11:31:56" level=info msg=OnSelectedMakeTableLabel t.Form="{Table map[invoice:0xc000118140] 0xc00053a000 0xc000030750}" w="{6 3}"
+time="14/12/22 11:31:56" level=info msg=FocusActiveWidget edit=false selected="{6 3}" tip=table
+time="14/12/22 11:31:57" level=info msg=OnSelectedMakeTableLabel t.Form="{Table map[invoice:0xc000118140] 0xc00053a000 0xc000030750}" w="{6 2}"
+time="14/12/22 11:31:57" level=info msg=FocusActiveWidget edit=false selected="{6 2}" tip=table
+time="14/12/22 11:32:02" level=info msg=OnSelectedMakeTableLabel t.Form="{Table map[invoice:0xc000118140] 0xc00053a000 0xc000030750}" w="{6 7}"
+time="14/12/22 11:32:02" level=info msg=FocusActiveWidget edit=false selected="{6 7}" tip=table
+time="14/12/22 11:32:03" level=info msg=OnSelectedMakeTableLabel t.Form="{Table map[invoice:0xc000118140] 0xc00053a000 0xc000030750}" w="{6 6}"
+time="14/12/22 11:32:03" level=info msg=FocusActiveWidget edit=false selected="{6 6}" tip=table
+time="14/12/22 11:32:11" level=info msg=OnSelectedMakeTableLabel t.Form="{Table map[invoice:0xc000118140] 0xc00053a000 0xc000030750}" w="{5 4}"
+time="14/12/22 11:32:11" level=info msg=FocusActiveWidget edit=false selected="{5 4}" tip=table
+time="14/12/22 11:32:11" level=info msg=OnSelectedMakeTableLabel t.Form="{Table map[invoice:0xc000118140] 0xc00053a000 0xc000030750}" w="{5 2}"
+time="14/12/22 11:32:11" level=info msg=FocusActiveWidget edit=false selected="{5 2}" tip=table
+time="14/12/22 11:32:12" level=info msg=OnSelectedMakeTableLabel t.Form="{Table map[invoice:0xc000118140] 0xc00053a000 0xc000030750}" w="{5 1}"
+time="14/12/22 11:32:12" level=info msg=FocusActiveWidget edit=false selected="{5 1}" tip=table
+time="14/12/22 11:32:14" level=info msg="✓Init" event="InitFormData()" form=TableProp
+time="14/12/22 11:32:14" level=info msg=TableInitProperties datag=10 form1=
+time="14/12/22 11:32:14" level=info msg=GetToolBar Properties=10
+time="14/12/22 11:32:14" level=info msg=NewOTable 1table.Form =10
+time="14/12/22 11:32:14" level=info msg=Columns columns=6 event="fillcolumns()" form=
+time="14/12/22 11:32:14" level=info msg=Columns columns="map[Color:0xc0003aad20 Header:0xc0003aabd0 Type:0xc0003aac40 Width:0xc0003aad90 formula:0xc0003aacb0 id:0xc0003aab60]" event=Finish
+time="14/12/22 11:32:14" level=info msg=MakeTableData event=fillcolumns form=TableProp
+time="14/12/22 11:32:14" level=info msg=MakeTable event="Fill data" form=TableProp
+time="14/12/22 11:32:14" level=info msg=GetToolBar Properties len  dv=10
+time="14/12/22 11:32:14" level=info msg=CreateRenderer h.Tool="<nil>"
+time="14/12/22 11:32:16" level=info msg=OnSelectedMakeTableLabel t.Form="{TableProp map[invoice:0xc000118500] 0xc000266780 0xc001076570}" w="{6 3}"
+time="14/12/22 11:32:16" level=info msg=FocusActiveWidget edit=true selected="{6 3}" tip=table
+time="14/12/22 11:32:16" level=info msg=t.Selected T.Form.ActiveWidget="&{string 0xc000e826c0 <nil> <nil>}"
+time="14/12/22 11:32:16" level=info msg=t.Selected T.Form.ActiveWidget="&{string 0xc000e82d80 <nil> <nil>}"
+time="14/12/22 11:32:18" level=info msg=FocusActiveWidget edit=true selected="{5 3}" tip=string
+time="14/12/22 11:32:18" level=info msg=t.Selected T.Form.ActiveWidget="&{string 0xc00016eb40 <nil> <nil>}"
+time="14/12/22 11:32:18" level=info msg=t.Selected T.Form.ActiveWidget="&{string 0xc00016efc0 <nil> <nil>}"
+time="14/12/22 11:32:18" level=info msg=FocusActiveWidget edit=true selected="{4 3}" tip=string
+time="14/12/22 11:32:18" level=info msg=t.Selected T.Form.ActiveWidget="&{string 0xc000e82240 <nil> <nil>}"
+time="14/12/22 11:32:18" level=info msg=t.Selected T.Form.ActiveWidget="&{string 0xc00055c240 <nil> <nil>}"
+time="14/12/22 11:32:18" level=info msg=FocusActiveWidget edit=true selected="{3 3}" tip=string
+time="14/12/22 11:32:18" level=info msg=t.Selected T.Form.ActiveWidget="&{string 0xc00055c6c0 <nil> <nil>}"
+time="14/12/22 11:32:18" level=info msg=t.Selected T.Form.ActiveWidget="&{string 0xc00055cb40 <nil> <nil>}"
+time="14/12/22 11:32:18" level=info msg=FocusActiveWidget edit=true selected="{2 3}" tip=string
+time="14/12/22 11:32:18" level=info msg=t.Selected T.Form.ActiveWidget="&{string 0xc00016f440 <nil> <nil>}"
+time="14/12/22 11:32:18" level=info msg=t.Selected T.Form.ActiveWidget="&{string 0xc00016f8c0 <nil> <nil>}"
+time="14/12/22 11:32:21" level=info msg=FocusActiveWidget edit=false selected="{2 3}" tip=table
+time="14/12/22 11:32:21" level=info msg=FocusActiveWidget edit=false selected="{2 2}" tip=table
+time="14/12/22 11:32:21" level=info msg=FocusActiveWidget edit=false selected="{2 1}" tip=table
+time="14/12/22 11:32:22" level=info msg=FocusActiveWidget edit=false selected="{2 0}" tip=table
+time="14/12/22 11:32:22" level=info msg=FocusActiveWidget edit=false selected="{2 1}" tip=table
+time="14/12/22 11:32:22" level=info msg=FocusActiveWidget edit=false selected="{2 2}" tip=table
+time="14/12/22 11:32:22" level=info msg=FocusActiveWidget edit=false selected="{2 3}" tip=table
+time="14/12/22 11:32:23" level=info msg=FocusActiveWidget edit=false selected="{3 3}" tip=table
+time="14/12/22 11:32:23" level=info msg=FocusActiveWidget edit=false selected="{4 3}" tip=table
+time="14/12/22 11:32:23" level=info msg=FocusActiveWidget edit=false selected="{4 2}" tip=table
+time="14/12/22 11:32:23" level=info msg=FocusActiveWidget edit=false selected="{5 2}" tip=table
+time="14/12/22 11:32:23" level=info msg=FocusActiveWidget edit=false selected="{5 1}" tip=table
+time="14/12/22 11:32:23" level=info msg=FocusActiveWidget edit=false selected="{6 1}" tip=table
+time="14/12/22 11:32:24" level=info msg=FocusActiveWidget edit=false selected="{6 0}" tip=table
+time="14/12/22 11:32:24" level=info msg=FocusActiveWidget edit=false selected="{6 1}" tip=table
+time="14/12/22 11:32:26" level=info msg=OnSelectedMakeTableLabel t.Form="{TableProp map[invoice:0xc000118500] 0xc000266780 0xc001076570}" w="{6 1}"
+time="14/12/22 11:32:26" level=info msg=FocusActiveWidget edit=false selected="{6 1}" tip=table
+time="14/12/22 11:34:38" level=info msg="Начало" Out="&{0xc000146500}" event=start form=main
+time="14/12/22 11:34:38" level=info msg="✓Init" event="InitFormData()" form=Main
+time="14/12/22 11:34:40" level=info msg="✓Init" event="InitFormData()" form=Table
+time="14/12/22 11:34:40" level=info msg=Data columns=10 event="Fill Data" rows=500
+time="14/12/22 11:34:40" level=info msg=Data columns ddes=10 event="Init data" form="Test data" rows data=500
+time="14/12/22 11:34:40" level=info msg=NewOTable 1table.Form =500
+time="14/12/22 11:34:40" level=info msg=Columns columns=10 event="fillcolumns()" form=
+time="14/12/22 11:34:40" level=info msg=Columns columns="map[Amount:0xc0000b4a80 Check:0xc0000b4af0 Comment:0xc0000b4bd0 DateCheck:0xc0000b4b60 Price:0xc0000b4a10 Product:0xc0000b48c0 Quantity:0xc0000b49a0 Type:0xc0000b4930 id:0xc0000b47e0 id_product:0xc0000b4850]" event=Finish
+time="14/12/22 11:34:40" level=info msg=MakeTableData event=fillcolumns form=Table
+time="14/12/22 11:34:40" level=info msg=MakeTable event="Fill data" form=Table
+time="14/12/22 11:34:40" level=info msg=GetToolBar Out="&{0xc000146500}" event=start form=main
+time="14/12/22 11:34:40" level=info msg=GetToolBar DocumentCreateIcon=GetToolBar
+time="14/12/22 11:34:40" level=info msg=CreateRenderer h.Tool="&{{{0 0} {0 0} false 0xc000094a80 {{0 0} 0 0 0 0}} [0xc00011c8b8 0x7ff62c6869e0 0xc00011c8d0 0xc00011c8e8 0x7ff62c6869e0 0xc00011c930]}"
+time="14/12/22 11:34:44" level=info msg=OnSelectedMakeTableLabel t.Form="{Table map[invoice:0xc000118140] 0xc000532000 0xc000183560}" w="{4 4}"
+time="14/12/22 11:34:44" level=info msg=FocusActiveWidget edit=true selected="{4 4}" tip=table
+time="14/12/22 11:34:44" level=info msg=t.Selected T.Form.ActiveWidget="&{string 0xc00016ed80 <nil> <nil>}"
+time="14/12/22 11:34:44" level=info msg=t.Selected T.Form.ActiveWidget="&{string 0xc00016f200 <nil> <nil>}"
+time="14/12/22 11:34:48" level=info msg=t.Selected T.Form.ActiveWidget="&{string 0xc00016eb40 <nil> <nil>}"
+time="14/12/22 11:34:52" level=info msg=FocusActiveWidget edit=false selected="{4 4}" tip=table
+time="14/12/22 11:35:01" level=info msg=OnSelectedMakeTableLabel t.Form="{Table map[invoice:0xc000118140] 0xc000532000 0xc000183560}" w="{5 3}"
+time="14/12/22 11:35:01" level=info msg=FocusActiveWidget edit=false selected="{5 3}" tip=table
+time="14/12/22 11:35:16" level=info msg=OnSelectedMakeTableLabel t.Form="{Table map[invoice:0xc000118140] 0xc000532000 0xc000183560}" w="{5 8}"
+time="14/12/22 11:35:16" level=info msg=FocusActiveWidget edit=false selected="{5 8}" tip=table
+time="14/12/22 11:38:44" level=info msg="Начало" Out="&{0xc0000d6500}" event=start form=main
+time="14/12/22 11:38:44" level=info msg="✓Init" event="InitFormData()" form=Main
+time="14/12/22 11:38:49" level=info msg="✓Init" event="InitFormData()" form=Table
+time="14/12/22 11:38:49" level=info msg=Data columns=10 event="Fill Data" rows=500
+time="14/12/22 11:38:49" level=info msg=Data columns ddes=10 event="Init data" form="Test data" rows data=500
+time="14/12/22 11:38:49" level=info msg=NewOTable 1table.Form =500
+time="14/12/22 11:38:49" level=info msg=Columns columns=10 event="fillcolumns()" form=
+time="14/12/22 11:38:49" level=info msg=Columns columns="map[Amount:0xc000338af0 Check:0xc000338b60 Comment:0xc000338c40 DateCheck:0xc000338bd0 Price:0xc000338a80 Product:0xc000338930 Quantity:0xc000338a10 Type:0xc0003389a0 id:0xc000338850 id_product:0xc0003388c0]" event=Finish
+time="14/12/22 11:38:49" level=info msg=MakeTableData event=fillcolumns form=Table
+time="14/12/22 11:38:49" level=info msg=MakeTable event="Fill data" form=Table
+time="14/12/22 11:38:49" level=info msg=GetToolBar Out="&{0xc0000d6500}" event=start form=main
+time="14/12/22 11:38:49" level=info msg=GetToolBar DocumentCreateIcon=GetToolBar
+time="14/12/22 11:38:49" level=info msg=CreateRenderer h.Tool="&{{{0 0} {0 0} false 0xc0003bb0e0 {{0 0} 0 0 0 0}} [0xc0000084e0 0x7ff6d31769e0 0xc0000084f8 0xc000008510 0x7ff6d31769e0 0xc000008540]}"
+time="14/12/22 11:38:50" level=info msg=OnSelectedMakeTableLabel t.Form="{Table map[invoice:0xc0000a8140] 0xc0003ec000 0xc00034ca50}" w="{3 4}"
+time="14/12/22 11:38:50" level=info msg=FocusActiveWidget edit=true selected="{3 4}" tip=table
+time="14/12/22 11:38:50" level=info msg=t.Selected T.Form.ActiveWidget="&{string 0xc0000fad80 <nil> <nil>}"
+time="14/12/22 11:38:50" level=info msg=t.Selected T.Form.ActiveWidget="&{string 0xc0000fb200 <nil> <nil>}"
+time="14/12/22 11:38:52" level=info msg=FocusActiveWidget edit=true selected="{4 4}" tip=string
+time="14/12/22 11:38:52" level=info msg=t.Selected T.Form.ActiveWidget="&{string 0xc0000fab40 <nil> <nil>}"
+time="14/12/22 11:38:52" level=info msg=t.Selected T.Form.ActiveWidget="&{string 0xc0000fb440 <nil> <nil>}"
+time="14/12/22 11:38:52" level=info msg=FocusActiveWidget edit=true selected="{5 4}" tip=string
+time="14/12/22 11:38:52" level=info msg=t.Selected T.Form.ActiveWidget="&{string 0xc0000fafc0 <nil> <nil>}"
+time="14/12/22 11:38:52" level=info msg=t.Selected T.Form.ActiveWidget="&{string 0xc00037c240 <nil> <nil>}"
+time="14/12/22 11:38:53" level=info msg=FocusActiveWidget edit=true selected="{6 4}" tip=string
+time="14/12/22 11:38:53" level=info msg=t.Selected T.Form.ActiveWidget="&{string 0xc00107c000 <nil> <nil>}"
+time="14/12/22 11:38:53" level=info msg=t.Selected T.Form.ActiveWidget="&{string 0xc001118240 <nil> <nil>}"
+time="14/12/22 11:38:55" level=info msg=FocusActiveWidget edit=false selected="{6 4}" tip=table
+time="14/12/22 11:38:55" level=info msg=TypedKey entry.text="&{Left {331}}"
+time="14/12/22 11:38:56" level=info msg=TypedKey entry.text="&{Left {331}}"
+time="14/12/22 11:38:56" level=info msg=TypedKey entry.text="&{Right {333}}"
+time="14/12/22 11:38:57" level=info msg=TypedKey entry.text="&{Down {336}}"
+time="14/12/22 11:38:57" level=info msg=TypedKey entry.text="&{Up {328}}"
+time="14/12/22 11:38:58" level=info msg=TypedKey entry.text="&{Left {331}}"
+time="14/12/22 11:38:58" level=info msg=TypedKey entry.text="&{Down {336}}"
+time="14/12/22 11:38:58" level=info msg=TypedKey entry.text="&{Up {328}}"
+time="14/12/22 11:38:59" level=info msg=TypedKey entry.text="&{Down {336}}"
+time="14/12/22 11:38:59" level=info msg=TypedKey entry.text="&{Left {331}}"
+time="14/12/22 11:39:00" level=info msg=TypedKey entry.text="&{Left {331}}"
+time="14/12/22 11:39:04" level=info msg=OnSelectedMakeTableLabel t.Form="{Table map[invoice:0xc0000a8140] 0xc0003ec000 0xc00034ca50}" w="{6 3}"
+time="14/12/22 11:39:04" level=info msg=FocusActiveWidget edit=false selected="{6 3}" tip=table
+time="14/12/22 11:39:05" level=info msg=TypedKey entry.text="&{Down {336}}"
+time="14/12/22 11:39:06" level=info msg=TypedKey entry.text="&{Down {336}}"
+time="14/12/22 11:39:06" level=info msg=TypedKey entry.text="&{Left {331}}"
+time="14/12/22 11:39:06" level=info msg=TypedKey entry.text="&{Up {328}}"
+time="14/12/22 11:39:07" level=info msg=TypedKey entry.text="&{Right {333}}"
+time="14/12/22 11:39:07" level=info msg=TypedKey entry.text="&{Down {336}}"
+time="14/12/22 11:39:07" level=info msg=TypedKey entry.text="&{Left {331}}"
+time="14/12/22 11:39:08" level=info msg=TypedKey entry.text="&{Up {328}}"
+time="14/12/22 11:42:07" level=info msg="Начало" Out="&{0xc0000d6500}" event=start form=main
+time="14/12/22 11:42:07" level=info msg="✓Init" event="InitFormData()" form=Main
+time="14/12/22 11:42:08" level=info msg="✓Init" event="InitFormData()" form=Table
+time="14/12/22 11:42:08" level=info msg=Data columns=10 event="Fill Data" rows=500
+time="14/12/22 11:42:08" level=info msg=Data columns ddes=10 event="Init data" form="Test data" rows data=500
+time="14/12/22 11:42:08" level=info msg=NewOTable 1table.Form =500
+time="14/12/22 11:42:08" level=info msg=Columns columns=10 event="fillcolumns()" form=
+time="14/12/22 11:42:08" level=info msg=Columns columns="map[Amount:0xc0003b6e00 Check:0xc0003b6e70 Comment:0xc0003b6f50 DateCheck:0xc0003b6ee0 Price:0xc0003b6d90 Product:0xc0003b6c40 Quantity:0xc0003b6d20 Type:0xc0003b6cb0 id:0xc0003b6b60 id_product:0xc0003b6bd0]" event=Finish
+time="14/12/22 11:42:08" level=info msg=MakeTableData event=fillcolumns form=Table
+time="14/12/22 11:42:08" level=info msg=MakeTable event="Fill data" form=Table
+time="14/12/22 11:42:08" level=info msg=GetToolBar Out="&{0xc0000d6500}" event=start form=main
+time="14/12/22 11:42:08" level=info msg=GetToolBar DocumentCreateIcon=GetToolBar
+time="14/12/22 11:42:08" level=info msg=CreateRenderer h.Tool="&{{{0 0} {0 0} false 0xc000586ba0 {{0 0} 0 0 0 0}} [0xc0000ac8a0 0x7ff708a669e0 0xc0000ac8b8 0xc0000ac8d0 0x7ff708a669e0 0xc0000ac900]}"
+time="14/12/22 11:42:09" level=info msg=OnSelectedMakeTableLabel t.Form="{Table map[invoice:0xc0000a8140] 0xc000160000 0xc000030180}" w="{5 4}"
+time="14/12/22 11:42:09" level=info msg=FocusActiveWidget edit=true selected="{5 4}" tip=table
+time="14/12/22 11:42:09" level=info msg=t.Selected T.Form.ActiveWidget="&{string 0xc0000fad80 <nil> <nil>}"
+time="14/12/22 11:42:09" level=info msg=t.Selected T.Form.ActiveWidget="&{string 0xc0000fb200 <nil> <nil>}"
+time="14/12/22 11:42:11" level=info msg=FocusActiveWidget edit=false selected="{5 4}" tip=table
+time="14/12/22 11:42:12" level=info msg=OnSelectedMakeTableLabel t.Form="{Table map[invoice:0xc0000a8140] 0xc000160000 0xc000030180}" w="{5 3}"
+time="14/12/22 11:42:12" level=info msg=FocusActiveWidget edit=false selected="{5 3}" tip=table
+time="14/12/22 11:42:13" level=info msg=FocusActiveWidget edit=false selected="{4 3}" tip=table
+time="14/12/22 11:42:13" level=info msg=FocusActiveWidget edit=false selected="{5 3}" tip=table
+time="14/12/22 11:42:14" level=info msg=FocusActiveWidget edit=false selected="{6 3}" tip=table
+time="14/12/22 11:42:14" level=info msg=FocusActiveWidget edit=false selected="{7 3}" tip=table
+time="14/12/22 11:42:14" level=info msg=FocusActiveWidget edit=false selected="{8 3}" tip=table
+time="14/12/22 11:42:14" level=info msg=FocusActiveWidget edit=false selected="{8 4}" tip=table
+time="14/12/22 11:42:15" level=info msg=FocusActiveWidget edit=false selected="{8 5}" tip=table
+time="14/12/22 11:42:15" level=info msg=FocusActiveWidget edit=false selected="{8 6}" tip=table
+time="14/12/22 11:42:17" level=info msg=OnSelectedMakeTableLabel t.Form="{Table map[invoice:0xc0000a8140] 0xc000160000 0xc000030180}" w="{7 4}"
+time="14/12/22 11:42:17" level=info msg=FocusActiveWidget edit=false selected="{7 4}" tip=table
+time="14/12/22 11:42:23" level=info msg=OnSelectedMakeTableLabel t.Form="{Table map[invoice:0xc0000a8140] 0xc000160000 0xc000030180}" w="{4 3}"
+time="14/12/22 11:42:23" level=info msg=FocusActiveWidget edit=false selected="{4 3}" tip=table
+time="14/12/22 11:42:23" level=info msg=FocusActiveWidget edit=false selected="{5 3}" tip=table
+time="14/12/22 11:42:24" level=info msg=FocusActiveWidget edit=false selected="{6 3}" tip=table
+time="14/12/22 11:42:24" level=info msg=FocusActiveWidget edit=false selected="{7 3}" tip=table
+time="14/12/22 11:42:25" level=info msg=OnSelectedMakeTableLabel t.Form="{Table map[invoice:0xc0000a8140] 0xc000160000 0xc000030180}" w="{7 4}"
+time="14/12/22 11:42:25" level=info msg=FocusActiveWidget edit=false selected="{7 4}" tip=table
+time="14/12/22 11:42:27" level=info msg=OnSelectedMakeTableLabel t.Form="{Table map[invoice:0xc0000a8140] 0xc000160000 0xc000030180}" w="{6 4}"
+time="14/12/22 11:42:27" level=info msg=FocusActiveWidget edit=false selected="{6 4}" tip=table
+time="14/12/22 11:42:28" level=info msg=FocusActiveWidget edit=false selected="{5 4}" tip=table
+time="14/12/22 11:42:28" level=info msg=FocusActiveWidget edit=false selected="{6 4}" tip=table
+time="14/12/22 11:42:29" level=info msg=FocusActiveWidget edit=false selected="{7 4}" tip=table
+time="14/12/22 11:42:29" level=info msg=FocusActiveWidget edit=false selected="{8 4}" tip=table
+time="14/12/22 11:42:29" level=info msg=FocusActiveWidget edit=false selected="{9 4}" tip=table
+time="14/12/22 11:42:29" level=info msg=FocusActiveWidget edit=false selected="{9 3}" tip=table
+time="14/12/22 11:42:30" level=info msg=FocusActiveWidget edit=false selected="{9 2}" tip=table
+time="14/12/22 11:42:30" level=info msg=FocusActiveWidget edit=false selected="{8 2}" tip=table
+time="14/12/22 11:42:30" level=info msg=FocusActiveWidget edit=false selected="{7 2}" tip=table
+time="14/12/22 11:42:31" level=info msg=FocusActiveWidget edit=false selected="{6 2}" tip=table
+time="14/12/22 11:42:31" level=info msg=FocusActiveWidget edit=false selected="{7 2}" tip=table
+time="14/12/22 11:42:31" level=info msg=FocusActiveWidget edit=false selected="{8 2}" tip=table
+time="14/12/22 11:42:32" level=info msg=FocusActiveWidget edit=false selected="{8 3}" tip=table
+time="14/12/22 11:42:32" level=info msg=FocusActiveWidget edit=false selected="{8 4}" tip=table
+time="14/12/22 11:42:33" level=info msg=FocusActiveWidget edit=false selected="{8 5}" tip=table
+time="14/12/22 11:42:34" level=info msg=FocusActiveWidget edit=true selected="{8 5}" tip=table
+time="14/12/22 11:42:34" level=info msg=t.Selected T.Form.ActiveWidget="&{string 0xc0012ea240 <nil> 0xc0000a8140}"
+time="14/12/22 11:42:34" level=info msg=t.Selected T.Form.ActiveWidget="&{string 0xc0012ea6c0 <nil> 0xc0000a8140}"
+time="14/12/22 11:42:36" level=info msg=FocusActiveWidget edit=false selected="{8 5}" tip=table
+time="14/12/22 11:42:37" level=info msg=OnSelectedMakeTableLabel t.Form="{Table map[invoice:0xc0000a8140] 0xc000160000 0xc000030180}" w="{7 3}"
+time="14/12/22 11:42:37" level=info msg=FocusActiveWidget edit=false selected="{7 3}" tip=table
+time="14/12/22 11:42:39" level=info msg=FocusActiveWidget edit=true selected="{7 3}" tip=table
+time="14/12/22 11:42:39" level=info msg=t.Selected T.Form.ActiveWidget="&{string 0xc0012ea480 <nil> 0xc0000a8140}"
+time="14/12/22 11:42:39" level=info msg=t.Selected T.Form.ActiveWidget="&{string 0xc0012eab40 <nil> 0xc0000a8140}"
+time="14/12/22 11:42:40" level=info msg=FocusActiveWidget edit=false selected="{7 3}" tip=table
+time="14/12/22 11:42:42" level=info msg="✓Init" event="InitFormData()" form=TableProp
+time="14/12/22 11:42:42" level=info msg=TableInitProperties datag=10 form1=
+time="14/12/22 11:42:42" level=info msg=GetToolBar Properties=10
+time="14/12/22 11:42:42" level=info msg=NewOTable 1table.Form =10
+time="14/12/22 11:42:42" level=info msg=Columns columns=6 event="fillcolumns()" form=
+time="14/12/22 11:42:42" level=info msg=Columns columns="map[Color:0xc0002568c0 Header:0xc000256770 Type:0xc0002567e0 Width:0xc000256930 formula:0xc000256850 id:0xc000256700]" event=Finish
+time="14/12/22 11:42:42" level=info msg=MakeTableData event=fillcolumns form=TableProp
+time="14/12/22 11:42:42" level=info msg=MakeTable event="Fill data" form=TableProp
+time="14/12/22 11:42:42" level=info msg=GetToolBar Properties len  dv=10
+time="14/12/22 11:42:42" level=info msg=CreateRenderer h.Tool="<nil>"
+time="14/12/22 11:42:43" level=info msg=OnSelectedMakeTableLabel t.Form="{TableProp map[invoice:0xc0000a8500] 0xc0001605a0 0xc0013881b0}" w="{6 2}"
+time="14/12/22 11:42:43" level=info msg=FocusActiveWidget edit=true selected="{6 2}" tip=table
+time="14/12/22 11:42:43" level=info msg=t.Selected T.Form.ActiveWidget="&{string 0xc0012ead80 <nil> <nil>}"
+time="14/12/22 11:42:43" level=info msg=t.Selected T.Form.ActiveWidget="&{string 0xc0012eb200 <nil> <nil>}"
+time="14/12/22 11:42:44" level=info msg=FocusActiveWidget edit=true selected="{5 2}" tip=string
+time="14/12/22 11:42:44" level=info msg=t.Selected T.Form.ActiveWidget="&{string 0xc0012ea900 <nil> <nil>}"
+time="14/12/22 11:42:44" level=info msg=t.Selected T.Form.ActiveWidget="&{string 0xc0000fab40 <nil> <nil>}"
+time="14/12/22 11:42:45" level=info msg=FocusActiveWidget edit=true selected="{4 2}" tip=string
+time="14/12/22 11:42:45" level=info msg=t.Selected T.Form.ActiveWidget="&{string 0xc0012eafc0 <nil> <nil>}"
+time="14/12/22 11:42:45" level=info msg=t.Selected T.Form.ActiveWidget="&{string 0xc0000fafc0 <nil> <nil>}"
+time="14/12/22 11:42:46" level=info msg=FocusActiveWidget edit=false selected="{4 2}" tip=table
+time="14/12/22 11:42:47" level=info msg=FocusActiveWidget edit=false selected="{4 1}" tip=table
+time="14/12/22 11:42:47" level=info msg=FocusActiveWidget edit=false selected="{4 0}" tip=table
+time="14/12/22 11:42:48" level=info msg=FocusActiveWidget edit=false selected="{4 1}" tip=table
+time="14/12/22 11:42:48" level=info msg=FocusActiveWidget edit=false selected="{4 2}" tip=table
+time="14/12/22 11:42:49" level=info msg=FocusActiveWidget edit=false selected="{4 3}" tip=table
+time="14/12/22 11:42:49" level=info msg=FocusActiveWidget edit=false selected="{4 4}" tip=table
+time="14/12/22 11:42:50" level=info msg=OnSelectedMakeTableLabel t.Form="{TableProp map[invoice:0xc0000a8500] 0xc0001605a0 0xc0013881b0}" w="{5 3}"
+time="14/12/22 11:42:50" level=info msg=FocusActiveWidget edit=false selected="{5 3}" tip=table
+time="14/12/22 11:42:51" level=info msg=FocusActiveWidget edit=false selected="{6 3}" tip=table
+time="14/12/22 11:42:51" level=info msg=FocusActiveWidget edit=false selected="{7 3}" tip=table
+time="14/12/22 11:42:51" level=info msg=FocusActiveWidget edit=false selected="{8 3}" tip=table
+time="14/12/22 11:42:53" level=info msg=OnSelectedMakeTableLabel t.Form="{Table map[invoice:0xc0000a8140] 0xc000160000 0xc000030180}" w="{5 4}"
+time="14/12/22 11:42:53" level=info msg=FocusActiveWidget edit=false selected="{5 4}" tip=table
+time="14/12/22 11:42:54" level=info msg=FocusActiveWidget edit=false selected="{6 4}" tip=table
+time="14/12/22 11:42:54" level=info msg=FocusActiveWidget edit=false selected="{7 4}" tip=table
+time="14/12/22 11:42:54" level=info msg=FocusActiveWidget edit=false selected="{7 3}" tip=table
+time="14/12/22 11:42:55" level=info msg=FocusActiveWidget edit=false selected="{7 2}" tip=table
+time="14/12/22 11:42:55" level=info msg=FocusActiveWidget edit=false selected="{7 1}" tip=table
+time="14/12/22 11:42:55" level=info msg=FocusActiveWidget edit=false selected="{7 1}" tip=table
+time="14/12/22 11:42:55" level=info msg=FocusActiveWidget edit=false selected="{6 1}" tip=table
+time="14/12/22 11:42:55" level=info msg=FocusActiveWidget edit=false selected="{5 1}" tip=table
+time="14/12/22 11:42:55" level=info msg=FocusActiveWidget edit=false selected="{5 2}" tip=table
+time="14/12/22 11:42:56" level=info msg=FocusActiveWidget edit=false selected="{5 3}" tip=table
+time="14/12/22 11:42:57" level=info msg=OnSelectedMakeTableLabel t.Form="{TableProp map[invoice:0xc0000a8500] 0xc0001605a0 0xc0013881b0}" w="{6 5}"
+time="14/12/22 11:42:57" level=info msg=FocusActiveWidget edit=false selected="{6 5}" tip=table
+time="14/12/22 11:42:57" level=info msg=FocusActiveWidget edit=false selected="{5 5}" tip=table
+time="14/12/22 11:42:57" level=info msg=FocusActiveWidget edit=false selected="{5 5}" tip=table
+time="14/12/22 11:42:58" level=info msg=FocusActiveWidget edit=false selected="{5 4}" tip=table
+time="14/12/22 11:42:58" level=info msg=FocusActiveWidget edit=false selected="{6 4}" tip=table
+time="14/12/22 11:42:58" level=info msg=FocusActiveWidget edit=false selected="{7 4}" tip=table
+time="14/12/22 11:42:59" level=info msg=FocusActiveWidget edit=false selected="{7 3}" tip=table
+time="14/12/22 11:42:59" level=info msg=FocusActiveWidget edit=false selected="{7 2}" tip=table
+time="14/12/22 11:43:00" level=info msg=FocusActiveWidget edit=false selected="{6 2}" tip=table
+time="14/12/22 11:43:00" level=info msg=FocusActiveWidget edit=false selected="{5 2}" tip=table
+time="14/12/22 11:43:00" level=info msg=FocusActiveWidget edit=false selected="{6 2}" tip=table
+time="14/12/22 11:43:00" level=info msg=FocusActiveWidget edit=false selected="{5 2}" tip=table
+time="14/12/22 11:43:03" level=info msg=OnSelectedMakeTableLabel t.Form="{TableProp map[invoice:0xc0000a8500] 0xc0001605a0 0xc0013881b0}" w="{5 2}"
+time="14/12/22 11:43:03" level=info msg=FocusActiveWidget edit=false selected="{5 2}" tip=table
+time="14/12/22 11:43:11" level=info msg=OnSelectedMakeTableLabel t.Form="{TableProp map[invoice:0xc0000a8500] 0xc0001605a0 0xc0013881b0}" w="{6 1}"
+time="14/12/22 11:43:11" level=info msg=FocusActiveWidget edit=false selected="{6 1}" tip=table
+time="14/12/22 11:43:12" level=info msg=FocusActiveWidget edit=false selected="{5 1}" tip=table
+time="14/12/22 11:43:13" level=info msg=FocusActiveWidget edit=false selected="{4 1}" tip=table
+time="14/12/22 11:43:14" level=info msg=FocusActiveWidget edit=false selected="{5 1}" tip=table
+time="14/12/22 11:43:14" level=info msg=FocusActiveWidget edit=false selected="{6 1}" tip=table
+time="14/12/22 11:43:15" level=info msg=FocusActiveWidget edit=false selected="{6 0}" tip=table
+time="14/12/22 11:43:15" level=info msg=FocusActiveWidget edit=false selected="{6 0}" tip=table
+time="14/12/22 11:43:16" level=info msg=FocusActiveWidget edit=false selected="{6 1}" tip=table
+time="14/12/22 11:43:16" level=info msg=FocusActiveWidget edit=false selected="{6 2}" tip=table
+time="14/12/22 11:43:16" level=info msg=FocusActiveWidget edit=false selected="{6 3}" tip=table
+time="14/12/22 11:43:16" level=info msg=FocusActiveWidget edit=false selected="{6 4}" tip=table
+time="14/12/22 11:43:17" level=info msg=FocusActiveWidget edit=false selected="{6 5}" tip=table
+time="14/12/22 11:43:17" level=info msg=FocusActiveWidget edit=false selected="{6 5}" tip=table
+time="14/12/22 11:43:17" level=info msg=OnSelectedMakeTableLabel t.Form="{Table map[invoice:0xc0000a8140] 0xc000160000 0xc000030180}" w="{7 8}"
+time="14/12/22 11:43:17" level=info msg=FocusActiveWidget edit=false selected="{7 8}" tip=table
+time="14/12/22 11:43:18" level=info msg=FocusActiveWidget edit=false selected="{7 7}" tip=table
+time="14/12/22 11:43:18" level=info msg=FocusActiveWidget edit=false selected="{7 6}" tip=table
+time="14/12/22 11:43:19" level=info msg=FocusActiveWidget edit=false selected="{7 5}" tip=table
+time="14/12/22 11:43:19" level=info msg=FocusActiveWidget edit=false selected="{7 4}" tip=table
+time="14/12/22 11:43:20" level=info msg=FocusActiveWidget edit=false selected="{7 3}" tip=table
+time="14/12/22 11:43:20" level=info msg=FocusActiveWidget edit=false selected="{6 3}" tip=table
+time="14/12/22 11:43:20" level=info msg=FocusActiveWidget edit=false selected="{5 3}" tip=table
+time="14/12/22 11:43:21" level=info msg=FocusActiveWidget edit=false selected="{4 3}" tip=table
+time="14/12/22 11:43:21" level=info msg=FocusActiveWidget edit=false selected="{4 4}" tip=table
+time="14/12/22 11:43:21" level=info msg=FocusActiveWidget edit=false selected="{4 5}" tip=table
+time="14/12/22 11:43:21" level=info msg=FocusActiveWidget edit=false selected="{4 6}" tip=table
+time="14/12/22 11:43:22" level=info msg=FocusActiveWidget edit=false selected="{4 7}" tip=table
+time="14/12/22 11:43:22" level=info msg=FocusActiveWidget edit=false selected="{5 7}" tip=table
+time="14/12/22 11:43:22" level=info msg=FocusActiveWidget edit=false selected="{6 7}" tip=table
+time="14/12/22 11:43:22" level=info msg=FocusActiveWidget edit=false selected="{5 7}" tip=table
+time="14/12/22 11:43:23" level=info msg=OnSelectedMakeTableLabel t.Form="{Table map[invoice:0xc0000a8140] 0xc000160000 0xc000030180}" w="{6 8}"
+time="14/12/22 11:43:23" level=info msg=FocusActiveWidget edit=false selected="{6 8}" tip=table
+time="14/12/22 11:43:23" level=info msg=FocusActiveWidget edit=false selected="{5 8}" tip=table
+time="14/12/22 11:43:24" level=info msg=FocusActiveWidget edit=false selected="{4 8}" tip=table
+time="14/12/22 11:43:25" level=info msg=FocusActiveWidget edit=true selected="{4 8}" tip=table
+time="14/12/22 11:43:25" level=info msg=t.Selected T.Form.ActiveWidget="&{string 0xc0000fb200 <nil> 0xc0000a8140}"
+time="14/12/22 11:43:25" level=info msg=t.Selected T.Form.ActiveWidget="&{string 0xc0000fb680 <nil> 0xc0000a8140}"
+time="14/12/22 11:43:27" level=info msg=FocusActiveWidget edit=false selected="{4 8}" tip=table
+time="14/12/22 11:43:28" level=info msg=FocusActiveWidget edit=false selected="{5 8}" tip=table
+time="14/12/22 11:43:28" level=info msg=FocusActiveWidget edit=false selected="{6 8}" tip=table
+time="14/12/22 11:43:28" level=info msg=FocusActiveWidget edit=false selected="{6 7}" tip=table
+time="14/12/22 11:43:28" level=info msg=FocusActiveWidget edit=false selected="{5 7}" tip=table
+time="14/12/22 11:43:28" level=info msg=FocusActiveWidget edit=false selected="{5 6}" tip=table
+time="14/12/22 11:43:29" level=info msg=FocusActiveWidget edit=false selected="{5 5}" tip=table
+time="14/12/22 11:43:29" level=info msg=FocusActiveWidget edit=false selected="{5 4}" tip=table
+time="14/12/22 11:43:30" level=info msg=FocusActiveWidget edit=false selected="{5 3}" tip=table
+time="14/12/22 11:43:32" level=info msg=OnSelectedMakeTableLabel t.Form="{Table map[invoice:0xc0000a8140] 0xc000160000 0xc000030180}" w="{8 8}"
+time="14/12/22 11:43:32" level=info msg=FocusActiveWidget edit=false selected="{8 8}" tip=table
+time="14/12/22 11:43:33" level=info msg=FocusActiveWidget edit=true selected="{8 8}" tip=table
+time="14/12/22 11:43:33" level=info msg=t.Selected T.Form.ActiveWidget="&{string 0xc0000fb440 <nil> 0xc0000a8140}"
+time="14/12/22 11:43:33" level=info msg=t.Selected T.Form.ActiveWidget="&{string 0xc0000fbb00 <nil> 0xc0000a8140}"
+time="14/12/22 11:43:34" level=info msg=FocusActiveWidget edit=false selected="{8 8}" tip=table
+time="14/12/22 11:43:34" level=info msg=FocusActiveWidget edit=false selected="{7 8}" tip=table
+time="14/12/22 11:43:35" level=info msg=FocusActiveWidget edit=false selected="{8 8}" tip=table
+time="14/12/22 11:43:35" level=info msg=FocusActiveWidget edit=false selected="{8 7}" tip=table
+time="14/12/22 11:43:36" level=info msg=OnSelectedMakeTableLabel t.Form="{TableProp map[invoice:0xc0000a8500] 0xc0001605a0 0xc0013881b0}" w="{8 5}"
+time="14/12/22 11:43:36" level=info msg=FocusActiveWidget edit=false selected="{8 5}" tip=table
+time="14/12/22 11:44:52" level=info msg=OnSelectedMakeTableLabel t.Form="{TableProp map[invoice:0xc0000a8500] 0xc0001605a0 0xc0013881b0}" w="{9 4}"
+time="14/12/22 11:44:52" level=info msg=FocusActiveWidget edit=false selected="{9 4}" tip=table
+time="14/12/22 11:44:53" level=info msg=FocusActiveWidget edit=true selected="{9 4}" tip=table
+time="14/12/22 11:44:53" level=info msg=t.Selected T.Form.ActiveWidget="&{string 0xc001ac0240 <nil> 0xc0000a8500}"
+time="14/12/22 11:44:53" level=info msg=t.Selected T.Form.ActiveWidget="&{string 0xc001ac06c0 <nil> 0xc0000a8500}"
+time="14/12/22 11:44:57" level=info msg=CompletionEntry KeyDown="&{Return {28}}"
+time="14/12/22 11:44:57" level=info msg="onEnter " entry.text=
+time="14/12/22 11:44:57" level=info msg=FocusActiveWidget edit=true selected="{9 4}" tip=string
+time="14/12/22 11:44:57" level=info msg=t.Selected T.Form.ActiveWidget="&{string 0xc001ac0480 <nil> 0xc0000a8500}"
+time="14/12/22 11:44:57" level=info msg=t.Selected T.Form.ActiveWidget="&{string 0xc001ac0b40 <nil> 0xc0000a8500}"
+time="14/12/22 11:44:58" level=info msg=CompletionEntry KeyDown="&{Return {28}}"
+time="14/12/22 11:44:58" level=info msg="onEnter " entry.text=
+time="14/12/22 11:44:58" level=info msg=FocusActiveWidget edit=true selected="{9 4}" tip=string
+time="14/12/22 11:44:58" level=info msg=t.Selected T.Form.ActiveWidget="&{string 0xc0012ea6c0 <nil> 0xc0000a8500}"
+time="14/12/22 11:44:58" level=info msg=t.Selected T.Form.ActiveWidget="&{string 0xc0012eb440 <nil> 0xc0000a8500}"
+time="14/12/22 11:44:58" level=info msg=CompletionEntry KeyDown="&{Return {28}}"
+time="14/12/22 11:44:58" level=info msg="onEnter " entry.text=
+time="14/12/22 11:44:58" level=info msg=FocusActiveWidget edit=true selected="{9 4}" tip=string
+time="14/12/22 11:44:58" level=info msg=t.Selected T.Form.ActiveWidget="&{string 0xc0000fb680 <nil> 0xc0000a8500}"
+time="14/12/22 11:44:58" level=info msg=t.Selected T.Form.ActiveWidget="&{string 0xc001a90240 <nil> 0xc0000a8500}"
+time="14/12/22 11:44:59" level=info msg=CompletionEntry KeyDown="&{Return {28}}"
+time="14/12/22 11:44:59" level=info msg="onEnter " entry.text=
+time="14/12/22 11:44:59" level=info msg=FocusActiveWidget edit=true selected="{9 4}" tip=string
+time="14/12/22 11:44:59" level=info msg=t.Selected T.Form.ActiveWidget="&{string 0xc001a906c0 <nil> 0xc0000a8500}"
+time="14/12/22 11:44:59" level=info msg=t.Selected T.Form.ActiveWidget="&{string 0xc001a90b40 <nil> 0xc0000a8500}"
+time="14/12/22 11:45:01" level=info msg=FocusActiveWidget edit=true selected="{8 4}" tip=string
+time="14/12/22 11:45:01" level=info msg=t.Selected T.Form.ActiveWidget="&{string 0xc001a90fc0 <nil> 0xc0000a8500}"
+time="14/12/22 11:45:01" level=info msg=t.Selected T.Form.ActiveWidget="&{string 0xc001ac0900 <nil> 0xc0000a8500}"
+time="14/12/22 11:45:01" level=info msg=FocusActiveWidget edit=true selected="{7 4}" tip=string
+time="14/12/22 11:45:01" level=info msg=t.Selected T.Form.ActiveWidget="&{string 0xc001a90480 <nil> 0xc0000a8500}"
+time="14/12/22 11:45:01" level=info msg=t.Selected T.Form.ActiveWidget="&{string 0xc001ac0d80 <nil> 0xc0000a8500}"
+time="14/12/22 11:45:02" level=info msg=FocusActiveWidget edit=true selected="{6 4}" tip=string
+time="14/12/22 11:45:02" level=info msg=t.Selected T.Form.ActiveWidget="&{string 0xc0000fb8c0 <nil> 0xc0000a8500}"
+time="14/12/22 11:45:02" level=info msg=t.Selected T.Form.ActiveWidget="&{string 0xc001ac1200 <nil> 0xc0000a8500}"
+time="14/12/22 11:45:06" level=info msg=FocusActiveWidget edit=false selected="{6 4}" tip=table
+time="14/12/22 11:45:07" level=info msg=FocusActiveWidget edit=false selected="{6 3}" tip=table
+time="14/12/22 11:45:07" level=info msg=FocusActiveWidget edit=false selected="{6 2}" tip=table
+time="14/12/22 11:45:07" level=info msg=FocusActiveWidget edit=false selected="{7 2}" tip=table
+time="14/12/22 11:45:08" level=info msg=FocusActiveWidget edit=false selected="{8 2}" tip=table
+time="14/12/22 11:45:08" level=info msg=FocusActiveWidget edit=false selected="{8 2}" tip=table
+time="14/12/22 11:45:08" level=info msg=FocusActiveWidget edit=false selected="{8 2}" tip=table
+time="14/12/22 11:45:09" level=info msg=FocusActiveWidget edit=false selected="{8 2}" tip=table
+time="14/12/22 11:45:10" level=info msg=FocusActiveWidget edit=false selected="{8 2}" tip=table
+time="14/12/22 11:45:10" level=info msg=FocusActiveWidget edit=false selected="{7 2}" tip=table
+time="14/12/22 11:45:10" level=info msg=FocusActiveWidget edit=false selected="{6 2}" tip=table
+time="14/12/22 11:45:11" level=info msg=FocusActiveWidget edit=false selected="{6 1}" tip=table
+time="14/12/22 11:45:11" level=info msg=FocusActiveWidget edit=false selected="{7 1}" tip=table
+time="14/12/22 11:45:11" level=info msg=FocusActiveWidget edit=false selected="{8 1}" tip=table
+time="14/12/22 11:45:11" level=info msg=FocusActiveWidget edit=false selected="{8 1}" tip=table
+time="14/12/22 11:45:12" level=info msg=FocusActiveWidget edit=false selected="{8 1}" tip=table
+time="14/12/22 11:45:12" level=info msg=FocusActiveWidget edit=false selected="{8 1}" tip=table
+time="14/12/22 11:45:12" level=info msg=FocusActiveWidget edit=false selected="{8 1}" tip=table
+time="14/12/22 11:45:12" level=info msg=FocusActiveWidget edit=false selected="{8 1}" tip=table
+time="14/12/22 11:45:13" level=info msg=FocusActiveWidget edit=false selected="{8 1}" tip=table
+time="14/12/22 11:45:13" level=info msg=FocusActiveWidget edit=false selected="{8 2}" tip=table
+time="14/12/22 11:45:14" level=info msg=FocusActiveWidget edit=false selected="{8 3}" tip=table
+time="14/12/22 11:45:14" level=info msg=FocusActiveWidget edit=false selected="{8 4}" tip=table
+time="14/12/22 11:45:14" level=info msg=FocusActiveWidget edit=false selected="{8 5}" tip=table
+time="14/12/22 11:45:14" level=info msg=FocusActiveWidget edit=false selected="{8 5}" tip=table
+time="14/12/22 11:45:14" level=info msg=FocusActiveWidget edit=false selected="{8 5}" tip=table
+time="14/12/22 11:45:14" level=info msg=FocusActiveWidget edit=false selected="{8 5}" tip=table
+time="14/12/22 11:45:14" level=info msg=FocusActiveWidget edit=false selected="{8 5}" tip=table
+time="14/12/22 11:45:14" level=info msg=FocusActiveWidget edit=false selected="{8 4}" tip=table
+time="14/12/22 11:45:15" level=info msg=FocusActiveWidget edit=false selected="{8 3}" tip=table
+time="14/12/22 11:45:15" level=info msg=FocusActiveWidget edit=false selected="{8 2}" tip=table
+time="14/12/22 11:45:15" level=info msg=FocusActiveWidget edit=false selected="{8 1}" tip=table
+time="14/12/22 11:45:15" level=info msg=FocusActiveWidget edit=false selected="{8 0}" tip=table
+time="14/12/22 11:45:15" level=info msg=FocusActiveWidget edit=false selected="{8 0}" tip=table
+time="14/12/22 11:45:15" level=info msg=FocusActiveWidget edit=false selected="{8 0}" tip=table
+time="14/12/22 11:45:15" level=info msg=FocusActiveWidget edit=false selected="{8 0}" tip=table
+time="14/12/22 11:45:15" level=info msg=FocusActiveWidget edit=false selected="{8 0}" tip=table
+time="14/12/22 11:45:15" level=info msg=FocusActiveWidget edit=false selected="{8 0}" tip=table
+time="14/12/22 11:45:15" level=info msg=FocusActiveWidget edit=false selected="{8 0}" tip=table
+time="14/12/22 11:45:16" level=info msg=FocusActiveWidget edit=false selected="{8 0}" tip=table
+time="14/12/22 11:45:16" level=info msg=FocusActiveWidget edit=false selected="{8 0}" tip=table
+time="14/12/22 11:45:16" level=info msg=FocusActiveWidget edit=false selected="{7 0}" tip=table
+time="14/12/22 11:45:17" level=info msg=FocusActiveWidget edit=false selected="{6 0}" tip=table
+time="14/12/22 11:45:17" level=info msg=FocusActiveWidget edit=false selected="{5 0}" tip=table
+time="14/12/22 11:45:17" level=info msg=FocusActiveWidget edit=false selected="{4 0}" tip=table
+time="14/12/22 11:45:17" level=info msg=FocusActiveWidget edit=false selected="{3 0}" tip=table
+time="14/12/22 11:45:17" level=info msg=FocusActiveWidget edit=false selected="{2 0}" tip=table
+time="14/12/22 11:45:17" level=info msg=FocusActiveWidget edit=false selected="{1 0}" tip=table
+time="14/12/22 11:45:17" level=info msg=FocusActiveWidget edit=false selected="{0 0}" tip=table
+time="14/12/22 11:45:17" level=info msg=FocusActiveWidget edit=false selected="{0 0}" tip=table
+time="14/12/22 11:45:17" level=info msg=FocusActiveWidget edit=false selected="{0 0}" tip=table
+time="14/12/22 11:45:17" level=info msg=FocusActiveWidget edit=false selected="{0 0}" tip=table
+time="14/12/22 11:45:17" level=info msg=FocusActiveWidget edit=false selected="{0 0}" tip=table
+time="14/12/22 11:45:17" level=info msg=FocusActiveWidget edit=false selected="{0 0}" tip=table
+time="14/12/22 11:45:17" level=info msg=FocusActiveWidget edit=false selected="{0 0}" tip=table
+time="14/12/22 11:45:17" level=info msg=FocusActiveWidget edit=false selected="{1 0}" tip=table
+time="14/12/22 11:45:18" level=info msg=FocusActiveWidget edit=false selected="{2 0}" tip=table
+time="14/12/22 11:45:18" level=info msg=FocusActiveWidget edit=false selected="{3 0}" tip=table
+time="14/12/22 11:45:18" level=info msg=FocusActiveWidget edit=false selected="{4 0}" tip=table
+time="14/12/22 11:45:18" level=info msg=FocusActiveWidget edit=false selected="{5 0}" tip=table
+time="14/12/22 11:45:18" level=info msg=FocusActiveWidget edit=false selected="{6 0}" tip=table
+time="14/12/22 11:45:18" level=info msg=FocusActiveWidget edit=false selected="{7 0}" tip=table
+time="14/12/22 11:45:18" level=info msg=FocusActiveWidget edit=false selected="{8 0}" tip=table
+time="14/12/22 11:45:18" level=info msg=FocusActiveWidget edit=false selected="{8 0}" tip=table
+time="14/12/22 11:45:18" level=info msg=FocusActiveWidget edit=false selected="{8 0}" tip=table
+time="14/12/22 11:45:18" level=info msg=FocusActiveWidget edit=false selected="{8 0}" tip=table
+time="14/12/22 11:45:18" level=info msg=FocusActiveWidget edit=false selected="{8 0}" tip=table
+time="14/12/22 11:45:18" level=info msg=FocusActiveWidget edit=false selected="{8 0}" tip=table
+time="14/12/22 11:45:18" level=info msg=FocusActiveWidget edit=false selected="{8 0}" tip=table
+time="14/12/22 11:45:18" level=info msg=FocusActiveWidget edit=false selected="{8 0}" tip=table
+time="14/12/22 11:45:18" level=info msg=FocusActiveWidget edit=false selected="{8 0}" tip=table
+time="14/12/22 11:45:18" level=info msg=FocusActiveWidget edit=false selected="{8 0}" tip=table
+time="14/12/22 11:45:18" level=info msg=FocusActiveWidget edit=false selected="{8 0}" tip=table
+time="14/12/22 11:45:18" level=info msg=FocusActiveWidget edit=false selected="{8 0}" tip=table
+time="14/12/22 11:45:19" level=info msg=FocusActiveWidget edit=false selected="{8 0}" tip=table
+time="14/12/22 11:45:19" level=info msg=FocusActiveWidget edit=false selected="{8 0}" tip=table
+time="14/12/22 11:45:19" level=info msg=FocusActiveWidget edit=false selected="{8 0}" tip=table
+time="14/12/22 11:45:19" level=info msg=FocusActiveWidget edit=false selected="{8 0}" tip=table
+time="14/12/22 11:45:19" level=info msg=FocusActiveWidget edit=false selected="{7 0}" tip=table
+time="14/12/22 11:45:20" level=info msg=FocusActiveWidget edit=true selected="{7 0}" tip=table
+time="14/12/22 11:45:20" level=info msg=t.Selected T.Form.ActiveWidget="&{string 0xc001ac0fc0 <nil> 0xc0000a8500}"
+time="14/12/22 11:45:20" level=info msg=t.Selected T.Form.ActiveWidget="&{string 0xc001ac1680 <nil> 0xc0000a8500}"
+time="14/12/22 11:45:20" level=info msg=FocusActiveWidget edit=false selected="{7 0}" tip=table
+time="14/12/22 11:45:21" level=info msg=FocusActiveWidget edit=false selected="{6 0}" tip=table
+time="14/12/22 11:45:21" level=info msg=FocusActiveWidget edit=false selected="{5 0}" tip=table
+time="14/12/22 11:45:21" level=info msg=FocusActiveWidget edit=false selected="{4 0}" tip=table
+time="14/12/22 11:45:21" level=info msg=FocusActiveWidget edit=false selected="{3 0}" tip=table
+time="14/12/22 11:45:21" level=info msg=FocusActiveWidget edit=false selected="{2 0}" tip=table
+time="14/12/22 11:45:22" level=info msg=FocusActiveWidget edit=false selected="{1 0}" tip=table
+time="14/12/22 11:45:22" level=info msg=FocusActiveWidget edit=false selected="{0 0}" tip=table
+time="14/12/22 11:45:22" level=info msg=FocusActiveWidget edit=false selected="{0 0}" tip=table
+time="14/12/22 11:45:22" level=info msg=FocusActiveWidget edit=false selected="{0 0}" tip=table
+time="14/12/22 11:45:22" level=info msg=FocusActiveWidget edit=false selected="{0 0}" tip=table
+time="14/12/22 11:45:22" level=info msg=FocusActiveWidget edit=false selected="{0 0}" tip=table
+time="14/12/22 11:45:22" level=info msg=FocusActiveWidget edit=false selected="{0 0}" tip=table
+time="14/12/22 11:45:22" level=info msg=FocusActiveWidget edit=false selected="{0 0}" tip=table
+time="14/12/22 11:45:22" level=info msg=FocusActiveWidget edit=false selected="{0 0}" tip=table
+time="14/12/22 11:45:22" level=info msg=FocusActiveWidget edit=false selected="{0 0}" tip=table
+time="14/12/22 11:45:22" level=info msg=FocusActiveWidget edit=false selected="{0 0}" tip=table
+time="14/12/22 11:45:22" level=info msg=FocusActiveWidget edit=false selected="{1 0}" tip=table
+time="14/12/22 11:45:23" level=info msg=FocusActiveWidget edit=false selected="{2 0}" tip=table
+time="14/12/22 11:45:23" level=info msg=FocusActiveWidget edit=false selected="{3 0}" tip=table
+time="14/12/22 11:45:23" level=info msg=FocusActiveWidget edit=false selected="{4 0}" tip=table
+time="14/12/22 11:45:23" level=info msg=FocusActiveWidget edit=false selected="{5 0}" tip=table
+time="14/12/22 11:45:23" level=info msg=FocusActiveWidget edit=false selected="{6 0}" tip=table
+time="14/12/22 11:45:23" level=info msg=FocusActiveWidget edit=false selected="{7 0}" tip=table
+time="14/12/22 11:45:23" level=info msg=FocusActiveWidget edit=false selected="{8 0}" tip=table
+time="14/12/22 11:45:23" level=info msg=FocusActiveWidget edit=false selected="{8 0}" tip=table
+time="14/12/22 11:45:23" level=info msg=FocusActiveWidget edit=false selected="{8 0}" tip=table
+time="14/12/22 11:45:23" level=info msg=FocusActiveWidget edit=false selected="{8 0}" tip=table
+time="14/12/22 11:45:23" level=info msg=FocusActiveWidget edit=false selected="{8 0}" tip=table
+time="14/12/22 11:45:23" level=info msg=FocusActiveWidget edit=false selected="{8 0}" tip=table
+time="14/12/22 11:45:23" level=info msg=FocusActiveWidget edit=false selected="{8 0}" tip=table
+time="14/12/22 11:45:23" level=info msg=FocusActiveWidget edit=false selected="{8 0}" tip=table
+time="14/12/22 11:45:23" level=info msg=FocusActiveWidget edit=false selected="{8 0}" tip=table
+time="14/12/22 11:45:23" level=info msg=FocusActiveWidget edit=false selected="{8 0}" tip=table
+time="14/12/22 11:45:23" level=info msg=FocusActiveWidget edit=false selected="{8 0}" tip=table
+time="14/12/22 11:45:23" level=info msg=FocusActiveWidget edit=false selected="{8 0}" tip=table
+time="14/12/22 11:45:23" level=info msg=FocusActiveWidget edit=false selected="{8 0}" tip=table
+time="14/12/22 11:45:23" level=info msg=FocusActiveWidget edit=false selected="{8 0}" tip=table
+time="14/12/22 11:45:23" level=info msg=FocusActiveWidget edit=false selected="{8 0}" tip=table
+time="14/12/22 11:45:23" level=info msg=FocusActiveWidget edit=false selected="{8 0}" tip=table
+time="14/12/22 11:45:23" level=info msg=FocusActiveWidget edit=false selected="{8 0}" tip=table
+time="14/12/22 11:45:23" level=info msg=FocusActiveWidget edit=false selected="{8 0}" tip=table
+time="14/12/22 11:45:24" level=info msg=FocusActiveWidget edit=false selected="{8 0}" tip=table
+time="14/12/22 11:45:24" level=info msg=FocusActiveWidget edit=false selected="{8 0}" tip=table
+time="14/12/22 11:45:24" level=info msg=FocusActiveWidget edit=false selected="{8 0}" tip=table
+time="14/12/22 11:45:24" level=info msg=FocusActiveWidget edit=false selected="{8 0}" tip=table
+time="14/12/22 11:45:24" level=info msg=FocusActiveWidget edit=false selected="{8 0}" tip=table
+time="14/12/22 11:45:24" level=info msg=FocusActiveWidget edit=false selected="{8 0}" tip=table
+time="14/12/22 11:45:24" level=info msg=FocusActiveWidget edit=false selected="{8 0}" tip=table
+time="14/12/22 11:45:24" level=info msg=FocusActiveWidget edit=false selected="{8 0}" tip=table
+time="14/12/22 11:45:24" level=info msg=FocusActiveWidget edit=false selected="{8 0}" tip=table
+time="14/12/22 11:45:24" level=info msg=FocusActiveWidget edit=false selected="{8 0}" tip=table
+time="14/12/22 11:45:24" level=info msg=FocusActiveWidget edit=false selected="{8 0}" tip=table
+time="14/12/22 11:45:24" level=info msg=FocusActiveWidget edit=false selected="{8 0}" tip=table
+time="14/12/22 11:45:24" level=info msg=FocusActiveWidget edit=false selected="{8 0}" tip=table
+time="14/12/22 11:45:24" level=info msg=FocusActiveWidget edit=false selected="{8 0}" tip=table
+time="14/12/22 11:45:24" level=info msg=FocusActiveWidget edit=false selected="{8 0}" tip=table
+time="14/12/22 11:45:24" level=info msg=FocusActiveWidget edit=false selected="{8 0}" tip=table
+time="14/12/22 11:45:25" level=info msg=FocusActiveWidget edit=false selected="{8 0}" tip=table
+time="14/12/22 11:45:25" level=info msg=FocusActiveWidget edit=false selected="{8 0}" tip=table
+time="14/12/22 11:45:25" level=info msg=FocusActiveWidget edit=false selected="{8 0}" tip=table
+time="14/12/22 11:45:25" level=info msg=FocusActiveWidget edit=false selected="{8 0}" tip=table
+time="14/12/22 11:45:28" level=info msg=FocusActiveWidget edit=true selected="{8 0}" tip=table
+time="14/12/22 11:45:28" level=info msg=t.Selected T.Form.ActiveWidget="&{string 0xc000e96000 <nil> 0xc0000a8500}"
+time="14/12/22 11:45:28" level=info msg=t.Selected T.Form.ActiveWidget="&{string 0xc000e96480 <nil> 0xc0000a8500}"
+time="14/12/22 11:45:29" level=info msg=CompletionEntry KeyDown="&{Return {28}}"
+time="14/12/22 11:45:29" level=info msg="onEnter " entry.text=DateCheck
+time="14/12/22 11:45:29" level=info msg=t.Selected T.Form.ActiveWidget="&{string 0xc001a90900 <nil> 0xc0000a8500}"
+time="14/12/22 11:45:29" level=info msg=FocusActiveWidget edit=true selected="{9 0}" tip=string
+time="14/12/22 11:45:29" level=info msg=t.Selected T.Form.ActiveWidget="&{string 0xc001a91200 <nil> 0xc0000a8500}"
+time="14/12/22 11:45:29" level=info msg=t.Selected T.Form.ActiveWidget="&{string 0xc001a91680 <nil> 0xc0000a8500}"
+time="14/12/22 11:45:31" level=info msg=FocusActiveWidget edit=false selected="{9 0}" tip=table
+time="14/12/22 11:45:31" level=info msg=FocusActiveWidget edit=false selected="{9 1}" tip=table
+time="14/12/22 11:45:33" level=info msg=FocusActiveWidget edit=true selected="{9 1}" tip=table
+time="14/12/22 11:45:33" level=info msg=t.Selected T.Form.ActiveWidget="&{string 0xc0012eb200 <nil> 0xc0000a8500}"
+time="14/12/22 11:45:33" level=info msg=t.Selected T.Form.ActiveWidget="&{string 0xc0012eb8c0 <nil> 0xc0000a8500}"
+time="14/12/22 11:45:34" level=info msg=FocusActiveWidget edit=false selected="{9 1}" tip=table
+time="14/12/22 11:45:34" level=info msg=FocusActiveWidget edit=false selected="{8 1}" tip=table
+time="14/12/22 11:45:35" level=info msg=FocusActiveWidget edit=false selected="{8 1}" tip=table
+time="14/12/22 11:45:35" level=info msg=FocusActiveWidget edit=false selected="{8 1}" tip=table
+time="14/12/22 11:45:36" level=info msg=FocusActiveWidget edit=false selected="{7 1}" tip=table
+time="14/12/22 11:45:36" level=info msg=FocusActiveWidget edit=false selected="{6 1}" tip=table
+time="14/12/22 11:45:36" level=info msg=FocusActiveWidget edit=false selected="{5 1}" tip=table
+time="14/12/22 11:45:36" level=info msg=FocusActiveWidget edit=false selected="{4 1}" tip=table
+time="14/12/22 11:45:36" level=info msg=FocusActiveWidget edit=false selected="{3 1}" tip=table
+time="14/12/22 11:45:36" level=info msg=FocusActiveWidget edit=false selected="{2 1}" tip=table
+time="14/12/22 11:45:36" level=info msg=FocusActiveWidget edit=false selected="{1 1}" tip=table
+time="14/12/22 11:45:36" level=info msg=FocusActiveWidget edit=false selected="{0 1}" tip=table
+time="14/12/22 11:45:36" level=info msg=FocusActiveWidget edit=false selected="{0 1}" tip=table
+time="14/12/22 11:45:36" level=info msg=FocusActiveWidget edit=false selected="{0 1}" tip=table
+time="14/12/22 11:45:37" level=info msg=FocusActiveWidget edit=false selected="{0 1}" tip=table
+time="14/12/22 11:45:37" level=info msg=FocusActiveWidget edit=false selected="{1 1}" tip=table
+time="14/12/22 11:45:37" level=info msg=FocusActiveWidget edit=false selected="{2 1}" tip=table
+time="14/12/22 11:45:37" level=info msg=FocusActiveWidget edit=false selected="{3 1}" tip=table
+time="14/12/22 11:45:38" level=info msg=FocusActiveWidget edit=false selected="{4 1}" tip=table
+time="14/12/22 11:45:38" level=info msg=FocusActiveWidget edit=false selected="{5 1}" tip=table
+time="14/12/22 11:45:38" level=info msg=FocusActiveWidget edit=false selected="{6 1}" tip=table
+time="14/12/22 11:45:38" level=info msg=FocusActiveWidget edit=false selected="{7 1}" tip=table
+time="14/12/22 11:45:39" level=info msg=FocusActiveWidget edit=false selected="{8 1}" tip=table
+time="14/12/22 11:45:40" level=info msg=FocusActiveWidget edit=false selected="{8 1}" tip=table
+time="14/12/22 11:45:40" level=info msg=FocusActiveWidget edit=false selected="{8 1}" tip=table
+time="14/12/22 11:45:41" level=info msg=FocusActiveWidget edit=false selected="{8 1}" tip=table
+time="14/12/22 11:46:19" level=info msg="Начало" Out="&{0xc0000d6500}" event=start form=main
+time="14/12/22 11:46:20" level=info msg="✓Init" event="InitFormData()" form=Main
+time="14/12/22 11:46:21" level=info msg="✓Init" event="InitFormData()" form=Table
+time="14/12/22 11:46:21" level=info msg=Data columns=10 event="Fill Data" rows=500
+time="14/12/22 11:46:21" level=info msg=Data columns ddes=10 event="Init data" form="Test data" rows data=500
+time="14/12/22 11:46:21" level=info msg=NewOTable 1table.Form =500
+time="14/12/22 11:46:21" level=info msg=Columns columns=10 event="fillcolumns()" form=
+time="14/12/22 11:46:21" level=info msg=Columns columns="map[Amount:0xc000336ee0 Check:0xc000336f50 Comment:0xc000337030 DateCheck:0xc000336fc0 Price:0xc000336e70 Product:0xc000336d20 Quantity:0xc000336e00 Type:0xc000336d90 id:0xc000336c40 id_product:0xc000336cb0]" event=Finish
+time="14/12/22 11:46:21" level=info msg=MakeTableData event=fillcolumns form=Table
+time="14/12/22 11:46:21" level=info msg=MakeTable event="Fill data" form=Table
+time="14/12/22 11:46:21" level=info msg=GetToolBar Out="&{0xc0000d6500}" event=start form=main
+time="14/12/22 11:46:21" level=info msg=GetToolBar DocumentCreateIcon=GetToolBar
+time="14/12/22 11:46:21" level=info msg=CreateRenderer h.Tool="&{{{0 0} {0 0} false 0xc000245380 {{0 0} 0 0 0 0}} [0xc00029c8b8 0x7ff67efc69e0 0xc00029c8d0 0xc00029c8e8 0x7ff67efc69e0 0xc00029c918]}"
+time="14/12/22 11:46:24" level=info msg="✓Init" event="InitFormData()" form=TableProp
+time="14/12/22 11:46:24" level=info msg=TableInitProperties datag=10 form1=
+time="14/12/22 11:46:24" level=info msg=GetToolBar Properties=10
+time="14/12/22 11:46:24" level=info msg=NewOTable 1table.Form =10
+time="14/12/22 11:46:24" level=info msg=Columns columns=6 event="fillcolumns()" form=
+time="14/12/22 11:46:24" level=info msg=Columns columns="map[Color:0xc0000f0930 Header:0xc0000f07e0 Type:0xc0000f0850 Width:0xc0000f09a0 formula:0xc0000f08c0 id:0xc0000f0770]" event=Finish
+time="14/12/22 11:46:24" level=info msg=MakeTableData event=fillcolumns form=TableProp
+time="14/12/22 11:46:24" level=info msg=MakeTable event="Fill data" form=TableProp
+time="14/12/22 11:46:24" level=info msg=GetToolBar Properties len  dv=10
+time="14/12/22 11:46:24" level=info msg=CreateRenderer h.Tool="<nil>"
+time="14/12/22 11:46:25" level=info msg=OnSelectedMakeTableLabel t.Form="{TableProp map[invoice:0xc0000a8500] 0xc0001625a0 0xc0017188d0}" w="{9 4}"
+time="14/12/22 11:46:25" level=info msg=FocusActiveWidget edit=true selected="{9 4}" tip=table
+time="14/12/22 11:46:25" level=info msg=t.Selected T.Form.ActiveWidget="&{string 0xc0011e6480 <nil> <nil>}"
+time="14/12/22 11:46:25" level=info msg=t.Selected T.Form.ActiveWidget="&{string 0xc0011e6900 <nil> <nil>}"
+time="14/12/22 11:46:27" level=info msg=FocusActiveWidget edit=false selected="{9 4}" tip=table
+time="14/12/22 11:46:28" level=info msg=FocusActiveWidget edit=false selected="{8 4}" tip=table
+time="14/12/22 11:46:28" level=info msg=FocusActiveWidget edit=false selected="{7 4}" tip=table
+time="14/12/22 11:46:29" level=info msg=FocusActiveWidget edit=false selected="{8 4}" tip=table
+time="14/12/22 11:46:29" level=info msg=FocusActiveWidget edit=false selected="{9 4}" tip=table
+time="14/12/22 11:46:29" level=info msg=FocusActiveWidget edit=false selected="{9 4}" tip=table
+time="14/12/22 11:46:29" level=info msg=FocusActiveWidget edit=false selected="{9 3}" tip=table
+time="14/12/22 11:46:30" level=info msg=FocusActiveWidget edit=false selected="{9 2}" tip=table
+time="14/12/22 11:46:30" level=info msg=FocusActiveWidget edit=false selected="{9 1}" tip=table
+time="14/12/22 11:46:30" level=info msg=FocusActiveWidget edit=false selected="{9 0}" tip=table
+time="14/12/22 11:46:30" level=info msg=FocusActiveWidget edit=false selected="{9 0}" tip=table
+time="14/12/22 11:46:30" level=info msg=FocusActiveWidget edit=false selected="{9 0}" tip=table
+time="14/12/22 11:46:30" level=info msg=FocusActiveWidget edit=false selected="{9 0}" tip=table
+time="14/12/22 11:46:30" level=info msg=FocusActiveWidget edit=false selected="{9 0}" tip=table
+time="14/12/22 11:46:30" level=info msg=FocusActiveWidget edit=false selected="{9 0}" tip=table
+time="14/12/22 11:46:30" level=info msg=FocusActiveWidget edit=false selected="{9 0}" tip=table
+time="14/12/22 11:46:30" level=info msg=FocusActiveWidget edit=false selected="{9 0}" tip=table
+time="14/12/22 11:46:31" level=info msg=FocusActiveWidget edit=false selected="{8 0}" tip=table
+time="14/12/22 11:46:31" level=info msg=FocusActiveWidget edit=false selected="{7 0}" tip=table
+time="14/12/22 11:46:31" level=info msg=FocusActiveWidget edit=false selected="{6 0}" tip=table
+time="14/12/22 11:46:31" level=info msg=FocusActiveWidget edit=false selected="{5 0}" tip=table
+time="14/12/22 11:46:31" level=info msg=FocusActiveWidget edit=false selected="{4 0}" tip=table
+time="14/12/22 11:46:31" level=info msg=FocusActiveWidget edit=false selected="{3 0}" tip=table
+time="14/12/22 11:46:31" level=info msg=FocusActiveWidget edit=false selected="{2 0}" tip=table
+time="14/12/22 11:46:31" level=info msg=FocusActiveWidget edit=false selected="{1 0}" tip=table
+time="14/12/22 11:46:31" level=info msg=FocusActiveWidget edit=false selected="{0 0}" tip=table
+time="14/12/22 11:46:31" level=info msg=FocusActiveWidget edit=false selected="{0 0}" tip=table
+time="14/12/22 11:46:31" level=info msg=FocusActiveWidget edit=false selected="{0 0}" tip=table
+time="14/12/22 11:46:32" level=info msg=FocusActiveWidget edit=false selected="{0 0}" tip=table
+time="14/12/22 11:46:32" level=info msg=FocusActiveWidget edit=false selected="{0 0}" tip=table
+time="14/12/22 11:46:32" level=info msg=FocusActiveWidget edit=false selected="{0 0}" tip=table
+time="14/12/22 11:46:32" level=info msg=FocusActiveWidget edit=false selected="{0 0}" tip=table
+time="14/12/22 11:46:32" level=info msg=FocusActiveWidget edit=false selected="{0 0}" tip=table
+time="14/12/22 11:46:32" level=info msg=FocusActiveWidget edit=false selected="{0 0}" tip=table
+time="14/12/22 11:46:32" level=info msg=FocusActiveWidget edit=false selected="{0 0}" tip=table
+time="14/12/22 11:46:33" level=info msg=FocusActiveWidget edit=false selected="{0 0}" tip=table
+time="14/12/22 11:46:33" level=info msg=FocusActiveWidget edit=false selected="{1 0}" tip=table
+time="14/12/22 11:46:33" level=info msg=FocusActiveWidget edit=false selected="{2 0}" tip=table
+time="14/12/22 11:46:34" level=info msg=FocusActiveWidget edit=false selected="{3 0}" tip=table
+time="14/12/22 11:46:34" level=info msg=FocusActiveWidget edit=false selected="{4 0}" tip=table
+time="14/12/22 11:46:34" level=info msg=FocusActiveWidget edit=false selected="{5 0}" tip=table
+time="14/12/22 11:46:34" level=info msg=FocusActiveWidget edit=false selected="{6 0}" tip=table
+time="14/12/22 11:46:34" level=info msg=FocusActiveWidget edit=false selected="{7 0}" tip=table
+time="14/12/22 11:46:34" level=info msg=FocusActiveWidget edit=false selected="{8 0}" tip=table
+time="14/12/22 11:46:34" level=info msg=FocusActiveWidget edit=false selected="{9 0}" tip=table
+time="14/12/22 11:46:34" level=info msg=FocusActiveWidget edit=false selected="{9 0}" tip=table
+time="14/12/22 11:46:34" level=info msg=FocusActiveWidget edit=false selected="{9 0}" tip=table
+time="14/12/22 11:46:34" level=info msg=FocusActiveWidget edit=false selected="{9 0}" tip=table
+time="14/12/22 11:46:34" level=info msg=FocusActiveWidget edit=false selected="{9 0}" tip=table
+time="14/12/22 11:46:34" level=info msg=FocusActiveWidget edit=false selected="{9 0}" tip=table
+time="14/12/22 11:46:34" level=info msg=FocusActiveWidget edit=false selected="{9 0}" tip=table
+time="14/12/22 11:46:34" level=info msg=FocusActiveWidget edit=false selected="{9 0}" tip=table
+time="14/12/22 11:46:34" level=info msg=FocusActiveWidget edit=false selected="{9 0}" tip=table
+time="14/12/22 11:46:34" level=info msg=FocusActiveWidget edit=false selected="{9 0}" tip=table
+time="14/12/22 11:46:35" level=info msg=FocusActiveWidget edit=false selected="{9 1}" tip=table
+time="14/12/22 11:46:35" level=info msg=FocusActiveWidget edit=false selected="{9 2}" tip=table
+time="14/12/22 11:46:35" level=info msg=FocusActiveWidget edit=false selected="{9 3}" tip=table
+time="14/12/22 11:46:35" level=info msg=FocusActiveWidget edit=false selected="{9 4}" tip=table
+time="14/12/22 11:46:35" level=info msg=FocusActiveWidget edit=false selected="{9 5}" tip=table
+time="14/12/22 11:46:35" level=info msg=FocusActiveWidget edit=false selected="{9 5}" tip=table
+time="14/12/22 11:46:35" level=info msg=FocusActiveWidget edit=false selected="{9 5}" tip=table
+time="14/12/22 11:46:36" level=info msg=FocusActiveWidget edit=false selected="{9 5}" tip=table
+time="14/12/22 11:46:36" level=info msg=FocusActiveWidget edit=false selected="{9 5}" tip=table
+time="14/12/22 11:46:36" level=info msg=FocusActiveWidget edit=false selected="{9 5}" tip=table
+time="14/12/22 11:46:36" level=info msg=FocusActiveWidget edit=false selected="{9 5}" tip=table
+time="14/12/22 11:46:36" level=info msg=FocusActiveWidget edit=false selected="{9 5}" tip=table
+time="14/12/22 11:46:36" level=info msg=FocusActiveWidget edit=false selected="{9 5}" tip=table
+time="14/12/22 11:46:36" level=info msg=FocusActiveWidget edit=false selected="{9 5}" tip=table
+time="14/12/22 11:46:36" level=info msg=FocusActiveWidget edit=false selected="{8 5}" tip=table
+time="14/12/22 11:46:37" level=info msg=FocusActiveWidget edit=false selected="{7 5}" tip=table
+time="14/12/22 11:46:37" level=info msg=FocusActiveWidget edit=false selected="{6 5}" tip=table
+time="14/12/22 11:46:37" level=info msg=FocusActiveWidget edit=false selected="{5 5}" tip=table
+time="14/12/22 11:46:37" level=info msg=FocusActiveWidget edit=false selected="{4 5}" tip=table
+time="14/12/22 11:46:37" level=info msg=FocusActiveWidget edit=false selected="{3 5}" tip=table
+time="14/12/22 11:46:37" level=info msg=FocusActiveWidget edit=false selected="{2 5}" tip=table
+time="14/12/22 11:46:37" level=info msg=FocusActiveWidget edit=false selected="{1 5}" tip=table
+time="14/12/22 11:46:37" level=info msg=FocusActiveWidget edit=false selected="{0 5}" tip=table
+time="14/12/22 11:46:37" level=info msg=FocusActiveWidget edit=false selected="{0 5}" tip=table
+time="14/12/22 11:46:37" level=info msg=FocusActiveWidget edit=false selected="{0 5}" tip=table
+time="14/12/22 11:46:37" level=info msg=FocusActiveWidget edit=false selected="{0 5}" tip=table
+time="14/12/22 11:46:37" level=info msg=FocusActiveWidget edit=false selected="{0 5}" tip=table
+time="14/12/22 11:46:37" level=info msg=FocusActiveWidget edit=false selected="{0 5}" tip=table
+time="14/12/22 11:46:37" level=info msg=FocusActiveWidget edit=false selected="{0 5}" tip=table
+time="14/12/22 11:46:37" level=info msg=FocusActiveWidget edit=false selected="{0 5}" tip=table
+time="14/12/22 11:46:38" level=info msg=FocusActiveWidget edit=false selected="{1 5}" tip=table
+time="14/12/22 11:46:38" level=info msg=FocusActiveWidget edit=false selected="{2 5}" tip=table
+time="14/12/22 11:46:38" level=info msg=FocusActiveWidget edit=false selected="{3 5}" tip=table
+time="14/12/22 11:46:39" level=info msg=FocusActiveWidget edit=true selected="{3 5}" tip=table
+time="14/12/22 11:46:39" level=info msg=t.Selected T.Form.ActiveWidget="&{string 0xc0000fab40 <nil> 0xc0000a8500}"
+time="14/12/22 11:46:39" level=info msg=t.Selected T.Form.ActiveWidget="&{string 0xc0000fafc0 <nil> 0xc0000a8500}"
+time="14/12/22 11:46:39" level=info msg=FocusActiveWidget edit=false selected="{3 5}" tip=table
+time="14/12/22 11:46:40" level=info msg=FocusActiveWidget edit=false selected="{4 5}" tip=table
+time="14/12/22 11:46:41" level=info msg=FocusActiveWidget edit=false selected="{4 5}" tip=table
+time="14/12/22 11:46:41" level=info msg=FocusActiveWidget edit=true selected="{4 5}" tip=table
+time="14/12/22 11:46:41" level=info msg=t.Selected T.Form.ActiveWidget="&{string 0xc0011e6b40 <nil> 0xc0000a8500}"
+time="14/12/22 11:46:41" level=info msg=t.Selected T.Form.ActiveWidget="&{string 0xc0011e6fc0 <nil> 0xc0000a8500}"
+time="14/12/22 11:46:42" level=info msg=CompletionEntry KeyDown="&{Return {28}}"
+time="14/12/22 11:46:42" level=info msg="onEnter " entry.text=25
+time="14/12/22 11:46:42" level=info msg=t.Selected T.Form.ActiveWidget="&{string 0xc0011e6240 <nil> 0xc0000a8500}"
+time="14/12/22 11:46:42" level=info msg=FocusActiveWidget edit=true selected="{5 5}" tip=string
+time="14/12/22 11:46:42" level=info msg=t.Selected T.Form.ActiveWidget="&{string 0xc0011e6d80 <nil> 0xc0000a8500}"
+time="14/12/22 11:46:42" level=info msg=t.Selected T.Form.ActiveWidget="&{string 0xc0000fad80 <nil> 0xc0000a8500}"
+time="14/12/22 11:46:42" level=info msg=CompletionEntry KeyDown="&{Return {28}}"
+time="14/12/22 11:46:42" level=info msg="onEnter " entry.text=0
+time="14/12/22 11:46:42" level=info msg=t.Selected T.Form.ActiveWidget="&{string 0xc0011e7440 <nil> 0xc0000a8500}"
+time="14/12/22 11:46:42" level=info msg=FocusActiveWidget edit=true selected="{6 5}" tip=string
+time="14/12/22 11:46:42" level=info msg=t.Selected T.Form.ActiveWidget="&{string 0xc0011e78c0 <nil> 0xc0000a8500}"
+time="14/12/22 11:46:42" level=info msg=t.Selected T.Form.ActiveWidget="&{string 0xc0011e7d40 <nil> 0xc0000a8500}"
+time="14/12/22 11:46:43" level=info msg=CompletionEntry KeyDown="&{Return {28}}"
+time="14/12/22 11:46:43" level=info msg="onEnter " entry.text=10
+time="14/12/22 11:46:43" level=info msg=t.Selected T.Form.ActiveWidget="&{string 0xc0011e66c0 <nil> 0xc0000a8500}"
+time="14/12/22 11:46:43" level=info msg=FocusActiveWidget edit=true selected="{7 5}" tip=string
+time="14/12/22 11:46:43" level=info msg=t.Selected T.Form.ActiveWidget="&{string 0xc0011e7680 <nil> 0xc0000a8500}"
+time="14/12/22 11:46:43" level=info msg=t.Selected T.Form.ActiveWidget="&{string 0xc0000fa900 <nil> 0xc0000a8500}"
+time="14/12/22 11:46:43" level=info msg=CompletionEntry KeyDown="&{Return {28}}"
+time="14/12/22 11:46:43" level=info msg="onEnter " entry.text=18
+time="14/12/22 11:46:43" level=info msg=t.Selected T.Form.ActiveWidget="&{string 0xc000d7c240 <nil> 0xc0000a8500}"
+time="14/12/22 11:46:43" level=info msg=FocusActiveWidget edit=true selected="{8 5}" tip=string
+time="14/12/22 11:46:43" level=info msg=t.Selected T.Form.ActiveWidget="&{string 0xc000d7c6c0 <nil> 0xc0000a8500}"
+time="14/12/22 11:46:43" level=info msg=t.Selected T.Form.ActiveWidget="&{string 0xc000d7cb40 <nil> 0xc0000a8500}"
+time="14/12/22 11:46:43" level=info msg=CompletionEntry KeyDown="&{Return {28}}"
+time="14/12/22 11:46:43" level=info msg="onEnter " entry.text=3
+time="14/12/22 11:46:43" level=info msg=t.Selected T.Form.ActiveWidget="&{string 0xc000d7c480 <nil> 0xc0000a8500}"
+time="14/12/22 11:46:43" level=info msg=FocusActiveWidget edit=true selected="{9 5}" tip=string
+time="14/12/22 11:46:43" level=info msg=t.Selected T.Form.ActiveWidget="&{string 0xc000d7cd80 <nil> 0xc0000a8500}"
+time="14/12/22 11:46:43" level=info msg=t.Selected T.Form.ActiveWidget="&{string 0xc000d7d200 <nil> 0xc0000a8500}"
+time="14/12/22 11:46:44" level=info msg=CompletionEntry KeyDown="&{Return {28}}"
+time="14/12/22 11:46:44" level=info msg="onEnter " entry.text=10
+time="14/12/22 11:46:44" level=info msg=FocusActiveWidget edit=true selected="{9 5}" tip=string
+time="14/12/22 11:46:44" level=info msg=t.Selected T.Form.ActiveWidget="&{string 0xc0000fb440 <nil> 0xc0000a8500}"
+time="14/12/22 11:46:44" level=info msg=t.Selected T.Form.ActiveWidget="&{string 0xc0000fb8c0 <nil> 0xc0000a8500}"
+time="14/12/22 11:46:44" level=info msg=CompletionEntry KeyDown="&{Return {28}}"
+time="14/12/22 11:46:44" level=info msg="onEnter " entry.text=10
+time="14/12/22 11:46:44" level=info msg=FocusActiveWidget edit=true selected="{9 5}" tip=string
+time="14/12/22 11:46:44" level=info msg=t.Selected T.Form.ActiveWidget="&{string 0xc0000fb680 <nil> 0xc0000a8500}"
+time="14/12/22 11:46:44" level=info msg=t.Selected T.Form.ActiveWidget="&{string 0xc0000fbd40 <nil> 0xc0000a8500}"
+time="14/12/22 11:46:44" level=info msg=CompletionEntry KeyDown="&{Return {28}}"
+time="14/12/22 11:46:44" level=info msg="onEnter " entry.text=10
+time="14/12/22 11:46:44" level=info msg=FocusActiveWidget edit=true selected="{9 5}" tip=string
+time="14/12/22 11:46:44" level=info msg=t.Selected T.Form.ActiveWidget="&{string 0xc000d7c900 <nil> 0xc0000a8500}"
+time="14/12/22 11:46:44" level=info msg=t.Selected T.Form.ActiveWidget="&{string 0xc000d7d440 <nil> 0xc0000a8500}"
+time="14/12/22 11:46:45" level=info msg=CompletionEntry KeyDown="&{Return {28}}"
+time="14/12/22 11:46:45" level=info msg="onEnter " entry.text=10
+time="14/12/22 11:46:45" level=info msg=FocusActiveWidget edit=true selected="{9 5}" tip=string
+time="14/12/22 11:46:45" level=info msg=t.Selected T.Form.ActiveWidget="&{string 0xc0000fbb00 <nil> 0xc0000a8500}"
+time="14/12/22 11:46:45" level=info msg=t.Selected T.Form.ActiveWidget="&{string 0xc000d7cfc0 <nil> 0xc0000a8500}"
+time="14/12/22 11:46:45" level=info msg=FocusActiveWidget edit=true selected="{8 5}" tip=string
+time="14/12/22 11:46:45" level=info msg=t.Selected T.Form.ActiveWidget="&{string 0xc000d7d680 <nil> 0xc0000a8500}"
+time="14/12/22 11:46:45" level=info msg=t.Selected T.Form.ActiveWidget="&{string 0xc000d7db00 <nil> 0xc0000a8500}"
+time="14/12/22 11:46:46" level=info msg=FocusActiveWidget edit=true selected="{7 5}" tip=string
+time="14/12/22 11:46:46" level=info msg=t.Selected T.Form.ActiveWidget="&{string 0xc0011e6000 <nil> 0xc0000a8500}"
+time="14/12/22 11:46:46" level=info msg=t.Selected T.Form.ActiveWidget="&{string 0xc0017ec240 <nil> 0xc0000a8500}"
+time="14/12/22 11:46:46" level=info msg=FocusActiveWidget edit=true selected="{6 5}" tip=string
+time="14/12/22 11:46:46" level=info msg=t.Selected T.Form.ActiveWidget="&{string 0xc0017ec6c0 <nil> 0xc0000a8500}"
+time="14/12/22 11:46:46" level=info msg=t.Selected T.Form.ActiveWidget="&{string 0xc0017ecb40 <nil> 0xc0000a8500}"
+time="14/12/22 11:46:46" level=info msg=FocusActiveWidget edit=true selected="{5 5}" tip=string
+time="14/12/22 11:46:46" level=info msg=t.Selected T.Form.ActiveWidget="&{string 0xc000d7d8c0 <nil> 0xc0000a8500}"
+time="14/12/22 11:46:46" level=info msg=t.Selected T.Form.ActiveWidget="&{string 0xc0011e7b00 <nil> 0xc0000a8500}"
+time="14/12/22 11:46:46" level=info msg=FocusActiveWidget edit=true selected="{4 5}" tip=string
+time="14/12/22 11:46:46" level=info msg=t.Selected T.Form.ActiveWidget="&{string 0xc0017ec480 <nil> 0xc0000a8500}"
+time="14/12/22 11:46:46" level=info msg=t.Selected T.Form.ActiveWidget="&{string 0xc000eca000 <nil> 0xc0000a8500}"
+time="14/12/22 11:46:47" level=info msg=FocusActiveWidget edit=false selected="{4 5}" tip=table
+time="14/12/22 11:46:48" level=info msg=FocusActiveWidget edit=false selected="{4 4}" tip=table
+time="14/12/22 11:46:48" level=info msg=FocusActiveWidget edit=false selected="{4 3}" tip=table
+time="14/12/22 11:46:49" level=info msg=FocusActiveWidget edit=false selected="{4 2}" tip=table
+time="14/12/22 11:46:49" level=info msg=FocusActiveWidget edit=false selected="{4 1}" tip=table
+time="14/12/22 11:46:49" level=info msg=FocusActiveWidget edit=false selected="{4 0}" tip=table
+time="14/12/22 11:46:49" level=info msg=FocusActiveWidget edit=false selected="{4 0}" tip=table
+time="14/12/22 11:46:49" level=info msg=FocusActiveWidget edit=false selected="{4 0}" tip=table
+time="14/12/22 11:46:49" level=info msg=FocusActiveWidget edit=false selected="{4 0}" tip=table
+time="14/12/22 11:46:49" level=info msg=FocusActiveWidget edit=false selected="{4 0}" tip=table
+time="14/12/22 11:46:49" level=info msg=FocusActiveWidget edit=false selected="{4 0}" tip=table
+time="14/12/22 11:46:49" level=info msg=FocusActiveWidget edit=false selected="{4 0}" tip=table
+time="14/12/22 11:46:49" level=info msg=FocusActiveWidget edit=false selected="{5 0}" tip=table
+time="14/12/22 11:46:50" level=info msg=FocusActiveWidget edit=false selected="{6 0}" tip=table
+time="14/12/22 11:46:50" level=info msg=FocusActiveWidget edit=false selected="{7 0}" tip=table
+time="14/12/22 11:46:50" level=info msg=FocusActiveWidget edit=false selected="{7 1}" tip=table
+time="14/12/22 11:46:50" level=info msg=FocusActiveWidget edit=false selected="{7 2}" tip=table
+time="14/12/22 11:46:50" level=info msg=FocusActiveWidget edit=false selected="{7 3}" tip=table
+time="14/12/22 11:46:50" level=info msg=FocusActiveWidget edit=false selected="{6 3}" tip=table
+time="14/12/22 11:46:51" level=info msg=FocusActiveWidget edit=false selected="{5 3}" tip=table
+time="14/12/22 11:46:51" level=info msg=FocusActiveWidget edit=false selected="{4 3}" tip=table
+time="14/12/22 11:46:51" level=info msg=FocusActiveWidget edit=false selected="{3 3}" tip=table
+time="14/12/22 11:46:51" level=info msg=FocusActiveWidget edit=false selected="{2 3}" tip=table
+time="14/12/22 11:46:51" level=info msg=FocusActiveWidget edit=false selected="{1 3}" tip=table
+time="14/12/22 11:46:51" level=info msg=FocusActiveWidget edit=false selected="{0 3}" tip=table
+time="14/12/22 11:46:52" level=info msg=FocusActiveWidget edit=false selected="{1 3}" tip=table
+time="14/12/22 11:46:52" level=info msg=FocusActiveWidget edit=false selected="{2 3}" tip=table
+time="14/12/22 11:46:52" level=info msg=FocusActiveWidget edit=false selected="{3 3}" tip=table
+time="14/12/22 11:46:52" level=info msg=FocusActiveWidget edit=false selected="{4 3}" tip=table
+time="14/12/22 11:46:52" level=info msg=FocusActiveWidget edit=false selected="{5 3}" tip=table
+time="14/12/22 11:46:52" level=info msg=FocusActiveWidget edit=false selected="{6 3}" tip=table
+time="14/12/22 11:46:52" level=info msg=FocusActiveWidget edit=false selected="{7 3}" tip=table
+time="14/12/22 11:46:52" level=info msg=FocusActiveWidget edit=false selected="{8 3}" tip=table
+time="14/12/22 11:46:52" level=info msg=FocusActiveWidget edit=false selected="{9 3}" tip=table
+time="14/12/22 11:46:53" level=info msg=FocusActiveWidget edit=false selected="{9 3}" tip=table
+time="14/12/22 11:46:53" level=info msg=FocusActiveWidget edit=false selected="{9 3}" tip=table
+time="14/12/22 11:46:53" level=info msg=FocusActiveWidget edit=false selected="{9 3}" tip=table
+time="14/12/22 11:46:53" level=info msg=FocusActiveWidget edit=false selected="{9 3}" tip=table
+time="14/12/22 11:46:53" level=info msg=FocusActiveWidget edit=false selected="{9 3}" tip=table
+time="14/12/22 11:46:53" level=info msg=FocusActiveWidget edit=false selected="{9 3}" tip=table
+time="14/12/22 11:46:53" level=info msg=FocusActiveWidget edit=false selected="{9 3}" tip=table
+time="14/12/22 11:46:53" level=info msg=FocusActiveWidget edit=false selected="{9 3}" tip=table
+time="14/12/22 11:46:53" level=info msg=FocusActiveWidget edit=false selected="{9 3}" tip=table
+time="14/12/22 11:46:53" level=info msg=FocusActiveWidget edit=false selected="{9 3}" tip=table
+time="14/12/22 11:46:53" level=info msg=FocusActiveWidget edit=false selected="{9 3}" tip=table
+time="14/12/22 11:46:53" level=info msg=FocusActiveWidget edit=false selected="{8 3}" tip=table
+time="14/12/22 11:46:54" level=info msg=FocusActiveWidget edit=false selected="{7 3}" tip=table
+time="14/12/22 11:46:54" level=info msg=FocusActiveWidget edit=false selected="{6 3}" tip=table
+time="14/12/22 11:46:54" level=info msg=FocusActiveWidget edit=false selected="{5 3}" tip=table
+time="14/12/22 11:46:54" level=info msg=FocusActiveWidget edit=false selected="{4 3}" tip=table
+time="14/12/22 11:46:54" level=info msg=FocusActiveWidget edit=false selected="{3 3}" tip=table
+time="14/12/22 11:46:54" level=info msg=FocusActiveWidget edit=false selected="{2 3}" tip=table
+time="14/12/22 11:46:54" level=info msg=FocusActiveWidget edit=false selected="{1 3}" tip=table
+time="14/12/22 11:46:54" level=info msg=FocusActiveWidget edit=false selected="{0 3}" tip=table
+time="14/12/22 11:46:54" level=info msg=FocusActiveWidget edit=false selected="{0 3}" tip=table
+time="14/12/22 11:46:54" level=info msg=FocusActiveWidget edit=false selected="{0 3}" tip=table
+time="14/12/22 11:46:54" level=info msg=FocusActiveWidget edit=false selected="{0 3}" tip=table
+time="14/12/22 11:46:54" level=info msg=FocusActiveWidget edit=false selected="{0 3}" tip=table
+time="14/12/22 11:46:54" level=info msg=FocusActiveWidget edit=false selected="{0 3}" tip=table
+time="14/12/22 11:46:54" level=info msg=FocusActiveWidget edit=false selected="{0 3}" tip=table
+time="14/12/22 11:46:54" level=info msg=FocusActiveWidget edit=false selected="{0 3}" tip=table
+time="14/12/22 11:46:54" level=info msg=FocusActiveWidget edit=false selected="{0 3}" tip=table
+time="14/12/22 11:46:55" level=info msg=FocusActiveWidget edit=false selected="{0 3}" tip=table
+time="14/12/22 11:46:55" level=info msg=FocusActiveWidget edit=false selected="{0 3}" tip=table
+time="14/12/22 11:46:55" level=info msg=FocusActiveWidget edit=false selected="{0 2}" tip=table
+time="14/12/22 11:46:55" level=info msg=FocusActiveWidget edit=false selected="{0 1}" tip=table
+time="14/12/22 11:46:56" level=info msg=FocusActiveWidget edit=false selected="{1 1}" tip=table
+time="14/12/22 11:46:56" level=info msg=FocusActiveWidget edit=false selected="{2 1}" tip=table
+time="14/12/22 11:46:56" level=info msg=FocusActiveWidget edit=false selected="{3 1}" tip=table
+time="14/12/22 11:46:56" level=info msg=FocusActiveWidget edit=false selected="{4 1}" tip=table
+time="14/12/22 11:46:57" level=info msg=FocusActiveWidget edit=false selected="{5 1}" tip=table
+time="14/12/22 11:46:57" level=info msg=FocusActiveWidget edit=false selected="{6 1}" tip=table
+time="14/12/22 11:46:57" level=info msg=FocusActiveWidget edit=false selected="{7 1}" tip=table
+time="14/12/22 11:46:57" level=info msg=FocusActiveWidget edit=false selected="{8 1}" tip=table
+time="14/12/22 11:46:57" level=info msg=FocusActiveWidget edit=false selected="{9 1}" tip=table
+time="14/12/22 11:46:58" level=info msg=FocusActiveWidget edit=false selected="{9 2}" tip=table
+time="14/12/22 11:46:58" level=info msg=FocusActiveWidget edit=false selected="{9 3}" tip=table
+time="14/12/22 11:46:58" level=info msg=FocusActiveWidget edit=false selected="{9 4}" tip=table
+time="14/12/22 11:46:58" level=info msg=FocusActiveWidget edit=false selected="{9 5}" tip=table
+time="14/12/22 11:46:58" level=info msg=FocusActiveWidget edit=false selected="{9 5}" tip=table
+time="14/12/22 11:46:58" level=info msg=FocusActiveWidget edit=false selected="{9 5}" tip=table
+time="14/12/22 11:46:58" level=info msg=FocusActiveWidget edit=false selected="{9 5}" tip=table
+time="14/12/22 11:46:58" level=info msg=FocusActiveWidget edit=false selected="{9 5}" tip=table
+time="14/12/22 11:46:58" level=info msg=FocusActiveWidget edit=false selected="{9 5}" tip=table
+time="14/12/22 11:46:58" level=info msg=FocusActiveWidget edit=false selected="{9 5}" tip=table
+time="14/12/22 11:46:58" level=info msg=FocusActiveWidget edit=false selected="{9 5}" tip=table

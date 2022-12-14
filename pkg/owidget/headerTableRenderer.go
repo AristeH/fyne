@@ -14,15 +14,15 @@ type headerTableRenderer struct {
 	container   *fyne.Container
 }
 
-func (h *OTable) CreateRenderer() fyne.WidgetRenderer {
-	Log.WithFields(logrus.Fields{"h.Tool": h.Tool}).Info("CreateRenderer")
+func (t *OTable) CreateRenderer() fyne.WidgetRenderer {
+	Log.WithFields(logrus.Fields{"h.Tool": t.Tool}).Info("CreateRenderer")
 	ht := headerTableRenderer{}
-	ht.headerTable = h
-	if h.Tool == nil {
+	ht.headerTable = t
+	if t.Tool == nil {
 		// container:   container.NewBorder(h.Header, nil, nil, nil, h.Table),
-		ht.container = container.NewBorder(nil, nil, nil, nil, h.Table)
+		ht.container = container.NewBorder(nil, nil, nil, nil, t.Table)
 	} else {
-		ht.container = container.NewBorder(h.Tool, nil, nil, nil, h.Table)
+		ht.container = container.NewBorder(t.Tool, nil, nil, nil, t.Table)
 
 	}
 	return ht

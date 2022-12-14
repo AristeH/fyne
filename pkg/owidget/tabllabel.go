@@ -100,7 +100,7 @@ func (t *OTable) MakeTableLabel() {
 			}
 			// активная ячейка
 			if i == t.Selected {
-				t.Form.ActiveWidget.tip = ""
+				t.Form.ActiveWidget.tip = "table"
 				if i.Row > 0 && t.Edit {
 					c := NewCompletionEntry([]string{})
 
@@ -183,10 +183,59 @@ func (t *OTable) MakeTappable(txt string, tip string, c *CellColor) *fyne.Contai
 
 // Implements: fyne.Focusable
 func (t *OTable) TypedKey(ev *fyne.KeyEvent) {
+	i := t.Selected
+	switch ev.Name {
+	case "Return":
+		if t.Edit {
+			t.Selected = widget.TableCellID{Col: i.Col, Row: i.Row + 1}
+		} else {
+			t.Edit = true
+			t.Selected = widget.TableCellID{Col: i.Col, Row: i.Row}
+		}
+	case "Down":
+		if len(t.Data) > i.Row {
+			t.Selected = widget.TableCellID{Col: i.Col, Row: i.Row + 1}
+		}
+	case "Up":
+		if i.Row > 0 {
+			tc := widget.TableCellID{Col: i.Col, Row: i.Row - 1}
+			t.Selected = tc
+		}
+	case "Left":
+		c := i.Col
+		for c >= 1 {
+			c--
+			col := t.ColumnStyle[t.DataV[0][c]]
+			if col.Width != 0 {
+				t.Selected = widget.TableCellID{Col: c, Row: i.Row}
+				break
+			}
+		}
+	case "Escape":
+		t.Edit = false
+		t.Form.ActiveWidget.tip = "table"
+		t.Form.ActiveWidget.t = t
+	case "Right":
+		c := i.Col
+		col := t.ColumnStyle[t.DataV[0][c]]
+
+		for len(t.DataV[0])-1 > c {
+			c++
+			if col.Width != 0 {
+				t.Selected = widget.TableCellID{Col: c, Row: i.Row}
+				break
+			}
+		}
+	}
+	t.FocusActiveWidget()
+
 }
 
-func (n *OTable) TypedRune(r rune) {
+func (t *OTable) TypedRune(r rune) {
 	Log.WithFields(logrus.Fields{"entry.text": r}).Info("onEnter ")
+}
+func (t *OTable) KeyDown(key *fyne.KeyEvent) {
+	Log.WithFields(logrus.Fields{"rows": key}).Info("TappedtappableIcon")
 }
 
 // Implements: fyne.Focusable
@@ -216,5 +265,7 @@ func (t *OTable) FocusActiveWidget() {
 		case "table":
 			t.Form.W.Canvas().Focus(t.Form.ActiveWidget.t)
 		}
+	} else {
+		t.Form.W.Canvas().Focus(t.Form.ActiveWidget.t)
 	}
 }

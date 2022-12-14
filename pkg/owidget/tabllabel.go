@@ -106,7 +106,7 @@ func (t *OTable) MakeTableLabel() {
 
 					t.Form.ActiveWidget.tip = "string"
 					t.Form.ActiveWidget.ce = c
-					if strings.HasPrefix(tip, "id_") { //id  другой таблицы
+					if strings.HasPrefix(tip, "id_") { //id другой таблицы
 						en := string(mystr[0 : k-3])
 						entry := t.MakeTappable(en, tip, FillColor)
 						c := container.NewHSplit(entry, newTappableIcon(theme.SearchIcon()))
@@ -181,7 +181,7 @@ func (t *OTable) MakeTappable(txt string, tip string, c *CellColor) *fyne.Contai
 	return container.New(layout.NewMaxLayout(), rec, entry)
 }
 
-// Implements: fyne.Focusable
+// TypedKey Implements: fyne.Focusable
 func (t *OTable) TypedKey(ev *fyne.KeyEvent) {
 	i := t.Selected
 	switch ev.Name {
@@ -235,14 +235,14 @@ func (t *OTable) TypedRune(r rune) {
 	Log.WithFields(logrus.Fields{"entry.text": r}).Info("onEnter ")
 }
 func (t *OTable) KeyDown(key *fyne.KeyEvent) {
-	Log.WithFields(logrus.Fields{"rows": key}).Info("TappedtappableIcon")
+	Log.WithFields(logrus.Fields{"rows": key}).Info("TappedTappableIcon")
 }
 
-// Implements: fyne.Focusable
+// FocusLost Implements: fyne.Focusable
 func (t *OTable) FocusLost() {
 }
 
-// Implements: fyne.Focusable
+// FocusGained Implements: fyne.Focusable
 func (t *OTable) FocusGained() {
 }
 

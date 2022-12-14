@@ -10,6 +10,7 @@ require (
 require (
 	fyne.io/systray v1.10.1-0.20220621085403-9a2652634e93 // indirect
 	github.com/PaulWaldo/fyne-headertable v0.0.1 // indirect
+	github.com/d5/tengo/v2 v2.13.0 // indirect
 	github.com/davecgh/go-spew v1.1.1 // indirect
 	github.com/fatih/vim-go-tutorial v0.0.0-20181010233933-3f8bbd5f5e07 // indirect
 	github.com/fredbi/uri v0.0.0-20181227131451-3dcfdacbaaf3 // indirect

@@ -33,7 +33,7 @@ each([a, b, c, d], func(x) {
 	// set values
 	_ = script.Add("a", 1)
 	_ = script.Add("b", 9)
-	_ = script.Add("c", 8)
+	_ = script.Add("c", 16)
 	_ = script.Add("d", 4)
 
 	// run the script

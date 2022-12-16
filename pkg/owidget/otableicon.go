@@ -35,16 +35,7 @@ func (t *tappableIcon) TypedKey(ev *fyne.KeyEvent) {
 	switch ev.Name {
 	case "Return":
 		if otab.Edit {
-			// Log.WithFields(logrus.Fields{"t": otab.DataV[i.Row][i.Col]}).Info("TypedKey")
-			//
-			// if otab.DataV[i.Row][i.Col] == "1" {
-			// 	otab.DataV[i.Row][i.Col] = "0"
-			// } else {
-			// 	otab.DataV[i.Row][i.Col] = "1"
-			//
-			// }
-			// Log.WithFields(logrus.Fields{"t": otab.DataV[i.Row][i.Col]}).Info("TypedKey")
-			//
+
 			otab.Selected = widget.TableCellID{Col: i.Col, Row: i.Row + 1}
 		} else {
 			otab.Edit = true
@@ -55,7 +46,7 @@ func (t *tappableIcon) TypedKey(ev *fyne.KeyEvent) {
 			otab.Selected = widget.TableCellID{Col: i.Col, Row: i.Row + 1}
 		}
 	case "Up":
-		if i.Row > 0 {
+		if i.Row > 1 {
 			tc := widget.TableCellID{Col: i.Col, Row: i.Row - 1}
 			otab.Selected = tc
 		}
@@ -85,6 +76,14 @@ func (t *tappableIcon) TypedKey(ev *fyne.KeyEvent) {
 				break
 			}
 		}
+	case fyne.KeySpace:
+		if otab.Edit {
+			if otab.DataV[i.Row][i.Col] == "1" {
+				otab.DataV[i.Row][i.Col] = "0"
+			} else {
+				otab.DataV[i.Row][i.Col] = "1"
+			}
+		}
 	}
 	otab.FocusActiveWidget()
 
@@ -92,23 +91,23 @@ func (t *tappableIcon) TypedKey(ev *fyne.KeyEvent) {
 
 // Implements: fyne.Focusable
 func (t *tappableIcon) FocusGained() {
-	Log.WithFields(logrus.Fields{"tappableIcon": "fg"}).Info("TypedKey")
+
 }
 
 func (t *tappableIcon) TypedRune(r rune) {
-	Log.WithFields(logrus.Fields{"entry.text": r}).Info("onEnter ")
+
 }
 
 // Implements: fyne.Focusable
 func (t *tappableIcon) FocusLost() {
-	otab := t.t
-	i := otab.Selected
-	if otab.Edit {
-		if otab.DataV[i.Row][i.Col] == "1" {
-			otab.DataV[i.Row][i.Col] = "0"
-		} else {
-			otab.DataV[i.Row][i.Col] = "1"
-		}
-	}
-	Log.WithFields(logrus.Fields{"tappableIcon": "fl"}).Info("TypedKey")
+	// otab := t.t
+	// i := otab.Selected
+	// if otab.Edit {
+	// 	if otab.DataV[i.Row][i.Col] == "1" {
+	// 		otab.DataV[i.Row][i.Col] = "0"
+	// 	} else {
+	// 		otab.DataV[i.Row][i.Col] = "1"
+	// 	}
+	// }
+	// Log.WithFields(logrus.Fields{"tappableIcon": "fl"}).Info("TypedKey")
 }

@@ -3,19 +3,18 @@ package main
 import (
 	"context"
 	"fmt"
+	"os"
+	"otable/data"
+	"otable/pkg/logger"
+	"otable/pkg/owidget"
+
 	"fyne.io/fyne/v2"
 	"fyne.io/fyne/v2/app"
 	"fyne.io/fyne/v2/container"
 	"fyne.io/fyne/v2/widget"
 	"github.com/d5/tengo/v2"
 	"github.com/sirupsen/logrus"
-	"os"
-	"otable/data"
-	"otable/pkg/logger"
-	"otable/pkg/owidget"
 )
-
-var myApp fyne.App
 
 func main() {
 	script := tengo.NewScript([]byte(
@@ -32,6 +31,7 @@ each([a, b, c, d], func(x) {
 
 	// set values
 	_ = script.Add("a", 1)
+
 	_ = script.Add("b", 9)
 	_ = script.Add("c", 16)
 	_ = script.Add("d", 4)
@@ -54,7 +54,7 @@ each([a, b, c, d], func(x) {
 		"Out":   os.Stderr,
 	}).Info("Начало")
 	os.Setenv("FYNE_FONT", "C:/goproject/otable/ttf/Go Mono Nerd Font Complete Mono.ttf")
-	myApp = app.New()
+	app.New()
 	fd := owidget.PutListForm("Main", "MainForm")
 	myWindow := fd.W
 	bTable := widget.NewButton("Open table", nil)

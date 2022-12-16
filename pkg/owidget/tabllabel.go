@@ -1,6 +1,7 @@
 package owidget
 
 import (
+	"image/color"
 	"otable/pkg/logger"
 	"strconv"
 	"strings"
@@ -23,27 +24,26 @@ func init() {
 func (t *OTable) getColorCell(i widget.TableCellID) *CellColor {
 	c := CellColor{}
 	c.Color = MapColor["black"]
-	//цвет фона ячейки
+	//цвет фона строки
 	if i.Row == 0 {
 		c.BGcolor = MapColor[t.TabStyle.HeaderColor]
 	} else if i.Row%2 == 0 {
 		c.BGcolor = MapColor[t.TabStyle.RowAlterColor]
-
 	} else {
 		c.BGcolor = MapColor[t.TabStyle.RowColor]
 	}
-	// выделенный столбец
+	// цвет фона столбца
 	col := t.ColumnStyle[t.DataV[0][i.Col]]
 	if val, ok := MapColor[col.BGcolor]; ok {
 		c.BGcolor = mix(val, c.BGcolor)
 	}
-	// individual
+	// цвет ячейки
 	id, ok := t.CellColor[strconv.Itoa(i.Row)+";"+strconv.Itoa(i.Col)]
 	if ok {
 		c = *id
 	}
 
-	// выделенная ячейка
+	// цвет выделенной ячейки
 	if i == t.Selected {
 		c.BGcolor = MapColor["Selected"]
 	}
@@ -55,15 +55,12 @@ func (t *OTable) MakeTableLabel() {
 	rows := len(t.DataV)
 	columns := len(t.DataV[0])
 	t.Header = widget.NewTable(
-		// Dimensions (rows, cols)
 		func() (int, int) { return 1, columns },
-		// Default value
-		func() fyne.CanvasObject { return widget.NewLabel("the content") },
-		// Cell values
+		func() fyne.CanvasObject { return canvas.NewText("", color.Black) },
 		func(cellID widget.TableCellID, o fyne.CanvasObject) {
 			colst := t.ColumnStyle[t.DataV[0][cellID.Col]]
-			l := o.(*widget.Label)
-			l.SetText(colst.name)
+			l := o.(*canvas.Text)
+			l.Text = colst.name
 			l.Refresh()
 		},
 	)

@@ -5,6 +5,7 @@ import (
 	"image/color"
 	"otable/data"
 	"otable/pkg/logger"
+	"strconv"
 	"strings"
 
 	"fyne.io/fyne/v2"
@@ -31,21 +32,21 @@ type CellColor struct {
 // oTable - таблица
 type OTable struct {
 	widget.BaseWidget
-	ID          string   // имя таблицы уникальное в пределах формы
-	Form        FormData //  формa владелец таблицы
-	ColumnStyle map[string]*ColumnStyle
-	TabStyle    TableStyle          // стиль таблицы
-	Data        map[string][]string // данные таблицы
-	DataV       [][]string          // отображаемые данные(сортировка, фильтр)
+	ID          string                  // имя таблицы уникальное в пределах формы
+	Form        FormData                //  формa владелец таблицы
+	ColumnStyle map[string]*ColumnStyle // описание колонок
+	TabStyle    TableStyle              // стиль таблицы
+	Data        map[string][]string     // данные таблицы
+	DataV       [][]string              // отображаемые данные(сортировка, фильтр)
 	Table       *widget.Table
 	Header      *widget.Table
 	//	Footer      *widget.Table
 	//	left      *widget.Table
-	Properties *OTable
-	Tool       *widget.Toolbar
-	Selected   widget.TableCellID
-	Edit       bool                  //
-	CellColor  map[string]*CellColor // individual color cell
+	Properties *OTable               // таблица для редактирования описания  колонок
+	Tool       *widget.Toolbar       // командная панель  таблицы
+	Selected   widget.TableCellID    // выделенная ячейка таблицы
+	Edit       bool                  // редактируемость таблицы
+	CellColor  map[string]*CellColor //  индивидуальный массив отображения ячеек
 	// wb         map[*widget.Button]int
 }
 
@@ -65,7 +66,7 @@ func (t *OTable) MakeTableData(d data.GetData) {
 	t.DataV = make([][]string, len(d.Data))
 
 	for i := 0; i < len(d.Data); i++ {
-		data := make([]string, colColumns)
+		datad := make([]string, colColumns)
 		datav := make([]string, colV)
 		v := 0
 		// l.WithFields(logrus.Fields{"i": i}).Info("mt")
@@ -75,9 +76,9 @@ func (t *OTable) MakeTableData(d data.GetData) {
 				datav[v] = d.Data[i][j]
 				v++
 			}
-			data[j] = d.Data[i][j]
+			datad[j] = d.Data[i][j]
 		}
-		t.Data[d.Data[i][0]] = data
+		t.Data[d.Data[i][0]] = datad
 		// l.WithFields(logrus.Fields{"j": len(t.DataV), "i": i}).Info("mt")
 		t.DataV[i] = datav
 		// Log.WithFields(logrus.Fields{"v": v}).Info("mt")
@@ -124,8 +125,9 @@ func (t *OTable) GetToolBar() {
 		}))
 
 }
+
 func (t *OTable) TableInitProperties() *data.GetData {
-	colColumns := 6
+	colColumns := 10
 	colRows := len(t.ColumnStyle)
 	datag := make([][]string, colRows)
 	cs := t.ColumnStyle
@@ -133,11 +135,23 @@ func (t *OTable) TableInitProperties() *data.GetData {
 	for _, v := range cs {
 		datag[i] = make([]string, colColumns)
 		datag[i][0] = v.id
-		datag[i][1] = v.name
-		datag[i][2] = v.tip
-		datag[i][3] = v.formula
-		datag[i][4] = v.color
-		datag[i][5] = fmt.Sprintf("%v", v.Width)
+		datag[i][1] = v.name                     // заголовок
+		datag[i][2] = v.tip                      // тип столбца
+		datag[i][3] = v.formula                  // Формула
+		datag[i][4] = v.color                    // цвет теста столбца
+		datag[i][5] = v.BGcolor                  // цвет фона столбца
+		datag[i][6] = fmt.Sprintf("%v", v.Width) // ширина столбца в символах
+		if v.visible {                           // видимость столбца
+			datag[i][7] = "1"
+		} else {
+			datag[i][7] = "0"
+		}
+		if v.edit { // видимость столбца
+			datag[i][8] = "1"
+		} else {
+			datag[i][8] = "0"
+		}
+		datag[i][9] = strconv.FormatInt(int64(v.order), 2) // порядок вывода
 		i++
 	}
 
@@ -146,7 +160,11 @@ func (t *OTable) TableInitProperties() *data.GetData {
 	datag[0][2] = "Type"
 	datag[0][3] = "formula"
 	datag[0][4] = "Color"
-	datag[0][5] = "Width"
+	datag[0][5] = "BGcolor"
+	datag[0][6] = "Width"
+	datag[0][7] = "visible"
+	datag[0][8] = "edit"
+	datag[0][9] = "order"
 
 	Log.WithFields(logrus.Fields{"form1": t.ID, "datag": len(datag)}).Info("TableInitProperties")
 
@@ -162,23 +180,35 @@ func (t *OTable) TableInitProperties() *data.GetData {
 	datadescription[0][2] = "formula"
 	datadescription[0][3] = "Type"
 	datadescription[0][4] = "Color"
-	datadescription[0][5] = "Width"
+	datadescription[0][5] = "BGColor"
+	datadescription[0][6] = "Width"
+	datadescription[0][7] = "visible"
+	datadescription[0][8] = "edit"
+	datadescription[0][9] = "order"
 
 	//  Type column
 	datadescription[1][0] = "string"
 	datadescription[1][1] = "string"
 	datadescription[1][2] = "string"
-	datadescription[1][3] = "string"
-	datadescription[1][4] = "string"
-	datadescription[1][5] = "string"
+	datadescription[1][3] = "enum"
+	datadescription[1][4] = "id_color"
+	datadescription[1][5] = "id_color"
+	datadescription[1][6] = "int"
+	datadescription[1][7] = "bool"
+	datadescription[1][8] = "bool"
+	datadescription[1][9] = "int"
 
 	// Width column
-	datadescription[2][0] = "10"
-	datadescription[2][1] = "10"
-	datadescription[2][2] = "10"
+	datadescription[2][0] = "15"
+	datadescription[2][1] = "15"
+	datadescription[2][2] = "20"
 	datadescription[2][3] = "10"
 	datadescription[2][4] = "10"
 	datadescription[2][5] = "10"
+	datadescription[2][6] = "6"
+	datadescription[2][7] = "4"
+	datadescription[2][8] = "4"
+	datadescription[2][9] = "3"
 
 	//Formula column
 	datadescription[3][0] = ""
@@ -187,6 +217,11 @@ func (t *OTable) TableInitProperties() *data.GetData {
 	datadescription[3][3] = ""
 	datadescription[3][4] = ""
 	datadescription[3][5] = ""
+	datadescription[3][6] = ""
+	datadescription[3][7] = ""
+	datadescription[3][8] = ""
+	datadescription[3][9] = ""
+
 	f := data.GetData{}
 	f.Data = datag
 	f.DataDesciption = datadescription

@@ -23,13 +23,12 @@ func (t *tappableIcon) Tapped(ev *fyne.PointEvent) {
 	Log.WithFields(logrus.Fields{"Tapped": ev}).Info("1tappableIcon")
 }
 func (t *tappableIcon) KeyDown(key *fyne.KeyEvent) {
-	Log.WithFields(logrus.Fields{"rows": key}).Info("TappedtappableIcon")
+	Log.WithFields(logrus.Fields{"rows": key}).Info("TappedTappableIcon")
 }
 
-// Implements: fyne.Focusable
+// TypedKey  fyne.Focusable
 func (t *tappableIcon) TypedKey(ev *fyne.KeyEvent) {
 	Log.WithFields(logrus.Fields{"tappableIcon": ev}).Info("TypedKey")
-
 	otab := t.t
 	i := t.t.Selected
 	switch ev.Name {
@@ -86,28 +85,16 @@ func (t *tappableIcon) TypedKey(ev *fyne.KeyEvent) {
 		}
 	}
 	otab.FocusActiveWidget()
-
 }
 
-// Implements: fyne.Focusable
+// FocusGained  fyne.Focusable
 func (t *tappableIcon) FocusGained() {
-
 }
 
 func (t *tappableIcon) TypedRune(r rune) {
-
 }
 
-// Implements: fyne.Focusable
+// FocusLost  fyne.Focusable
 func (t *tappableIcon) FocusLost() {
-	// otab := t.t
-	// i := otab.Selected
-	// if otab.Edit {
-	// 	if otab.DataV[i.Row][i.Col] == "1" {
-	// 		otab.DataV[i.Row][i.Col] = "0"
-	// 	} else {
-	// 		otab.DataV[i.Row][i.Col] = "1"
-	// 	}
-	// }
-	// Log.WithFields(logrus.Fields{"tappableIcon": "fl"}).Info("TypedKey")
+
 }

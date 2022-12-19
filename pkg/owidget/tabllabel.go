@@ -50,7 +50,6 @@ func (t *OTable) getColorCell(i widget.TableCellID) *CellColor {
 	if i == t.Selected {
 		c.BGcolor = MapColor["Selected"]
 	}
-
 	return &c
 }
 

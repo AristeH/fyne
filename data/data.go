@@ -85,10 +85,10 @@ func TestData() *GetData {
 
 	//Formula column
 	datadescription[3][0] = ""
-	datadescription[3][1] = ""
-	datadescription[3][2] = ""
-	datadescription[3][3] = ""
-	datadescription[3][4] = ""
+	datadescription[3][1] = "Amount =Quantity*Price"
+	datadescription[3][2] = "Amount =Quantity*Price"
+	datadescription[3][3] = "Amount =Quantity*Price"
+	datadescription[3][4] = "Amount =Quantity*Price"
 	datadescription[3][5] = ""
 	datadescription[3][6] = ""
 	datadescription[3][7] = ""

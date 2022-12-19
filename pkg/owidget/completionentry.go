@@ -201,7 +201,7 @@ func (c *CompletionEntry) KeyDown(key *fyne.KeyEvent) {
 	case fyne.KeyReturn:
 
 		Log.WithFields(logrus.Fields{"KeyDown": key}).Info("CompletionEntry")
-
+		t.ExecuteFormula()
 		id := t.Selected
 		Log.WithFields(logrus.Fields{"entry.text": c.Text}).Info("onEnter ")
 		if t.Edit {

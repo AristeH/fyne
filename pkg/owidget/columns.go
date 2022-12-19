@@ -39,7 +39,8 @@ func (t *OTable) fillcolumns(d data.GetData) {
 		cs.name = d.Data[0][i]
 		cs.id = d.DataDesciption[0][i]
 		cs.BGcolor = "rowcolor" // индивидуальный цвет столбца фон
-		cs.color = ""           // индивидуальный цвет текста столбца
+		cs.color = ""
+		cs.formula = d.DataDesciption[3][i] // индивидуальный цвет текста столбца
 		cs.tip = d.DataDesciption[1][i]
 		p, _ := strconv.Atoi(d.DataDesciption[2][i]) //ширина столбца в символах
 		cs.Width = float32(p)                        // ширина колонки

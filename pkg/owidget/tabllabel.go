@@ -1,6 +1,8 @@
 package owidget
 
 import (
+	"context"
+	"fmt"
 	"image/color"
 	"otable/pkg/logger"
 	"strconv"
@@ -12,6 +14,7 @@ import (
 	"fyne.io/fyne/v2/layout"
 	"fyne.io/fyne/v2/theme"
 	"fyne.io/fyne/v2/widget"
+	"github.com/d5/tengo/v2"
 	"github.com/sirupsen/logrus"
 )
 
@@ -178,11 +181,45 @@ func (t *OTable) MakeTappable(txt string, tip string, c *CellColor) *fyne.Contai
 	return container.New(layout.NewMaxLayout(), rec, entry)
 }
 
+func (t *OTable) ExecuteFormula() {
+	col := t.ColumnStyle[t.DataV[0][t.Selected.Col]]
+	if col.formula == "" {
+		return
+	} else {
+		script := tengo.NewScript([]byte(col.formula))
+		for i, _ := range t.DataV[0] {
+			tip := t.ColumnStyle[t.DataV[0][i]].tip
+
+			if strings.HasPrefix(t.ColumnStyle[t.DataV[0][i]].tip, "float") {
+				v1, _ := strconv.ParseFloat(t.DataV[t.Selected.Row][i], 32)
+				_ = script.Add(t.ColumnStyle[t.DataV[0][i]].id, v1)
+			}
+			if tip == "int" {
+				v1, _ := strconv.Atoi(t.DataV[t.Selected.Row][i])
+				_ = script.Add(t.ColumnStyle[t.DataV[0][i]].id, v1)
+			}
+		}
+		// run the script
+		compiled, err := script.RunContext(context.Background())
+		if err != nil {
+			panic(err)
+		}
+		for i, _ := range t.DataV[0] {
+			if strings.HasPrefix(t.ColumnStyle[t.DataV[0][i]].tip, "float") || t.ColumnStyle[t.DataV[0][i]].tip == "int" {
+				v := t.ColumnStyle[t.DataV[0][i]].id
+				t.DataV[t.Selected.Row][i] = fmt.Sprintf("%.2f", compiled.Get(v).Float())
+				fmt.Println(v, t.DataV[t.Selected.Row][i])
+			}
+		}
+	}
+}
+
 // TypedKey Implements: fyne.Focusable
 func (t *OTable) TypedKey(ev *fyne.KeyEvent) {
 	i := t.Selected
 	switch ev.Name {
 	case "Return":
+		t.ExecuteFormula()
 		if t.Edit {
 			t.Selected = widget.TableCellID{Col: i.Col, Row: i.Row + 1}
 		} else {
@@ -225,7 +262,6 @@ func (t *OTable) TypedKey(ev *fyne.KeyEvent) {
 		}
 	}
 	t.FocusActiveWidget()
-
 }
 
 func (t *OTable) TypedRune(r rune) {
@@ -252,7 +288,6 @@ func (t *OTable) FocusActiveWidget() {
 	if strings.HasPrefix(tip, "float") {
 		tip = "float"
 	}
-
 	if t.Edit {
 		switch tip {
 		case "string", "float":

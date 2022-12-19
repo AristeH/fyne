@@ -34,7 +34,6 @@ func (t *tappableIcon) TypedKey(ev *fyne.KeyEvent) {
 	switch ev.Name {
 	case "Return":
 		if otab.Edit {
-
 			otab.Selected = widget.TableCellID{Col: i.Col, Row: i.Row + 1}
 		} else {
 			otab.Edit = true

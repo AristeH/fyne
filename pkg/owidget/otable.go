@@ -1,23 +1,20 @@
+// описание структур для таблицы и внутренние функции
 package owidget
 
 import (
 	"fmt"
 	"image/color"
 	"otable/data"
-	"otable/pkg/logger"
 	"strconv"
 	"strings"
 
 	"fyne.io/fyne/v2"
-	"fyne.io/fyne/v2/container"
-	"fyne.io/fyne/v2/theme"
 	"fyne.io/fyne/v2/widget"
 	"github.com/sirupsen/logrus"
 )
 
 // TableStyle - стиль таблицы
 type TableStyle struct {
-	BGColor       string // Цвет фона
 	RowAlterColor string // Цвет строки четной
 	HeaderColor   string // Цвет шапки
 	RowColor      string // Цвет строки нечетной
@@ -25,36 +22,36 @@ type TableStyle struct {
 
 // CellColor - цвета для ячейки
 type CellColor struct {
-	Color   color.RGBA
-	BGcolor color.RGBA
+	Color   color.RGBA //цвет текста
+	BGcolor color.RGBA //цвет фона
 }
 
-// oTable - таблица
+// OTable - описание таблицы
 type OTable struct {
 	widget.BaseWidget
 	ID          string                  // имя таблицы уникальное в пределах формы
-	Form        FormData                //  формa владелец таблицы
+	Form        FormData                // формa владелец таблицы
 	ColumnStyle map[string]*ColumnStyle // описание колонок
-	TabStyle    TableStyle              // стиль таблицы
-	Data        map[string][]string     // данные таблицы
-	DataV       [][]string              // отображаемые данные(сортировка, фильтр)
-	Table       *widget.Table
-	Header      *widget.Table
-	//	Footer      *widget.Table
+	TabStyle    TableStyle              // цвета фонов таблицы(шапка, строка
+	Data        map[string][]string     // исходные данные таблицы
+	DataV       [][]string              // отображаемые данные(сортировка, фильтр) 1 столбец ID записи, 1 строка шапка
+	Table       *widget.Table           // таблица fyne
+	Header      *widget.Table           // шапка таблицы пока не релизована
+	//	Footer      *widget.Table // когда удастся сделать скроллинг
 	//	left      *widget.Table
 	Properties *OTable               // таблица для редактирования описания  колонок
 	Tool       *widget.Toolbar       // командная панель  таблицы
 	Selected   widget.TableCellID    // выделенная ячейка таблицы
 	Edit       bool                  // редактируемость таблицы
-	CellColor  map[string]*CellColor //  индивидуальный массив отображения ячеек
+	CellColor  map[string]*CellColor // индивидуальный массив отображения ячеек
 	// wb         map[*widget.Button]int
 }
 
-func (t *OTable) MakeTableData(d data.GetData) {
-
+// MakeTableData - функция заполняющая структуру OTable из входных данных
+func (t *OTable) fill(d data.GetData) {
 	colColumns := len(d.DataDesciption[0])
-	t.fillcolumns(d)
-	Log.WithFields(logrus.Fields{"form": t.Form.ID, "event": "fillcolumns"}).Info("MakeTableData")
+	t.fillColumns(d)
+	Log.WithFields(logrus.Fields{"form": t.Form.ID, "event": "fillColumns"}).Info("MakeTableData")
 	colV := 0 //количество видимых столбцов для пользователя
 	for i := 0; i < colColumns; i++ {
 		b := strings.HasPrefix(d.Data[0][i], "id_") //исключим столбцы с типом ID
@@ -69,8 +66,8 @@ func (t *OTable) MakeTableData(d data.GetData) {
 		datad := make([]string, colColumns)
 		datav := make([]string, colV)
 		v := 0
-		// l.WithFields(logrus.Fields{"i": i}).Info("mt")
 		for j := 0; j < colColumns; j++ {
+			// спрячем id  ссылки на другие таблицы
 			b := strings.HasPrefix(d.DataDesciption[0][j], "id_")
 			if !b {
 				datav[v] = d.Data[i][j]
@@ -78,8 +75,7 @@ func (t *OTable) MakeTableData(d data.GetData) {
 			}
 			datad[j] = d.Data[i][j]
 		}
-		t.Data[d.Data[i][0]] = datad
-		// l.WithFields(logrus.Fields{"j": len(t.DataV), "i": i}).Info("mt")
+		t.Data[d.Data[i][0]] = datad //запишем в map
 		t.DataV[i] = datav
 		// Log.WithFields(logrus.Fields{"v": v}).Info("mt")
 	}
@@ -98,35 +94,8 @@ func (t *OTable) Scrolled(event *fyne.ScrollEvent) {
 
 }
 
-func (t *OTable) GetToolBar() {
-	l := logger.GetLog()
-	l.WithFields(logrus.Fields{"DocumentCreateIcon": "GetToolBar"}).Info("GetToolBar")
-
-	t.Tool = widget.NewToolbar(
-		widget.NewToolbarAction(theme.DocumentCreateIcon(), func() {
-			l.WithFields(logrus.Fields{"DocumentCreateIcon": "DocumentCreateIcon"}).Info("GetToolBar")
-		}),
-		widget.NewToolbarSeparator(),
-		widget.NewToolbarAction(theme.ContentAddIcon(), func() {}),
-		widget.NewToolbarAction(theme.ContentRemoveIcon(), func() {}),
-		widget.NewToolbarSpacer(),
-		widget.NewToolbarAction(theme.SettingsIcon(), func() {
-			fd := PutListForm("TableProp", "Tablerop")
-			g := t.TableInitProperties()
-			l.WithFields(logrus.Fields{"Properties": len(g.Data)}).Info("GetToolBar")
-
-			table := fd.NewOTable("invoice", *g)
-
-			l.WithFields(logrus.Fields{"Properties len  dv": len(table.DataV)}).Info("GetToolBar")
-			w := fd.W
-			w.Resize(fyne.NewSize(1200, 400))
-			w.SetContent(container.NewMax(table))
-			w.Show()
-		}))
-
-}
-
-func (t *OTable) TableInitProperties() *data.GetData {
+// properties - свойства таблицы, описание колонок
+func (t *OTable) properties() *data.GetData {
 	colColumns := 10
 	colRows := len(t.ColumnStyle)
 	datag := make([][]string, colRows)
@@ -227,4 +196,34 @@ func (t *OTable) TableInitProperties() *data.GetData {
 	f.DataDesciption = datadescription
 	return &f
 
+}
+
+// getColorCell - получим цвет фона и текста отбражаемой ячейки
+func (t *OTable) getColorCell(i widget.TableCellID) *CellColor {
+	c := CellColor{}
+	c.Color = MapColor["black"]
+	//цвет фона строки
+	if i.Row == 0 {
+		c.BGcolor = MapColor[t.TabStyle.HeaderColor]
+	} else if i.Row%2 == 0 {
+		c.BGcolor = MapColor[t.TabStyle.RowAlterColor]
+	} else {
+		c.BGcolor = MapColor[t.TabStyle.RowColor]
+	}
+	// цвет фона столбца
+	col := t.ColumnStyle[t.DataV[0][i.Col]]
+	if val, ok := MapColor[col.BGcolor]; ok {
+		c.BGcolor = mix(val, c.BGcolor)
+	}
+	// цвет ячейки
+	id, ok := t.CellColor[strconv.Itoa(i.Row)+";"+strconv.Itoa(i.Col)]
+	if ok {
+		c = *id
+	}
+
+	// цвет выделенной ячейки
+	if i == t.Selected {
+		c.BGcolor = MapColor["Selected"]
+	}
+	return &c
 }

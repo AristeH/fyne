@@ -22,12 +22,12 @@ type ColumnStyle struct {
 }
 
 // fillcolumns - filling in columns from incoming data
-func (t *OTable) fillcolumns(d data.GetData) {
+func (t *OTable) fillColumns(d data.GetData) {
 	columns := len(d.DataDesciption[0]) // количесто колонок таблицы
 	Log.WithFields(logrus.Fields{
 		"form":    t.ID,
 		"columns": columns,
-		"event":   "fillcolumns()",
+		"event":   "fillColumns()",
 	}).Info("Columns")
 	//инициализация стиля
 	t.ColumnStyle = make(map[string]*ColumnStyle)

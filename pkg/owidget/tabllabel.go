@@ -24,33 +24,32 @@ func init() {
 	Log = logger.GetLog()
 }
 
-func (t *OTable) getColorCell(i widget.TableCellID) *CellColor {
-	c := CellColor{}
-	c.Color = MapColor["black"]
-	//цвет фона строки
-	if i.Row == 0 {
-		c.BGcolor = MapColor[t.TabStyle.HeaderColor]
-	} else if i.Row%2 == 0 {
-		c.BGcolor = MapColor[t.TabStyle.RowAlterColor]
-	} else {
-		c.BGcolor = MapColor[t.TabStyle.RowColor]
-	}
-	// цвет фона столбца
-	col := t.ColumnStyle[t.DataV[0][i.Col]]
-	if val, ok := MapColor[col.BGcolor]; ok {
-		c.BGcolor = mix(val, c.BGcolor)
-	}
-	// цвет ячейки
-	id, ok := t.CellColor[strconv.Itoa(i.Row)+";"+strconv.Itoa(i.Col)]
-	if ok {
-		c = *id
-	}
+func (t *OTable) GetToolBar() {
+	l := logger.GetLog()
+	l.WithFields(logrus.Fields{"DocumentCreateIcon": "GetToolBar"}).Info("GetToolBar")
 
-	// цвет выделенной ячейки
-	if i == t.Selected {
-		c.BGcolor = MapColor["Selected"]
-	}
-	return &c
+	t.Tool = widget.NewToolbar(
+		widget.NewToolbarAction(theme.DocumentCreateIcon(), func() {
+			l.WithFields(logrus.Fields{"DocumentCreateIcon": "DocumentCreateIcon"}).Info("GetToolBar")
+		}),
+		widget.NewToolbarSeparator(),
+		widget.NewToolbarAction(theme.ContentAddIcon(), func() {}),
+		widget.NewToolbarAction(theme.ContentRemoveIcon(), func() {}),
+		widget.NewToolbarSpacer(),
+		widget.NewToolbarAction(theme.SettingsIcon(), func() {
+			fd := PutListForm("TableProp", "Tablerop")
+			g := t.properties()
+			l.WithFields(logrus.Fields{"Properties": len(g.Data)}).Info("GetToolBar")
+
+			table := fd.NewOTable("invoice", *g)
+
+			l.WithFields(logrus.Fields{"Properties len  dv": len(table.DataV)}).Info("GetToolBar")
+			w := fd.W
+			w.Resize(fyne.NewSize(1200, 400))
+			w.SetContent(container.NewMax(table))
+			w.Show()
+		}))
+
 }
 
 func (t *OTable) MakeTableLabel() {

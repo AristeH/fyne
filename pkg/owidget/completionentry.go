@@ -179,11 +179,11 @@ func newNavigableList(items []string, entry *widget.Entry, setTextFromMenu func(
 	return n
 }
 
-// Implements: fyne.Focusable
+// FocusGained fyne.Focusable
 func (n *navigableList) FocusGained() {
 }
 
-// Implements: fyne.Focusable
+// FocusLost fyne.Focusable
 func (n *navigableList) FocusLost() {
 }
 
@@ -199,8 +199,6 @@ func (c *CompletionEntry) KeyDown(key *fyne.KeyEvent) {
 	id := t.Selected
 	switch key.Name {
 	case fyne.KeyReturn:
-
-		Log.WithFields(logrus.Fields{"KeyDown": key}).Info("CompletionEntry")
 		t.ExecuteFormula()
 		id := t.Selected
 		Log.WithFields(logrus.Fields{"entry.text": c.Text}).Info("onEnter ")
@@ -262,6 +260,7 @@ func (c *CompletionEntry) KeyDown(key *fyne.KeyEvent) {
 		t.FocusActiveWidget()
 	}
 }
+
 func (n *navigableList) TypedKey(event *fyne.KeyEvent) {
 	Log.WithFields(logrus.Fields{"entry.text": event}).Info("navigableListTypedKey ")
 	switch event.Name {
@@ -273,7 +272,6 @@ func (n *navigableList) TypedKey(event *fyne.KeyEvent) {
 		}
 		n.navigating = true
 		n.Select(n.selected)
-
 	case fyne.KeyUp:
 		if n.selected > 0 {
 			n.selected--
@@ -294,7 +292,6 @@ func (n *navigableList) TypedKey(event *fyne.KeyEvent) {
 		n.hide()
 	default:
 		n.entry.TypedKey(event)
-
 	}
 }
 

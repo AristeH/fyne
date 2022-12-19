@@ -54,6 +54,6 @@ func (f *FormData) NewOTable(name string, d data.GetData) *OTable {
 	table.Edit = true
 	Log.WithFields(logrus.Fields{"1table.Form ": len(d.Data)}).Info("NewOTable")
 	f.Table[name] = &table
-	table.MakeTableData(d)
+	table.fill(d)
 	return &table
 }

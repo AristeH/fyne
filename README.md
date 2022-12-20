@@ -15,20 +15,20 @@ NewOTable(name, data) - creating a table
     }
 
 DataDesciption [][]string 
-      1 row of the table contains the column ID
-      2 the table row contains the column type
-      3 table row column width
-      4 row of the table contains the formula
+      1 row of the table contains the column ID;
+      2 the table row contains the column type;
+      3 table row column width;
+      4 row of the table contains the formula;
       
 Type columns:
-	id - ID record
-	id_string - Selection from another table
-	enum - a list of strings to select a value
-	int
-	float
-	string
-	bool
-	date
+	id - ID record;
+	id_string - Selection from another table;
+	enum - a list of strings to select a value;
+	int;
+	float;
+	string;
+	bool;
+	date;
 	
 
 

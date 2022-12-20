@@ -19,6 +19,7 @@ type ColumnStyle struct {
 	visible bool    // видимость
 	edit    bool    // редактирование колонки
 	order   int16   // column output order
+	sort    int8    // 0 - нет сортировки, 1 - возрастание, 2-убывание
 }
 
 // fillcolumns - filling in columns from incoming data

@@ -46,6 +46,7 @@ func (t *OTable) GetToolBar() {
 			l.WithFields(logrus.Fields{"Properties len  dv": len(table.DataV)}).Info("GetToolBar")
 			w := fd.W
 			w.Resize(fyne.NewSize(1200, 400))
+
 			w.SetContent(container.NewMax(table))
 			w.Show()
 		}))
@@ -83,9 +84,10 @@ func (t *OTable) MakeTableLabel() {
 			mystr := []rune(t.DataV[i.Row][i.Col])
 			k := int(col.Width)
 			if col.Width > 0 {
-				k = int(col.Width) - 1
+				if len(mystr) > k-3 {
+					k = int(col.Width) - 3
+				}
 			}
-			en := string(mystr[0:k])
 			if tip == "bool" {
 				rec := canvas.NewRectangle(FillColor.BGcolor)
 				image := canvas.NewImageFromResource(theme.CheckButtonCheckedIcon())
@@ -94,7 +96,19 @@ func (t *OTable) MakeTableLabel() {
 				}
 				box.Objects[0] = container.New(layout.NewMaxLayout(), rec, image)
 			} else {
-				box.Objects[0] = t.MakeTappable(en, tip, FillColor)
+				en := string(mystr[0:k])
+
+				if i.Row == 0 {
+					switch col.sort {
+					case 2:
+						en = "\u2191" + en
+					case 1:
+						en = "\u2193" + en
+					}
+
+				}
+				entry := t.MakeTappable(en, tip, FillColor)
+				box.Objects[0] = entry
 			}
 			// активная ячейка
 			if i == t.Selected {
@@ -105,7 +119,7 @@ func (t *OTable) MakeTableLabel() {
 					t.Form.ActiveWidget.tip = "string"
 					t.Form.ActiveWidget.ce = c
 					if strings.HasPrefix(tip, "id_") { //id другой таблицы
-						en := string(mystr[0 : k-3])
+						en := string(mystr[0 : k-4])
 						entry := t.MakeTappable(en, tip, FillColor)
 						c := container.NewHSplit(entry, newTappableIcon(theme.SearchIcon()))
 						box.Objects[0] = c
@@ -121,7 +135,7 @@ func (t *OTable) MakeTableLabel() {
 						case "bool":
 							t.Form.ActiveWidget.tip = "bool"
 							ic := newTappableIcon(theme.CheckButtonIcon())
-							if t.DataV[i.Row][i.Col] == "1" {
+							if t.DataV[i.Row][i.Col] == "0" {
 								ic = newTappableIcon(theme.CheckButtonCheckedIcon())
 							}
 							ic.t = t
@@ -155,6 +169,7 @@ func (t *OTable) MakeTableLabel() {
 	t.Table.OnSelected = func(id widget.TableCellID) {
 		Log.WithFields(logrus.Fields{"t.Form": t.Form, "w": id}).Info("OnSelectedMakeTableLabel")
 		t.Selected = id
+		t.Form.ActiveWidget.t = t
 
 		t.FocusActiveWidget()
 	}
@@ -211,18 +226,37 @@ func (t *OTable) ExecuteFormula() {
 		}
 	}
 }
+func (t *OTable) Tapped(ev *fyne.PointEvent) {
+
+}
 
 // TypedKey Implements: fyne.Focusable
 func (t *OTable) TypedKey(ev *fyne.KeyEvent) {
 	i := t.Selected
 	switch ev.Name {
 	case "Return":
-		t.ExecuteFormula()
-		if t.Edit {
-			t.Selected = widget.TableCellID{Col: i.Col, Row: i.Row + 1}
+		if i.Row == 0 {
+			if t.Selected.Row == 0 {
+				col := t.ColumnStyle[t.DataV[0][t.Selected.Col]]
+				switch col.sort {
+				case 0:
+					col.sort = 1
+					t.sortUp()
+				case 1:
+					col.sort = 2
+					t.sortDown()
+				case 2:
+					col.sort = 0
+				}
+			}
 		} else {
-			t.Edit = true
-			t.Selected = widget.TableCellID{Col: i.Col, Row: i.Row}
+			t.ExecuteFormula()
+			if t.Edit {
+				t.Selected = widget.TableCellID{Col: i.Col, Row: i.Row + 1}
+			} else {
+				t.Edit = true
+				t.Selected = widget.TableCellID{Col: i.Col, Row: i.Row}
+			}
 		}
 	case "Down":
 		if len(t.Data) > i.Row {

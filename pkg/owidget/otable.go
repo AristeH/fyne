@@ -227,3 +227,35 @@ func (t *OTable) getColorCell(i widget.TableCellID) *CellColor {
 	}
 	return &c
 }
+
+func (t *OTable) sortDown() {
+	var temp []string
+	x := t.DataV
+	k := t.Selected.Col
+	n := len(x)
+	for i := 1; i < n; i++ {
+		for j := i; j < n; j++ {
+			if strings.ToUpper(x[i][k]) < strings.ToUpper(x[j][k]) {
+				temp = x[i]
+				x[i] = x[j]
+				x[j] = temp
+			}
+		}
+	}
+}
+
+func (t *OTable) sortUp() {
+	var temp []string
+	x := t.DataV
+	k := t.Selected.Col
+	n := len(x)
+	for i := 1; i < n; i++ {
+		for j := i; j < n; j++ {
+			if strings.ToUpper(x[i][k]) > strings.ToUpper(x[j][k]) {
+				temp = x[i]
+				x[i] = x[j]
+				x[j] = temp
+			}
+		}
+	}
+}

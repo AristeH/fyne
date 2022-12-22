@@ -82,29 +82,12 @@ func (e *oEntry) TappedSecondary(ev *fyne.PointEvent) {
 	// e.menu()
 }
 
-func (e *oEntry) onEnter() {
-	t := e.t
-	id := t.Selected
-	Log.WithFields(logrus.Fields{"entry.text": e.Text}).Info("onEnter ")
-	if t.Edit {
-		t.DataV[id.Row][id.Col] = e.Text
-		if len(t.DataV)-1 > t.Selected.Row {
-			t.Selected = widget.TableCellID{Col: id.Col, Row: id.Row + 1}
-			t.Table.ScrollTo(widget.TableCellID{Col: id.Col, Row: id.Row + 1})
-		}
-	} else {
-		t.Edit = true
-		t.Selected = widget.TableCellID{Col: id.Col, Row: id.Row}
-	}
-	t.FocusActiveWidget()
-}
-
 func (e *oEntry) OnChanged(t string) {
 	fmt.Println(e.Entry.Text)
 	Log.WithFields(logrus.Fields{"entry.text": e.Text}).Info("сортировка ")
 }
 
-func newoEntry() *oEntry {
+func NewoEntry() *oEntry {
 	entry := &oEntry{}
 	entry.ExtendBaseWidget(entry)
 	entry.Entry.OnChanged = func(sText string) {
@@ -114,33 +97,34 @@ func newoEntry() *oEntry {
 }
 
 func (e *oEntry) KeyDown(key *fyne.KeyEvent) {
-	//t := appValues[e.IDForm].Table[e.IDTable]
-	Log.WithFields(logrus.Fields{"entry.text": e.Text}).Info("KeyDown")
-	Log.WithFields(logrus.Fields{"e.t.Selected": e.t.Selected}).Info("KeyDown")
 	t := e.t
 	id := t.Selected
 	switch key.Name {
 	case fyne.KeyReturn:
-		e.onEnter()
-	case "KP_Enter":
-		e.onEnter()
-	case "Down":
-		if len(e.t.Data)-1 > e.t.Selected.Row {
-			t.Selected = widget.TableCellID{Col: id.Col, Row: id.Row + 1}
-			t.FocusActiveWidget()
+		t.ExecuteFormula()
+		id := t.Selected
+		Log.WithFields(logrus.Fields{"entry.text": e.Text}).Info("onEnter ")
+		if t.Edit {
+			t.DataV[id.Row][id.Col] = e.Text
+			if len(t.DataV)-1 > t.Selected.Row {
+				t.Selected = widget.TableCellID{Col: id.Col, Row: id.Row + 1}
+				t.Table.ScrollTo(widget.TableCellID{Col: id.Col, Row: id.Row + 1})
+			}
+		} else {
+			t.Edit = true
+			t.Selected = widget.TableCellID{Col: id.Col, Row: id.Row}
 		}
-	case "Menu":
-		e.menu()
+		t.FocusActiveWidget()
 	case "Up":
 		if id.Row > 1 {
 			t.Selected = widget.TableCellID{Col: id.Col, Row: id.Row - 1}
 			t.FocusActiveWidget()
 		}
-	case "Escape":
-		t.Edit = false
-		t.Form.ActiveWidget = nil
-		t.FocusActiveWidget()
-		fmt.Printf("Key %v pressed\n", key.Name)
+	case "Down":
+		if len(e.t.Data)-1 > e.t.Selected.Row {
+			t.Selected = widget.TableCellID{Col: id.Col, Row: id.Row + 1}
+			t.FocusActiveWidget()
+		}
 	case "Left":
 		if !t.Edit {
 			c := id.Col
@@ -171,8 +155,11 @@ func (e *oEntry) KeyDown(key *fyne.KeyEvent) {
 			}
 			t.FocusActiveWidget()
 		}
-	default:
-		fmt.Printf("Key %v pressed\n", key.Name)
+	case "Escape":
+		t.Edit = false
+		t.Form.ActiveWidget.tip = "table"
+		t.Form.ActiveWidget.t = t
+		t.FocusActiveWidget()
 	}
 }
 

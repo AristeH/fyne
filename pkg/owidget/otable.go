@@ -34,6 +34,7 @@ type OTable struct {
 	ColumnStyle map[string]*ColumnStyle // описание колонок
 	TabStyle    TableStyle              // цвета фонов таблицы(шапка, строка
 	Data        map[string][]string     // исходные данные таблицы
+	Enum        map[string][]string     // данные для колонки
 	DataV       [][]string              // отображаемые данные(сортировка, фильтр) 1 столбец ID записи, 1 строка шапка
 	Table       *widget.Table           // таблица fyne
 	Header      *widget.Table           // шапка таблицы пока не релизована
@@ -49,7 +50,7 @@ type OTable struct {
 
 // MakeTableData - функция заполняющая структуру OTable из входных данных
 func (t *OTable) fill(d data.GetData) {
-	colColumns := len(d.DataDesciption[0])
+	colColumns := len(d.DataDescription[0])
 	t.fillColumns(d)
 	Log.WithFields(logrus.Fields{"form": t.Form.ID, "event": "fillColumns"}).Info("MakeTableData")
 	colV := 0 //количество видимых столбцов для пользователя
@@ -68,7 +69,7 @@ func (t *OTable) fill(d data.GetData) {
 		v := 0
 		for j := 0; j < colColumns; j++ {
 			// спрячем id  ссылки на другие таблицы
-			b := strings.HasPrefix(d.DataDesciption[0][j], "id_")
+			b := strings.HasPrefix(d.DataDescription[0][j], "id_")
 			if !b {
 				datav[v] = d.Data[i][j]
 				v++
@@ -146,8 +147,8 @@ func (t *OTable) properties() *data.GetData {
 	// Name column
 	datadescription[0][0] = "id"
 	datadescription[0][1] = "Header"
-	datadescription[0][2] = "formula"
-	datadescription[0][3] = "Type"
+	datadescription[0][2] = "Type"
+	datadescription[0][3] = "Formula"
 	datadescription[0][4] = "Color"
 	datadescription[0][5] = "BGColor"
 	datadescription[0][6] = "Width"
@@ -159,9 +160,9 @@ func (t *OTable) properties() *data.GetData {
 	datadescription[1][0] = "string"
 	datadescription[1][1] = "string"
 	datadescription[1][2] = "string"
-	datadescription[1][3] = "enum"
-	datadescription[1][4] = "id_color"
-	datadescription[1][5] = "id_color"
+	datadescription[1][3] = "string"
+	datadescription[1][4] = "enum"
+	datadescription[1][5] = "enum"
 	datadescription[1][6] = "int"
 	datadescription[1][7] = "bool"
 	datadescription[1][8] = "bool"
@@ -172,8 +173,8 @@ func (t *OTable) properties() *data.GetData {
 	datadescription[2][1] = "15"
 	datadescription[2][2] = "20"
 	datadescription[2][3] = "10"
-	datadescription[2][4] = "10"
-	datadescription[2][5] = "10"
+	datadescription[2][4] = "15"
+	datadescription[2][5] = "15"
 	datadescription[2][6] = "6"
 	datadescription[2][7] = "4"
 	datadescription[2][8] = "4"
@@ -193,7 +194,11 @@ func (t *OTable) properties() *data.GetData {
 
 	f := data.GetData{}
 	f.Data = datag
-	f.DataDesciption = datadescription
+	f.DataDescription = datadescription
+	f.Enum = map[string][]string{
+		"BGColor": Names,
+		"Color":   Names,
+	}
 	return &f
 
 }
@@ -201,7 +206,12 @@ func (t *OTable) properties() *data.GetData {
 // getColorCell - получим цвет фона и текста отбражаемой ячейки
 func (t *OTable) getColorCell(i widget.TableCellID) *CellColor {
 	c := CellColor{}
-	c.Color = MapColor["black"]
+	col := t.ColumnStyle[t.DataV[0][i.Col]]
+	if col.color != "" {
+		c.Color = MapColor[col.color]
+	} else {
+		c.Color = MapColor["black"]
+	}
 	//цвет фона строки
 	if i.Row == 0 {
 		c.BGcolor = MapColor[t.TabStyle.HeaderColor]
@@ -211,7 +221,7 @@ func (t *OTable) getColorCell(i widget.TableCellID) *CellColor {
 		c.BGcolor = MapColor[t.TabStyle.RowColor]
 	}
 	// цвет фона столбца
-	col := t.ColumnStyle[t.DataV[0][i.Col]]
+
 	if val, ok := MapColor[col.BGcolor]; ok {
 		c.BGcolor = mix(val, c.BGcolor)
 	}
@@ -232,10 +242,27 @@ func (t *OTable) sortDown() {
 	var temp []string
 	x := t.DataV
 	k := t.Selected.Col
+	tip := t.ColumnStyle[t.DataV[0][t.Selected.Col]].tip
 	n := len(x)
+	usl := false
+	if strings.HasPrefix(tip, "float") {
+		tip = "float"
+	}
 	for i := 1; i < n; i++ {
 		for j := i; j < n; j++ {
-			if strings.ToUpper(x[i][k]) < strings.ToUpper(x[j][k]) {
+			switch tip {
+			case "string", "bool", "id_string":
+				usl = strings.ToUpper(x[i][k]) < strings.ToUpper(x[j][k])
+			case "int":
+				i1, _ := strconv.Atoi(x[i][k])
+				i2, _ := strconv.Atoi(x[j][k])
+				usl = i1 < i2
+			case "float":
+				i1, _ := strconv.ParseFloat(x[i][k], 32)
+				i2, _ := strconv.ParseFloat(x[j][k], 32)
+				usl = i1 < i2
+			}
+			if usl {
 				temp = x[i]
 				x[i] = x[j]
 				x[j] = temp
@@ -248,10 +275,27 @@ func (t *OTable) sortUp() {
 	var temp []string
 	x := t.DataV
 	k := t.Selected.Col
+	tip := t.ColumnStyle[t.DataV[0][t.Selected.Col]].tip
 	n := len(x)
+	usl := false
+	if strings.HasPrefix(tip, "float") {
+		tip = "float"
+	}
 	for i := 1; i < n; i++ {
 		for j := i; j < n; j++ {
-			if strings.ToUpper(x[i][k]) > strings.ToUpper(x[j][k]) {
+			switch tip {
+			case "string", "bool", "id_string":
+				usl = strings.ToUpper(x[i][k]) > strings.ToUpper(x[j][k])
+			case "int":
+				i1, _ := strconv.Atoi(x[i][k])
+				i2, _ := strconv.Atoi(x[j][k])
+				usl = i1 > i2
+			case "float":
+				i1, _ := strconv.ParseFloat(x[i][k], 32)
+				i2, _ := strconv.ParseFloat(x[j][k], 32)
+				usl = i1 > i2
+			}
+			if usl {
 				temp = x[i]
 				x[i] = x[j]
 				x[j] = temp

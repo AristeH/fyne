@@ -9,8 +9,9 @@ import (
 )
 
 type GetData struct {
-	Data           [][]string
-	DataDesciption [][]string
+	Data            [][]string
+	DataDescription [][]string
+	Enum            map[string][]string
 }
 
 // TestData - тестовые данные
@@ -46,7 +47,6 @@ func TestData() *GetData {
 	for i := 0; i < 4; i++ {
 		datadescription[i] = make([]string, colColumns)
 	}
-
 	// Name column
 	datadescription[0][0] = "id"
 	datadescription[0][1] = "id_product"
@@ -74,7 +74,7 @@ func TestData() *GetData {
 	// Width column
 	datadescription[2][0] = "0"
 	datadescription[2][1] = "0"
-	datadescription[2][2] = "10"
+	datadescription[2][2] = "20"
 	datadescription[2][3] = "10"
 	datadescription[2][4] = "10"
 	datadescription[2][5] = "18"
@@ -116,5 +116,8 @@ func TestData() *GetData {
 		"rows data":    len(data),
 		"event":        "Init data",
 	}).Info("Data")
-	return &GetData{data, datadescription}
+	e := map[string][]string{
+		"Type": {"product", "service"},
+	}
+	return &GetData{data, datadescription, e}
 }

@@ -24,7 +24,7 @@ type ColumnStyle struct {
 
 // fillcolumns - filling in columns from incoming data
 func (t *OTable) fillColumns(d data.GetData) {
-	columns := len(d.DataDesciption[0]) // количесто колонок таблицы
+	columns := len(d.DataDescription[0]) // количесто колонок таблицы
 	Log.WithFields(logrus.Fields{
 		"form":    t.ID,
 		"columns": columns,
@@ -38,15 +38,15 @@ func (t *OTable) fillColumns(d data.GetData) {
 		// Log.WithFields(logrus.Fields{"columns": d.Data[0][i]}).Info("columns")
 		cs := ColumnStyle{}
 		cs.name = d.Data[0][i]
-		cs.id = d.DataDesciption[0][i]
+		cs.id = d.DataDescription[0][i]
 		cs.BGcolor = "rowcolor" // индивидуальный цвет столбца фон
 		cs.color = ""
-		cs.formula = d.DataDesciption[3][i] // индивидуальный цвет текста столбца
-		cs.tip = d.DataDesciption[1][i]
-		p, _ := strconv.Atoi(d.DataDesciption[2][i]) //ширина столбца в символах
-		cs.Width = float32(p)                        // ширина колонки
-		cs.visible = true                            // видимость столбца
-		cs.edit = true                               // редактируемость столбца
+		cs.formula = d.DataDescription[3][i] // индивидуальный цвет текста столбца
+		cs.tip = d.DataDescription[1][i]
+		p, _ := strconv.Atoi(d.DataDescription[2][i]) //ширина столбца в символах
+		cs.Width = float32(p)                         // ширина колонки
+		cs.visible = true                             // видимость столбца
+		cs.edit = true                                // редактируемость столбца
 		t.ColumnStyle[cs.name] = &cs
 	}
 	defer Log.WithFields(logrus.Fields{

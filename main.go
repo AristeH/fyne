@@ -54,6 +54,7 @@ func tableLabel() {
 	w := fd.W
 	w.Resize(fyne.NewSize(1200, 400))
 	w.SetContent(container.NewMax(table))
+
 	w.Show()
 
 }

@@ -48,6 +48,14 @@ func (t *OTable) GetToolBar() {
 			w.Resize(fyne.NewSize(1200, 400))
 
 			w.SetContent(container.NewMax(table))
+			w.SetOnClosed(func() {
+				l.WithFields(logrus.Fields{"Properties": table.DataV[1]}).Info("Close")
+				for i := 1; i < len(table.DataV); i++ {
+					t.ColumnStyle[table.DataV[i][1]].BGcolor = table.DataV[i][5]
+					t.ColumnStyle[table.DataV[i][1]].color = table.DataV[i][4]
+				}
+
+			})
 			w.Show()
 		}))
 
@@ -114,46 +122,42 @@ func (t *OTable) MakeTableLabel() {
 			if i == t.Selected {
 				t.Form.ActiveWidget.tip = "table"
 				if i.Row > 0 && t.Edit {
-					c := NewCompletionEntry([]string{})
-
-					t.Form.ActiveWidget.tip = "string"
-					t.Form.ActiveWidget.ce = c
 					if strings.HasPrefix(tip, "id_") { //id другой таблицы
-						en := string(mystr[0 : k-4])
-						entry := t.MakeTappable(en, tip, FillColor)
-						c := container.NewHSplit(entry, newTappableIcon(theme.SearchIcon()))
-						box.Objects[0] = c
-					} else {
-						if strings.HasPrefix(tip, "float") {
-							tip = "float"
+						tip = "id"
+					}
+					if strings.HasPrefix(tip, "float") {
+						tip = "float"
+					}
+
+					switch tip {
+					case "id":
+						FillColor := t.getColorCell(i)
+						c := t.MakeTappable(t.DataV[i.Row][i.Col], tip, FillColor)
+						box.Objects[0] = container.NewBorder(nil, nil, nil, newTappableIcon(theme.SearchIcon()), c)
+					case "float", "int", "string":
+						c := NewoEntry()
+						c.Text = t.DataV[i.Row][i.Col]
+						c.t = t
+						t.Form.ActiveWidget.tip = "string"
+						t.Form.ActiveWidget.ce = c
+						c.t = t
+						box.Objects[0] = container.New(layout.NewMaxLayout(), c)
+					case "bool":
+						t.Form.ActiveWidget.tip = "bool"
+						ic := newTappableIcon(theme.CheckButtonIcon())
+						if t.DataV[i.Row][i.Col] == "0" {
+							ic = newTappableIcon(theme.CheckButtonCheckedIcon())
 						}
-						switch tip {
-						case "float", "int", "string":
-							c.Text = t.DataV[i.Row][i.Col]
-							c.t = t
-							box.Objects[0] = container.New(layout.NewMaxLayout(), c)
-						case "bool":
-							t.Form.ActiveWidget.tip = "bool"
-							ic := newTappableIcon(theme.CheckButtonIcon())
-							if t.DataV[i.Row][i.Col] == "0" {
-								ic = newTappableIcon(theme.CheckButtonCheckedIcon())
-							}
-							ic.t = t
-							t.Form.ActiveWidget.ti = ic
-							box.Objects[0] = container.New(layout.NewMaxLayout(), ic)
-						case "enum":
-							c.SetOptions([]string{"product", "service"})
-							c.OnChanged = func(s string) {
-								if len(s) < 3 {
-									c.HideCompletion()
-									return
-								}
-								c.ShowCompletion()
-							}
-							c.t = t
-							c.Text = t.DataV[i.Row][i.Col]
-							box.Objects[0] = container.New(layout.NewMaxLayout(), c)
-						}
+						ic.t = t
+						t.Form.ActiveWidget.ti = ic
+						box.Objects[0] = ic
+					case "enum":
+						c := widget.NewSelect(t.Enum[col.id], func(s string) {
+							t.DataV[i.Row][i.Col] = s
+						})
+						// c.t = t
+						c.Selected = t.DataV[i.Row][i.Col]
+						box.Objects[0] = container.New(layout.NewMaxLayout(), c)
 					}
 					Log.WithFields(logrus.Fields{"T.Form.ActiveWidget": t.Form.ActiveWidget}).Info("t.Selected")
 				}
@@ -218,14 +222,21 @@ func (t *OTable) ExecuteFormula() {
 			panic(err)
 		}
 		for i, _ := range t.DataV[0] {
-			if strings.HasPrefix(t.ColumnStyle[t.DataV[0][i]].tip, "float") || t.ColumnStyle[t.DataV[0][i]].tip == "int" {
+
+			if strings.HasPrefix(t.ColumnStyle[t.DataV[0][i]].tip, "float") {
 				v := t.ColumnStyle[t.DataV[0][i]].id
 				t.DataV[t.Selected.Row][i] = fmt.Sprintf("%.2f", compiled.Get(v).Float())
+				fmt.Println(v, t.DataV[t.Selected.Row][i])
+
+			} else if t.ColumnStyle[t.DataV[0][i]].tip == "int" {
+				v := t.ColumnStyle[t.DataV[0][i]].id
+				t.DataV[t.Selected.Row][i] = fmt.Sprintf("%.2f", compiled.Get(v).Int())
 				fmt.Println(v, t.DataV[t.Selected.Row][i])
 			}
 		}
 	}
 }
+
 func (t *OTable) Tapped(ev *fyne.PointEvent) {
 
 }
@@ -239,15 +250,19 @@ func (t *OTable) TypedKey(ev *fyne.KeyEvent) {
 			if t.Selected.Row == 0 {
 				col := t.ColumnStyle[t.DataV[0][t.Selected.Col]]
 				switch col.sort {
-				case 0:
+				case 0, 2:
 					col.sort = 1
 					t.sortUp()
 				case 1:
 					col.sort = 2
 					t.sortDown()
-				case 2:
-					col.sort = 0
 				}
+				for i, _ := range t.DataV[0] {
+					if i != t.Selected.Col {
+						t.ColumnStyle[t.DataV[0][i]].sort = 0
+					}
+				}
+
 			}
 		} else {
 			t.ExecuteFormula()

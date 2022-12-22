@@ -10,7 +10,7 @@ import (
 
 type ActiveWidget struct {
 	tip string //bool, ce
-	ce  *CompletionEntry
+	ce  *oEntry
 	ti  *tappableIcon
 	t   *OTable
 }
@@ -50,6 +50,7 @@ func PutListForm(name, header string) *FormData {
 func (f *FormData) NewOTable(name string, d data.GetData) *OTable {
 	table := OTable{}
 	table.CellColor = make(map[string]*CellColor)
+	table.Enum = d.Enum
 	table.Form = *f
 	table.Edit = true
 	Log.WithFields(logrus.Fields{"1table.Form ": len(d.Data)}).Info("NewOTable")

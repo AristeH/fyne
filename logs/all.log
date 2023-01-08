@@ -8932,3 +8932,35 @@ time="08/01/23 12:55:29" level=info msg=t.Selected T.Form.ActiveWidget="&{table 
 time="08/01/23 12:55:32" level=info msg=CreateRenderer h.Tool="&{{{1192 36} {0 0} false 0xc00050daa0 {{0 0} 0 0 0 0}} [0xc000528318 0x7ff60fb2ad10 0xc000528330 0xc000528348 0x7ff60fb2ad10 0xc000528360]}"
 time="08/01/23 12:55:32" level=info msg=t.Selected T.Form.ActiveWidget="&{table 0xc00154fe00 0xc000164700 0xc000da6200 0xc00016bb00}"
 time="08/01/23 12:55:32" level=info msg=t.Selected T.Form.ActiveWidget="&{table 0xc00154fe00 0xc000164700 0xc000da6200 0xc00016bb00}"
+time="08/01/23 12:57:51" level=info msg="Начало" Out="&{0xc000004780}" event=start form=main
+time="08/01/23 12:57:51" level=info msg="✓Init" event="InitFormData()" form=Main
+time="08/01/23 12:57:53" level=info msg="✓Init" event="InitFormData()" form=Table
+time="08/01/23 12:57:53" level=info msg=Data columns=10 event="Fill Data" rows=500
+time="08/01/23 12:57:53" level=info msg=Data columns ddes=10 event="Init data" form="Test data" rows data=500
+time="08/01/23 12:57:53" level=info msg=NewOTable 1table.Form =500
+time="08/01/23 12:57:53" level=info msg=Columns columns=10 event="fillColumns()" form=
+time="08/01/23 12:57:53" level=info msg=Columns columns="map[Amount:0xc000424a80 Check:0xc000424af0 Comment:0xc000424bd0 DateCheck:0xc000424b60 Price:0xc000424a10 Product:0xc0004248c0 Quantity:0xc0004249a0 Type:0xc000424930 id:0xc0004247e0 id_product:0xc000424850]" event=Finish
+time="08/01/23 12:57:53" level=info msg=MakeTableData event=fillColumns form=Table
+time="08/01/23 12:57:53" level=info msg=MakeTable event="Fill data" form=Table
+time="08/01/23 12:57:53" level=info msg=GetToolBar Out="&{0xc000004780}" event=start form=main
+time="08/01/23 12:57:53" level=info msg=GetToolBar DocumentCreateIcon=GetToolBar
+time="08/01/23 12:57:53" level=info msg=CreateRenderer h.Tool="&{{{0 0} {0 0} false 0xc00027c180 {{0 0} 0 0 0 0}} [0xc00026e3d8 0x7ff6c4efad10 0xc00026e3f0 0xc00026e408 0x7ff6c4efad10 0xc00026e420]}"
+time="08/01/23 12:57:54" level=info msg=OnSelectedMakeTableLabel t.Form="{Table map[invoice:0xc0003ba6c0] 0xc00006e1e0 0xc00037f410}" w="{3 3}"
+time="08/01/23 12:57:54" level=info msg=FocusActiveWidget edit=true selected="{3 3}" tip=table
+time="08/01/23 12:57:54" level=info msg=t.Selected T.Form.ActiveWidget="&{string 0xc00006e780 <nil> <nil> 0xc0003ba6c0}"
+time="08/01/23 12:57:54" level=info msg=t.Selected T.Form.ActiveWidget="&{string 0xc00006e960 <nil> <nil> 0xc0003ba6c0}"
+time="08/01/23 12:57:56" level=info msg=FocusActiveWidget edit=true selected="{3 4}" tip=string
+time="08/01/23 12:57:56" level=info msg=t.Selected T.Form.ActiveWidget="&{string 0xc00006eb40 <nil> <nil> 0xc0003ba6c0}"
+time="08/01/23 12:57:56" level=info msg=t.Selected T.Form.ActiveWidget="&{string 0xc00006ed20 <nil> <nil> 0xc0003ba6c0}"
+time="08/01/23 12:57:58" level=info msg=FocusActiveWidget edit=true selected="{3 5}" tip=string
+time="08/01/23 12:57:58" level=info msg=t.Selected T.Form.ActiveWidget="&{string 0xc00011a3c0 <nil> <nil> 0xc0003ba6c0}"
+time="08/01/23 12:57:58" level=info msg=t.Selected T.Form.ActiveWidget="&{string 0xc00011a5a0 <nil> <nil> 0xc0003ba6c0}"
+time="08/01/23 12:57:58" level=info msg=FocusActiveWidget edit=true selected="{3 6}" tip=string
+time="08/01/23 12:57:58" level=info msg=t.Selected T.Form.ActiveWidget="&{bool 0xc00011a5a0 0xc0003684d0 <nil> 0xc0003ba6c0}"
+time="08/01/23 12:57:58" level=info msg=t.Selected T.Form.ActiveWidget="&{bool 0xc00011a5a0 0xc000368770 <nil> 0xc0003ba6c0}"
+time="08/01/23 12:57:58" level=info msg=FocusActiveWidget edit=true selected="{3 7}" tip=bool
+time="08/01/23 12:57:58" level=info msg=t.Selected T.Form.ActiveWidget="&{date 0xc00011a780 0xc000368770 <nil> 0xc0003ba6c0}"
+time="08/01/23 12:57:58" level=info msg=t.Selected T.Form.ActiveWidget="&{date 0xc00006ef00 0xc000368770 <nil> 0xc0003ba6c0}"
+time="08/01/23 12:58:17" level=info msg=FocusActiveWidget edit=true selected="{4 7}" tip=date
+time="08/01/23 12:58:17" level=info msg=t.Selected T.Form.ActiveWidget="&{date 0xc00011a960 0xc000368770 <nil> 0xc0003ba6c0}"
+time="08/01/23 12:58:17" level=info msg=t.Selected T.Form.ActiveWidget="&{date 0xc00011ab40 0xc000368770 <nil> 0xc0003ba6c0}"

@@ -54,7 +54,3 @@ func (t *OTable) fillColumns(d data.GetData) {
 		"event":   "Finish",
 	}).Info("Columns")
 }
-
-func (t *OTable) getcolumnid(id string) *ColumnStyle {
-	return t.ColumnStyle[id]
-}

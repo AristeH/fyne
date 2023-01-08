@@ -80,7 +80,7 @@ func TestData() *GetData {
 	datadescription[2][5] = "18"
 	datadescription[2][6] = "18"
 	datadescription[2][7] = "3"
-	datadescription[2][8] = "10"
+	datadescription[2][8] = "13"
 	datadescription[2][9] = "25"
 
 	//Formula column
@@ -106,7 +106,7 @@ func TestData() *GetData {
 		data[i][5] = strconv.FormatFloat(rand.Float64()*200, 'f', 2, 64)
 		data[i][6] = "0"
 		data[i][7] = "0"
-		data[i][8] = ""
+		data[i][8] = "0001/01/01"
 		data[i][9] = "Comment"
 	}
 

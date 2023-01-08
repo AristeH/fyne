@@ -25,12 +25,12 @@ func init() {
 }
 
 func (t *OTable) GetToolBar() {
-	l := logger.GetLog()
-	l.WithFields(logrus.Fields{"DocumentCreateIcon": "GetToolBar"}).Info("GetToolBar")
+
+	Log.WithFields(logrus.Fields{"DocumentCreateIcon": "GetToolBar"}).Info("GetToolBar")
 
 	t.Tool = widget.NewToolbar(
 		widget.NewToolbarAction(theme.DocumentCreateIcon(), func() {
-			l.WithFields(logrus.Fields{"DocumentCreateIcon": "DocumentCreateIcon"}).Info("GetToolBar")
+			Log.WithFields(logrus.Fields{"DocumentCreateIcon": "DocumentCreateIcon"}).Info("GetToolBar")
 		}),
 		widget.NewToolbarSeparator(),
 		widget.NewToolbarAction(theme.ContentAddIcon(), func() {}),
@@ -39,22 +39,25 @@ func (t *OTable) GetToolBar() {
 		widget.NewToolbarAction(theme.SettingsIcon(), func() {
 			fd := PutListForm("TableProp", "Tablerop")
 			g := t.properties()
-			l.WithFields(logrus.Fields{"Properties": len(g.Data)}).Info("GetToolBar")
-
 			table := fd.NewOTable("invoice", *g)
-
-			l.WithFields(logrus.Fields{"Properties len  dv": len(table.DataV)}).Info("GetToolBar")
 			w := fd.W
 			w.Resize(fyne.NewSize(1200, 400))
 
 			w.SetContent(container.NewMax(table))
 			w.SetOnClosed(func() {
-				l.WithFields(logrus.Fields{"Properties": table.DataV[1]}).Info("Close")
 				for i := 1; i < len(table.DataV); i++ {
 					t.ColumnStyle[table.DataV[i][1]].BGcolor = table.DataV[i][5]
 					t.ColumnStyle[table.DataV[i][1]].color = table.DataV[i][4]
+					b, _ := strconv.ParseFloat(table.DataV[i][6], 32)
+					t.ColumnStyle[table.DataV[i][1]].Width = float32(b)
+					t.ColumnStyle[table.DataV[i][1]].formula = table.DataV[i][3]
 				}
-
+				for n := 0; n < len(t.DataV[0]); n++ {
+					col := t.ColumnStyle[t.DataV[0][n]]
+					si := fyne.MeasureText("ш", 12, fyne.TextStyle{})
+					t.Table.SetColumnWidth(n, si.Width*col.Width)
+					t.Header.SetColumnWidth(n, si.Width*col.Width)
+				}
 			})
 			w.Show()
 		}))
@@ -105,7 +108,6 @@ func (t *OTable) MakeTableLabel() {
 				box.Objects[0] = container.New(layout.NewMaxLayout(), rec, image)
 			} else {
 				en := string(mystr[0:k])
-
 				if i.Row == 0 {
 					switch col.sort {
 					case 2:
@@ -143,20 +145,32 @@ func (t *OTable) MakeTableLabel() {
 						c.t = t
 						box.Objects[0] = container.New(layout.NewMaxLayout(), c)
 					case "bool":
-						t.Form.ActiveWidget.tip = "bool"
+
 						ic := newTappableIcon(theme.CheckButtonIcon())
 						if t.DataV[i.Row][i.Col] == "0" {
 							ic = newTappableIcon(theme.CheckButtonCheckedIcon())
 						}
 						ic.t = t
+						t.Form.ActiveWidget.tip = "bool"
 						t.Form.ActiveWidget.ti = ic
 						box.Objects[0] = ic
 					case "enum":
-						c := widget.NewSelect(t.Enum[col.id], func(s string) {
+						c := NewoSelect(t.Enum[col.id])
+						c.OnChanged = func(s string) {
 							t.DataV[i.Row][i.Col] = s
-						})
-						// c.t = t
-						c.Selected = t.DataV[i.Row][i.Col]
+						}
+						c.t = t
+						c.Entry.Text = t.DataV[i.Row][i.Col]
+						t.Form.ActiveWidget.tip = "enum"
+						t.Form.ActiveWidget.sel = c
+						box.Objects[0] = container.New(layout.NewMaxLayout(), c)
+					case "date":
+						c := NewoEntry()
+						c.Text = t.DataV[i.Row][i.Col]
+						c.t = t
+						t.Form.ActiveWidget.tip = "date"
+						t.Form.ActiveWidget.ce = c
+						c.t = t
 						box.Objects[0] = container.New(layout.NewMaxLayout(), c)
 					}
 					Log.WithFields(logrus.Fields{"T.Form.ActiveWidget": t.Form.ActiveWidget}).Info("t.Selected")
@@ -204,7 +218,7 @@ func (t *OTable) ExecuteFormula() {
 		return
 	} else {
 		script := tengo.NewScript([]byte(col.formula))
-		for i, _ := range t.DataV[0] {
+		for i := range t.DataV[0] {
 			tip := t.ColumnStyle[t.DataV[0][i]].tip
 
 			if strings.HasPrefix(t.ColumnStyle[t.DataV[0][i]].tip, "float") {
@@ -221,17 +235,13 @@ func (t *OTable) ExecuteFormula() {
 		if err != nil {
 			panic(err)
 		}
-		for i, _ := range t.DataV[0] {
-
+		for i := range t.DataV[0] {
 			if strings.HasPrefix(t.ColumnStyle[t.DataV[0][i]].tip, "float") {
 				v := t.ColumnStyle[t.DataV[0][i]].id
 				t.DataV[t.Selected.Row][i] = fmt.Sprintf("%.2f", compiled.Get(v).Float())
-				fmt.Println(v, t.DataV[t.Selected.Row][i])
-
 			} else if t.ColumnStyle[t.DataV[0][i]].tip == "int" {
 				v := t.ColumnStyle[t.DataV[0][i]].id
-				t.DataV[t.Selected.Row][i] = fmt.Sprintf("%.2f", compiled.Get(v).Int())
-				fmt.Println(v, t.DataV[t.Selected.Row][i])
+				t.DataV[t.Selected.Row][i] = fmt.Sprintf("%d", compiled.Get(v).Int())
 			}
 		}
 	}
@@ -267,7 +277,13 @@ func (t *OTable) TypedKey(ev *fyne.KeyEvent) {
 		} else {
 			t.ExecuteFormula()
 			if t.Edit {
-				t.Selected = widget.TableCellID{Col: i.Col, Row: i.Row + 1}
+				switch t.Form.ActiveWidget.tip {
+				case "string", "date":
+					t.DataV[i.Row][i.Col] = t.Form.ActiveWidget.ce.Text
+				}
+				if len(t.DataV)-1 > t.Selected.Row {
+					t.Selected = widget.TableCellID{Col: i.Col, Row: i.Row + 1}
+				}
 			} else {
 				t.Edit = true
 				t.Selected = widget.TableCellID{Col: i.Col, Row: i.Row}
@@ -279,8 +295,7 @@ func (t *OTable) TypedKey(ev *fyne.KeyEvent) {
 		}
 	case "Up":
 		if i.Row > 0 {
-			tc := widget.TableCellID{Col: i.Col, Row: i.Row - 1}
-			t.Selected = tc
+			t.Selected = widget.TableCellID{Col: i.Col, Row: i.Row - 1}
 		}
 	case "Left":
 		c := i.Col
@@ -299,7 +314,6 @@ func (t *OTable) TypedKey(ev *fyne.KeyEvent) {
 	case "Right":
 		c := i.Col
 		col := t.ColumnStyle[t.DataV[0][c]]
-
 		for len(t.DataV[0])-1 > c {
 			c++
 			if col.Width != 0 {
@@ -307,6 +321,16 @@ func (t *OTable) TypedKey(ev *fyne.KeyEvent) {
 				break
 			}
 		}
+
+	case fyne.KeySpace:
+		if t.Edit && t.Form.ActiveWidget.tip == "bool" {
+			if t.DataV[i.Row][i.Col] == "1" {
+				t.DataV[i.Row][i.Col] = "0"
+			} else {
+				t.DataV[i.Row][i.Col] = "1"
+			}
+		}
+
 	}
 	t.FocusActiveWidget()
 }
@@ -337,10 +361,12 @@ func (t *OTable) FocusActiveWidget() {
 	}
 	if t.Edit {
 		switch tip {
-		case "string", "float":
+		case "string", "float", "date":
 			t.Form.W.Canvas().Focus(t.Form.ActiveWidget.ce)
 		case "bool":
 			t.Form.W.Canvas().Focus(t.Form.ActiveWidget.ti)
+		case "enum":
+			t.Form.W.Canvas().Focus(t.Form.ActiveWidget.sel)
 		case "table":
 			t.Form.W.Canvas().Focus(t.Form.ActiveWidget.t)
 		}

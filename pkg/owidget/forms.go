@@ -12,6 +12,7 @@ type ActiveWidget struct {
 	tip string //bool, ce
 	ce  *oEntry
 	ti  *tappableIcon
+	sel *oSelect
 	t   *OTable
 }
 

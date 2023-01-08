@@ -21,7 +21,7 @@ func main() {
 		"event": "start",
 		"Out":   os.Stderr,
 	}).Info("Начало")
-	os.Setenv("FYNE_FONT", "C:/goproject/otable/ttf/Go Mono Nerd Font Complete Mono.ttf")
+	os.Setenv("FYNE_FONT", "C:\\goproject\\otable/ttf/Go Mono Nerd Font Complete Mono.ttf")
 	app.New()
 	fd := owidget.PutListForm("Main", "MainForm")
 	myWindow := fd.W
